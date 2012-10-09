@@ -1,0 +1,34 @@
+= TZInfo Data
+
+TZInfo Data contains the tz database (http://www.twinsun.com/tz/tz-link.htm)
+packaged as a set of Ruby modules. The tz database is used to create the 
+zoneinfo directory on many Unix and Unix-like machines.
+
+TZInfo Data is intended to be used with TZInfo[http://tzinfo.rubyforge.org].
+
+
+== Installation
+
+The preferred method of installing TZInfo Data is using RubyGems[http://docs.rubygems.org/]:
+
+  % gem install tzinfo-data
+
+
+== Download
+
+Gem, tar.gz and zip packages for TZInfo Data can be found at 
+
+* http://rubyforge.org/frs/?group_id=894
+
+
+== License
+
+TZInfo Data is released under the MIT[http://opensource.org/licenses/mit-license.html] license.
+
+
+== Support
+
+Please post to the TZInfo Users mailing list (http://rubyforge.org/mailman/listinfo/tzinfo-users)
+if you require assistance or have any suggestions.
+
+Alternatively, you can contact the author Philip Ross directly at phil.ross@gmail.com.
