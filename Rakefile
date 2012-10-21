@@ -4,7 +4,7 @@ require 'rubygems'
 require 'rubygems/package_task'
 
 LIB_DIR = File.join(File.dirname(__FILE__), 'lib')
-BUILD_TZ_CLASSES_DIR = File.join(File.dirname(__FILE__), 'tzinfo.build_tz_classes')
+BUILD_TZ_MODULES_DIR = File.join(File.dirname(__FILE__), '.build_tz_modules')
 DATA_DIR = File.join(File.dirname(__FILE__), 'data')
 DATA_OUTPUT_DIR = File.join(File.dirname(__FILE__), 'lib', 'tzinfo', 'data')
 
@@ -89,16 +89,16 @@ end
 task :build_tz_modules do
   require File.join(LIB_DIR, 'tzinfo', 'data', 'tzdataparser')
   
-  FileUtils.mkdir_p(BUILD_TZ_CLASSES_DIR)
+  FileUtils.mkdir_p(BUILD_TZ_MODULES_DIR)
   begin  
-    p = TZInfo::Data::TZDataParser.new(DATA_DIR, BUILD_TZ_CLASSES_DIR)
+    p = TZInfo::Data::TZDataParser.new(DATA_DIR, BUILD_TZ_MODULES_DIR)
     p.execute
     
     ['indexes', 'definitions'].each {|dir|
-      sync_svn(File.join(BUILD_TZ_CLASSES_DIR, dir), File.join(DATA_OUTPUT_DIR, dir))
+      sync_svn(File.join(BUILD_TZ_MODULES_DIR, dir), File.join(DATA_OUTPUT_DIR, dir))
     }
   ensure
-    FileUtils.rm_rf(BUILD_TZ_CLASSES_DIR)
+    FileUtils.rm_rf(BUILD_TZ_MODULES_DIR)
   end
 end
 
