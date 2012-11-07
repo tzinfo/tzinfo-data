@@ -10,16 +10,6 @@ DATA_OUTPUT_DIR = File.join(File.dirname(__FILE__), 'lib', 'tzinfo', 'data')
 
 spec = eval(File.read('tzinfo-data.gemspec'))
 
-Rake::TaskManager.class_eval do
-  def remove_task(task_name)
-    @tasks.delete(task_name.to_s)
-  end
-end
-
-def remove_task(task_name)
-  Rake.application.remove_task(task_name)
-end
-
 self.class.class_eval { alias_method :orig_sh, :sh }
 private :orig_sh
 
