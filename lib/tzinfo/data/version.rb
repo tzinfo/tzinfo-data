@@ -29,7 +29,7 @@ module TZInfo
       FORMAT = 1
       
       # The version of the packaged tz data.
-      TZDATA = '2012i'
+      TZDATA = '2012j'
     end
   end
 end
