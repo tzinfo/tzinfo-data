@@ -10,20 +10,22 @@ DATA_OUTPUT_DIR = File.join(File.dirname(__FILE__), 'lib', 'tzinfo', 'data')
 
 spec = eval(File.read('tzinfo-data.gemspec'))
 
-self.class.class_eval { alias_method :orig_sh, :sh }
-private :orig_sh
+class TZInfoPackageTask < Gem::PackageTask
+  alias_method :orig_sh, :sh
+  private :orig_sh
 
-def sh(*cmd, &block)
-  if cmd.first =~ /\A__tar_with_owner__ -?([zjcvf]+)(.*)\z/
-    opts = $1
-    args = $2
-    cmd[0] = "tar c --owner 0 --group 0 -#{opts.gsub('c', '')}#{args}"    
-  end
+  def sh(*cmd, &block)
+    if cmd.first =~ /\A__tar_with_owner__ -?([zjcvf]+)(.*)\z/
+      opts = $1
+      args = $2
+      cmd[0] = "tar c --owner 0 --group 0 -#{opts.gsub('c', '')}#{args}"    
+    end
   
-  orig_sh(*cmd, &block)
+    orig_sh(*cmd, &block)
+  end
 end
 
-package_task = Gem::PackageTask.new(spec) do |pkg|
+package_task = TZInfoPackageTask.new(spec) do |pkg|
   pkg.need_zip = true
   pkg.need_tar_gz = true
   pkg.tar_command = '__tar_with_owner__'
