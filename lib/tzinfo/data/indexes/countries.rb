@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module TZInfo
   module Data
     module Indexes
