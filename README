@@ -1,34 +1,36 @@
-= TZInfo Data
+= TZInfo::Data
 
-TZInfo Data contains the tz database (http://www.twinsun.com/tz/tz-link.htm)
-packaged as a set of Ruby modules. The tz database is used to create the 
-zoneinfo directory on many Unix and Unix-like machines.
+TZInfo::Data is the public domain {IANA Time Zone Database}[http://www.iana.org/time-zones]
+packaged as a set of Ruby modules for use with TZInfo[http://tzinfo.rubyforge.org].
 
-TZInfo Data is intended to be used with TZInfo[http://tzinfo.rubyforge.org].
+If TZInfo::Data is installed, TZInfo will automatically use it for its data
+source. If TZInfo::Data is not installed, TZInfo[http://tzinfo.rubyforge.org]
+will attempt to use the system zoneinfo files instead. Please refer to the
+TZInfo[http://tzinfo.rubyforge.org] documentation for further details.
 
 
 == Installation
 
-The preferred method of installing TZInfo Data is using RubyGems[http://docs.rubygems.org/]:
+TZInfo::Data can be installed using the gem command:
 
-  % gem install tzinfo-data
+  $ gem install tzinfo-data
 
 
 == Download
 
-Gem, tar.gz and zip packages for TZInfo Data can be found at 
+Tar, Zip and RubyGem packages of TZInfo can be downloaded from:
 
 * http://rubyforge.org/frs/?group_id=894
 
 
 == License
 
-TZInfo Data is released under the MIT[http://opensource.org/licenses/mit-license.html] license.
+TZInfo::Data is released under the MIT license, see LICENSE for details.
 
 
 == Support
 
-Please post to the TZInfo Users mailing list (http://rubyforge.org/mailman/listinfo/tzinfo-users)
+Please post to the {TZInfo Users mailing list}[http://rubyforge.org/mailman/listinfo/tzinfo-users]
 if you require assistance or have any suggestions.
 
 Alternatively, you can contact the author Philip Ross directly at phil.ross@gmail.com.
