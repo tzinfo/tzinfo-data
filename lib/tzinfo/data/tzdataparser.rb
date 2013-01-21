@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2005-2012 Philip Ross
+# Copyright (c) 2005-2013 Philip Ross
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ module TZInfo
   module Data
   
     # Utility methods used by TZDataParser and associated classes.
-    module TZDataParserUtils
+    module TZDataParserUtils #:nodoc:
       
       begin
         Encoding
@@ -47,10 +47,70 @@ module TZInfo
       end
       
       private :open_file
+      
+      private
+      
+        # Parses a month specified in the tz data and converts it to a number
+        # between 1 and 12 representing January to December.
+        def parse_month(month)
+          lower = month.downcase
+          if lower =~ /^jan/
+            @month = 1
+          elsif lower =~ /^feb/
+            @month = 2
+          elsif lower =~ /^mar/
+            @month = 3
+          elsif lower =~ /^apr/
+            @month = 4
+          elsif lower =~ /^may/
+            @month = 5
+          elsif lower =~ /^jun/
+            @month = 6
+          elsif lower =~ /^jul/
+            @month = 7
+          elsif lower =~ /^aug/
+            @month = 8
+          elsif lower =~ /^sep/
+            @month = 9
+          elsif lower =~ /^oct/
+            @month = 10
+          elsif lower =~ /^nov/
+            @month = 11
+          elsif lower =~ /^dec/
+            @month = 12
+          else
+            raise "Invalid month: #{month}"
+          end
+        end
+        
+        # Parses an offset string [-]h:m:s (minutes and seconds are optional). Returns
+        # the offset in seconds.
+        def parse_offset(offset)
+          raise "Invalid time: #{offset}" if offset !~ /^(-)?(?:([0-9]+)(?::([0-9]+)(?::([0-9]+))?)?)?$/
+          
+          negative = !$1.nil?      
+          hour = $2.nil? ? 0 : $2.to_i
+          minute = $3.nil? ? 0 : $3.to_i
+          second = $4.nil? ? 0 : $4.to_i
+          
+          seconds = hour
+          seconds = seconds * 60
+          seconds = seconds + minute
+          seconds = seconds * 60
+          seconds = seconds + second
+          seconds = -seconds if negative
+          seconds
+        end
+        
+        # Encloses the string in single quotes and escapes any single quotes in
+        # the content.
+        def quote_str(str)
+          "'#{str.gsub('\'', '\\\\\'')}'"
+        end
     end 
   
-    # Parses tzdata from ftp://elsie.nci.nih.gov/pub/ and transforms it into 
-    # a set of Ruby modules that can be used through Timezone and Country.
+    # Parses Time Zone Data from the IANA Time Zone Database and transforms it 
+    # into a set of Ruby modules that can be used with TZInfo.
     # 
     # Normally, this class wouldn't be used. It is only run to update the 
     # timezone data and index modules.
@@ -96,8 +156,8 @@ module TZInfo
         @exclude_zones = []      
       end
       
-      # Reads the tzdata source and generates the classes. Takes a long time
-      # to run. Currently outputs debugging information to standard out.
+      # Reads the tzdata source and generates the classes. Progress information
+      # is written to standard out.
       def execute
         Dir.foreach(@input_dir) {|file|
           load_rules(file) if file =~ /^[^\.]+$/        
@@ -134,64 +194,6 @@ module TZInfo
           write_countries_index
         end
       end
-      
-      # Parses a month specified in the tz data and converts it to a number
-      # between 1 and 12 representing January to December.
-      def self.parse_month(month)
-        lower = month.downcase
-        if lower =~ /^jan/
-          @month = 1
-        elsif lower =~ /^feb/
-          @month = 2
-        elsif lower =~ /^mar/
-          @month = 3
-        elsif lower =~ /^apr/
-          @month = 4
-        elsif lower =~ /^may/
-          @month = 5
-        elsif lower =~ /^jun/
-          @month = 6
-        elsif lower =~ /^jul/
-          @month = 7
-        elsif lower =~ /^aug/
-          @month = 8
-        elsif lower =~ /^sep/
-          @month = 9
-        elsif lower =~ /^oct/
-          @month = 10
-        elsif lower =~ /^nov/
-          @month = 11
-        elsif lower =~ /^dec/
-          @month = 12
-        else
-          raise "Invalid month: #{month}"
-        end
-      end
-      
-      # Parses an offset string [-]h:m:s (minutes and seconds are optional). Returns
-      # the offset in seconds.
-      def self.parse_offset(offset)
-        raise "Invalid time: #{offset}" if offset !~ /^(-)?(?:([0-9]+)(?::([0-9]+)(?::([0-9]+))?)?)?$/
-        
-        negative = !$1.nil?      
-        hour = $2.nil? ? 0 : $2.to_i
-        minute = $3.nil? ? 0 : $3.to_i
-        second = $4.nil? ? 0 : $4.to_i
-        
-        seconds = hour
-        seconds = seconds * 60
-        seconds = seconds + minute
-        seconds = seconds * 60
-        seconds = seconds + second
-        seconds = -seconds if negative
-        seconds
-      end
-      
-      # Encloses the string in single quotes and escapes any single quotes in
-      # the content.
-      def self.quote_str(str)
-        "'#{str.gsub('\'', '\\\\\'')}'"
-      end
           
       private
         # Loads all the Rule definitions from the tz data and stores them in
@@ -226,7 +228,7 @@ module TZInfo
           if ref == '-'
             @no_rules
           elsif ref =~ /^[0-9]+:[0-9]+$/
-            TZDataFixedOffsetRules.new(TZDataParser.parse_offset(ref))
+            TZDataFixedOffsetRules.new(parse_offset(ref))
           else
             rule_set = @rule_sets[ref]
             raise "Ruleset not found: #{ref}" if rule_set.nil?    
@@ -450,6 +452,8 @@ module TZInfo
     
     # A rule in a RuleSet (a single Rule line in the tz data).
     class TZDataRule #:nodoc:
+      include TZDataParserUtils
+    
       attr_reader :from
       attr_reader :to
       attr_reader :type
@@ -468,10 +472,10 @@ module TZInfo
         @to = @from if @to == :only      
         
         @type = parse_type(type)
-        @in_month = TZDataParser.parse_month(in_month)
+        @in_month = parse_month(in_month)
         @on_day = TZDataDayOfMonth.new(on_day)
         @at_time = TZDataTime.new(at_time)
-        @save = TZDataParser.parse_offset(save)
+        @save = parse_offset(save)
         @letter = parse_letter(letter)
       end
       
@@ -601,6 +605,8 @@ module TZInfo
     
     # A tz data Link.
     class TZDataLink < TZDataDefinition #:nodoc:
+      include TZDataParserUtils
+    
       attr_reader :link_to
       
       def initialize(name, link_to)
@@ -613,18 +619,20 @@ module TZInfo
         puts "writing link #{name}"
               
         create_file(output_dir) {|file|
-          file.puts("linked_timezone #{TZDataParser.quote_str(@name)}, #{TZDataParser.quote_str(@link_to.name)}")        
+          file.puts("linked_timezone #{quote_str(@name)}, #{quote_str(@link_to.name)}")        
         }
       end
       
       # Writes an index record for this link.    
       def write_index_record(file)
-        file.puts("        linked_timezone #{TZDataParser.quote_str(@name)}")
+        file.puts("        linked_timezone #{quote_str(@name)}")
       end
     end
     
     # A tz data Zone. Each line from the tz data is loaded as a TZDataObservance.
-    class TZDataZone < TZDataDefinition #:nodoc:    
+    class TZDataZone < TZDataDefinition #:nodoc:
+      include TZDataParserUtils
+      
       attr_reader :observances
       
       def initialize(name)
@@ -643,7 +651,7 @@ module TZInfo
         
         create_file(output_dir) {|file|        
           
-          file.puts("timezone #{TZDataParser.quote_str(@name)} do |tz|")
+          file.puts("timezone #{quote_str(@name)} do |tz|")
           file.indent(2)
                 
           transitions = find_transitions
@@ -656,7 +664,7 @@ module TZInfo
       
       # Writes an index record for this zone.    
       def write_index_record(file)
-        file.puts("        timezone #{TZDataParser.quote_str(@name)}")
+        file.puts("        timezone #{quote_str(@name)}")
       end
       
       private
@@ -755,13 +763,15 @@ module TZInfo
     
     # A observance within a zone (a line within the zone definition).
     class TZDataObservance #:nodoc:
+      include TZDataParserUtils
+    
       attr_reader :utc_offset
       attr_reader :rule_set
       attr_reader :format
       attr_reader :valid_until
       
       def initialize(utc_offset, rule_set, format, valid_until)
-        @utc_offset = TZDataParser.parse_offset(utc_offset)
+        @utc_offset = parse_offset(utc_offset)
         @rule_set = rule_set      
         @format = TZDataFormat.new(format)
         @valid_until = valid_until.nil? ? nil : TZDataUntil.new(valid_until)      
@@ -778,6 +788,7 @@ module TZInfo
     
     # Collection of TZDataTransition instances used when building a zone class.
     class TZDataTransitions #:nodoc:
+      include TZDataParserUtils
       
       def initialize
         @transitions = []
@@ -853,7 +864,7 @@ module TZInfo
         
         def quote_zone_id(zone_id)     
           if zone_id =~ %r{[\-+']}
-            ":#{TZDataParser.quote_str(zone_id)}"          
+            ":#{quote_str(zone_id)}"          
           else
             ":#{zone_id}"
           end
@@ -1106,6 +1117,8 @@ module TZInfo
     
     # A tz data Zone until reference.
     class TZDataUntil #:nodoc:
+      include TZDataParserUtils
+    
       attr_reader :year
       attr_reader :month
       attr_reader :day
@@ -1116,7 +1129,7 @@ module TZInfo
         raise "Invalid until: #{spec}" if parts.length < 1
         
         @year = parts[0].to_i
-        @month = parts.length > 1 ? TZDataParser.parse_month(parts[1]) : 1
+        @month = parts.length > 1 ? parse_month(parts[1]) : 1
         @day = TZDataDayOfMonth.new(parts.length > 2 ? parts[2] : '1')
         @time = TZDataTime.new(parts.length > 3 ? parts[3] : '00:00')
       end
@@ -1198,6 +1211,8 @@ module TZInfo
     
     # An ISO 3166 country.
     class TZDataCountry #:nodoc:
+      include TZDataParserUtils
+      
       attr_reader :code
       attr_reader :name
       attr_reader :zones
@@ -1214,13 +1229,13 @@ module TZInfo
       end  
       
       def write_index_record(file)
-        s = "        country #{TZDataParser.quote_str(@code)}, #{TZDataParser.quote_str(@name)}"      
+        s = "        country #{quote_str(@code)}, #{quote_str(@name)}"      
         s << ' do |c|' if @zones.length > 0
         
         file.puts s
         
         @zones.each do |zone|
-          file.puts "          c.timezone #{TZDataParser.quote_str(zone.timezone.name)}, #{zone.location.latitude.numerator}, #{zone.location.latitude.denominator}, #{zone.location.longitude.numerator}, #{zone.location.longitude.denominator}#{zone.description.nil? ? '' : ', ' + TZDataParser.quote_str(zone.description)}" 
+          file.puts "          c.timezone #{quote_str(zone.timezone.name)}, #{zone.location.latitude.numerator}, #{zone.location.latitude.denominator}, #{zone.location.longitude.numerator}, #{zone.location.longitude.denominator}#{zone.description.nil? ? '' : ', ' + quote_str(zone.description)}" 
         end
         
         file.puts '        end' if @zones.length > 0
