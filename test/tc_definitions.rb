@@ -78,17 +78,29 @@ class TCDefinitions < Test::Unit::TestCase
           assert_equal(identifier, tzi_local_identifier, "Local identifiers don't match:\n#{message}")
         end
       end
+    else
+      assert_match(/\s=\sNULL\z/, line, "Unexpected zdump format")
+    end
+  end
+  
+  def parse_zdump_timestamp(s)
+    if s =~ /\A(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d\d?)\s(\d\d):(\d\d):(\d\d)\s(\d+)\z/
+      month = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec).index($1) + 1
+      [$6.to_i, month, $2.to_i, $3.to_i, $4.to_i, $5.to_i]
+    else
+      raise "Unexpected zdump timestamp format: #{s}"
     end
   end
   
   def parse_as_datetime(s)
-    DateTime.parse(s)
+    year, month, day, hour, minute, second = parse_zdump_timestamp(s)
+    DateTime.new(year, month, day, hour, minute, second)
   end
   
   def parse_as_time(s)
-    datetime = parse_as_datetime(s)
+    year, month, day, hour, minute, second = parse_zdump_timestamp(s)
     begin
-      Time.utc(datetime.year, datetime.mon, datetime.mday, datetime.hour, datetime.min, datetime.sec)
+      Time.utc(year, month, day, hour, minute, second)
     rescue
       # Time doesn't support the full range required on all platforms.
       nil
@@ -105,12 +117,21 @@ class TCDefinitions < Test::Unit::TestCase
         zone = TZInfo::Timezone.get(identifier)
         assert_equal(identifier, zone.identifier)
         
-        IO.popen("zdump -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
-          io.each_line do |line|
-            line.chomp!
-            check_zdump_line(zone, line) {|s| parse_as_datetime(s)}
-            check_zdump_line(zone, line) {|s| parse_as_time(s)}
+        old_lang = ENV['LANG']
+        begin
+          # Use standard C locale to ensure that zdump outputs dates in a format 
+          # that can be understood
+          ENV['LANG'] = 'C'
+          
+          IO.popen("zdump -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
+            io.each_line do |line|
+              line.chomp!
+              check_zdump_line(zone, line) {|s| parse_as_datetime(s)}
+              check_zdump_line(zone, line) {|s| parse_as_time(s)}
+            end
           end
+        ensure
+          ENV['LANG'] = old_lang
         end
       end
     end
