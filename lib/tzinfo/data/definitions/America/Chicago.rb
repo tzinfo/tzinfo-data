@@ -277,6 +277,32 @@ module TZInfo
             tz.transition 2049, 11, :o1, 59274067, 24
             tz.transition 2050, 3, :o2, 14819273, 6
             tz.transition 2050, 11, :o1, 59282803, 24
+            tz.transition 2051, 3, :o2, 14821457, 6
+            tz.transition 2051, 11, :o1, 59291539, 24
+            tz.transition 2052, 3, :o2, 14823641, 6
+            tz.transition 2052, 11, :o1, 59300275, 24
+            tz.transition 2053, 3, :o2, 14825825, 6
+            tz.transition 2053, 11, :o1, 59309011, 24
+            tz.transition 2054, 3, :o2, 14828009, 6
+            tz.transition 2054, 11, :o1, 59317747, 24
+            tz.transition 2055, 3, :o2, 14830235, 6
+            tz.transition 2055, 11, :o1, 59326651, 24
+            tz.transition 2056, 3, :o2, 14832419, 6
+            tz.transition 2056, 11, :o1, 59335387, 24
+            tz.transition 2057, 3, :o2, 14834603, 6
+            tz.transition 2057, 11, :o1, 59344123, 24
+            tz.transition 2058, 3, :o2, 14836787, 6
+            tz.transition 2058, 11, :o1, 59352859, 24
+            tz.transition 2059, 3, :o2, 14838971, 6
+            tz.transition 2059, 11, :o1, 59361595, 24
+            tz.transition 2060, 3, :o2, 14841197, 6
+            tz.transition 2060, 11, :o1, 59370499, 24
+            tz.transition 2061, 3, :o2, 14843381, 6
+            tz.transition 2061, 11, :o1, 59379235, 24
+            tz.transition 2062, 3, :o2, 14845565, 6
+            tz.transition 2062, 11, :o1, 59387971, 24
+            tz.transition 2063, 3, :o2, 14847749, 6
+            tz.transition 2063, 11, :o1, 59396707, 24
           end
         end
       end

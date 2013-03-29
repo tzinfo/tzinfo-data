@@ -80,6 +80,8 @@ class TCDefinitions < Test::Unit::TestCase
   end
   
   def test_all
+    max_year = Time.now.year + 50
+
     Dir.mktmpdir('tzinfo-data-test') do |dir|
       compile_data(dir)
 
@@ -87,7 +89,7 @@ class TCDefinitions < Test::Unit::TestCase
         zone = TZInfo::Timezone.get(identifier)
         assert_equal(identifier, zone.identifier)
         
-        IO.popen("zdump -c 2050 -v \"#{File.join(dir, identifier)}\"") do |io|
+        IO.popen("zdump -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
           io.each_line do |line|
             line.chomp!
             check_zdump_line(zone, line)

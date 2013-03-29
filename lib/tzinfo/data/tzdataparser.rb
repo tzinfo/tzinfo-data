@@ -117,11 +117,19 @@ module TZInfo
     class TZDataParser
       include TZDataParserUtils
     
-      # Minimum year that will be considered.
-      MIN_YEAR = 1800
+      # Default earliest year that will be considered.
+      DEFAULT_MIN_YEAR = 1800
       
-      # Maximum year that will be considered.
-      MAX_YEAR = 2050
+      # Default number of future years data to generate (not including the 
+      # current year).
+      DEFAULT_FUTURE_YEARS = 50
+      
+      # Earliest year that will be considered. Defaults to DEFAULT_MIN_YEAR.
+      attr_accessor :min_year
+      
+      # Latest year that will be considered. Defaults to the current year plus
+      # FUTURE_YEARS.
+      attr_accessor :max_year
       
       # Whether to generate zone definitions (set to false to stop zones being
       # generated).    
@@ -137,7 +145,7 @@ module TZInfo
           
       # Zones to exclude from generation when not using only_zones (set to an
       # array containing zone identifiers).
-      attr_accessor :exclude_zones            
+      attr_accessor :exclude_zones
       
       # Initializes a new TZDataParser. input_dir must contain the extracted
       # tzdata tarball. output_dir is the location to output the modules
@@ -145,15 +153,17 @@ module TZInfo
       def initialize(input_dir, output_dir)
         super()
         @input_dir = input_dir
-        @output_dir = output_dir      
+        @output_dir = output_dir
+        @min_year = DEFAULT_MIN_YEAR
+        @max_year = Time.now.year + DEFAULT_FUTURE_YEARS
         @rule_sets = {}
         @zones = {}
         @countries = {}
         @no_rules = TZDataNoRules.new
         @generate_zones = true
         @generate_countries = true
-        @only_zones = []      
-        @exclude_zones = []      
+        @only_zones = []
+        @exclude_zones = []
       end
       
       # Reads the tzdata source and generates the classes. Progress information
@@ -261,7 +271,7 @@ module TZInfo
                   name = $1
                   
                   if @zones[name].nil? 
-                    @zones[name] = TZDataZone.new(name)
+                    @zones[name] = TZDataZone.new(name, @min_year..@max_year)
                   end                            
                   
                   @zones[name].add_observance(TZDataObservance.new($2, get_rules($3), $4, $6))
@@ -635,8 +645,9 @@ module TZInfo
       
       attr_reader :observances
       
-      def initialize(name)
-        super
+      def initialize(name, years)
+        super(name)
+        @years = years
         @observances = []
       end
       
@@ -669,7 +680,7 @@ module TZInfo
       
       private
         def find_transitions
-          transitions = TZDataTransitions.new
+          transitions = TZDataTransitions.new(@years)
           
           # algorithm from zic.c outzone
           
@@ -699,7 +710,7 @@ module TZInfo
                 transitions << TZDataTransition.new(nil, utc_offset, std_offset, start_zone_id)
               end  
             else
-              (TZDataParser::MIN_YEAR..TZDataParser::MAX_YEAR).each {|year|
+              @years.each {|year|
                 if use_until && year > observance.valid_until.year
                   break
                 end
@@ -790,7 +801,8 @@ module TZInfo
     class TZDataTransitions #:nodoc:
       include TZDataParserUtils
       
-      def initialize
+      def initialize(years)
+        @years = years
         @transitions = []
       end
       
@@ -805,7 +817,7 @@ module TZInfo
         if @transitions.length > 1 && 
             @transitions.last.std_offset != 0 &&
             @transitions[@transitions.length - 2].std_offset == 0 &&
-            @transitions[@transitions.length - 2].at_utc.year == TZDataParser::MAX_YEAR
+            @transitions[@transitions.length - 2].at_utc.year == @years.max
           
           transitions = @transitions[0..@transitions.length - 2]
         else
