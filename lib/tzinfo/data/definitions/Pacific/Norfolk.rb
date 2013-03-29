@@ -12,8 +12,8 @@ module TZInfo
             tz.offset :o1, 40320, 0, :NMT
             tz.offset :o2, 41400, 0, :NFT
             
-            tz.transition 1900, 12, :o1, 26086158361, 10800
-            tz.transition 1950, 12, :o2, 73009411, 30
+            tz.transition 1900, 12, :o1, -2177493112, 26086158361, 10800
+            tz.transition 1950, 12, :o2, -599656320, 73009411, 30
           end
         end
       end

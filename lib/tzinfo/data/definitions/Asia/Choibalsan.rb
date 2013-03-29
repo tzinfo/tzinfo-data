@@ -15,7 +15,7 @@ module TZInfo
             tz.offset :o4, 32400, 0, :CHOT
             tz.offset :o5, 28800, 0, :CHOT
             
-            tz.transition 1905, 7, :o1, 1740281891, 720
+            tz.transition 1905, 7, :o1, -2032933080, 1740281891, 720
             tz.transition 1977, 12, :o2, 252435600
             tz.transition 1983, 3, :o3, 417974400
             tz.transition 1983, 9, :o4, 433778400

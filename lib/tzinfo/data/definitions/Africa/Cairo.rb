@@ -12,45 +12,45 @@ module TZInfo
             tz.offset :o1, 7200, 0, :EET
             tz.offset :o2, 7200, 3600, :EEST
             
-            tz.transition 1900, 9, :o1, 69560450297, 28800
-            tz.transition 1940, 7, :o2, 29157905, 12
-            tz.transition 1940, 9, :o1, 19439227, 8
-            tz.transition 1941, 4, :o2, 29161193, 12
-            tz.transition 1941, 9, :o1, 19442027, 8
-            tz.transition 1942, 3, :o2, 29165405, 12
-            tz.transition 1942, 10, :o1, 19445275, 8
-            tz.transition 1943, 3, :o2, 29169785, 12
-            tz.transition 1943, 10, :o1, 19448235, 8
-            tz.transition 1944, 3, :o2, 29174177, 12
-            tz.transition 1944, 10, :o1, 19451163, 8
-            tz.transition 1945, 4, :o2, 29178737, 12
-            tz.transition 1945, 10, :o1, 19454083, 8
-            tz.transition 1957, 5, :o2, 29231621, 12
-            tz.transition 1957, 9, :o1, 19488899, 8
-            tz.transition 1958, 4, :o2, 29235893, 12
-            tz.transition 1958, 9, :o1, 19491819, 8
-            tz.transition 1959, 4, :o2, 58480547, 24
-            tz.transition 1959, 9, :o1, 4873683, 2
-            tz.transition 1960, 4, :o2, 58489331, 24
-            tz.transition 1960, 9, :o1, 4874415, 2
-            tz.transition 1961, 4, :o2, 58498091, 24
-            tz.transition 1961, 9, :o1, 4875145, 2
-            tz.transition 1962, 4, :o2, 58506851, 24
-            tz.transition 1962, 9, :o1, 4875875, 2
-            tz.transition 1963, 4, :o2, 58515611, 24
-            tz.transition 1963, 9, :o1, 4876605, 2
-            tz.transition 1964, 4, :o2, 58524395, 24
-            tz.transition 1964, 9, :o1, 4877337, 2
-            tz.transition 1965, 4, :o2, 58533155, 24
-            tz.transition 1965, 9, :o1, 4878067, 2
-            tz.transition 1966, 4, :o2, 58541915, 24
-            tz.transition 1966, 10, :o1, 4878799, 2
-            tz.transition 1967, 4, :o2, 58550675, 24
-            tz.transition 1967, 10, :o1, 4879529, 2
-            tz.transition 1968, 4, :o2, 58559459, 24
-            tz.transition 1968, 10, :o1, 4880261, 2
-            tz.transition 1969, 4, :o2, 58568219, 24
-            tz.transition 1969, 10, :o1, 4880991, 2
+            tz.transition 1900, 9, :o1, -2185409109, 69560450297, 28800
+            tz.transition 1940, 7, :o2, -929844000, 29157905, 12
+            tz.transition 1940, 9, :o1, -923108400, 19439227, 8
+            tz.transition 1941, 4, :o2, -906170400, 29161193, 12
+            tz.transition 1941, 9, :o1, -892868400, 19442027, 8
+            tz.transition 1942, 3, :o2, -875844000, 29165405, 12
+            tz.transition 1942, 10, :o1, -857790000, 19445275, 8
+            tz.transition 1943, 3, :o2, -844308000, 29169785, 12
+            tz.transition 1943, 10, :o1, -825822000, 19448235, 8
+            tz.transition 1944, 3, :o2, -812685600, 29174177, 12
+            tz.transition 1944, 10, :o1, -794199600, 19451163, 8
+            tz.transition 1945, 4, :o2, -779853600, 29178737, 12
+            tz.transition 1945, 10, :o1, -762663600, 19454083, 8
+            tz.transition 1957, 5, :o2, -399088800, 29231621, 12
+            tz.transition 1957, 9, :o1, -386650800, 19488899, 8
+            tz.transition 1958, 4, :o2, -368330400, 29235893, 12
+            tz.transition 1958, 9, :o1, -355114800, 19491819, 8
+            tz.transition 1959, 4, :o2, -336790800, 58480547, 24
+            tz.transition 1959, 9, :o1, -323654400, 4873683, 2
+            tz.transition 1960, 4, :o2, -305168400, 58489331, 24
+            tz.transition 1960, 9, :o1, -292032000, 4874415, 2
+            tz.transition 1961, 4, :o2, -273632400, 58498091, 24
+            tz.transition 1961, 9, :o1, -260496000, 4875145, 2
+            tz.transition 1962, 4, :o2, -242096400, 58506851, 24
+            tz.transition 1962, 9, :o1, -228960000, 4875875, 2
+            tz.transition 1963, 4, :o2, -210560400, 58515611, 24
+            tz.transition 1963, 9, :o1, -197424000, 4876605, 2
+            tz.transition 1964, 4, :o2, -178938000, 58524395, 24
+            tz.transition 1964, 9, :o1, -165801600, 4877337, 2
+            tz.transition 1965, 4, :o2, -147402000, 58533155, 24
+            tz.transition 1965, 9, :o1, -134265600, 4878067, 2
+            tz.transition 1966, 4, :o2, -115866000, 58541915, 24
+            tz.transition 1966, 10, :o1, -102643200, 4878799, 2
+            tz.transition 1967, 4, :o2, -84330000, 58550675, 24
+            tz.transition 1967, 10, :o1, -71107200, 4879529, 2
+            tz.transition 1968, 4, :o2, -52707600, 58559459, 24
+            tz.transition 1968, 10, :o1, -39484800, 4880261, 2
+            tz.transition 1969, 4, :o2, -21171600, 58568219, 24
+            tz.transition 1969, 10, :o1, -7948800, 4880991, 2
             tz.transition 1970, 4, :o2, 10364400
             tz.transition 1970, 10, :o1, 23587200
             tz.transition 1971, 4, :o2, 41900400

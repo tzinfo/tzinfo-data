@@ -20,21 +20,21 @@ module TZInfo
             tz.offset :o9, 7200, 3600, :EEST
             tz.offset :o10, 14400, 0, :MSK
             
-            tz.transition 1879, 12, :o1, 10401330509, 4320
-            tz.transition 1916, 7, :o2, 116210275, 48
-            tz.transition 1917, 7, :o3, 8717080873, 3600
-            tz.transition 1917, 12, :o2, 8717725273, 3600
-            tz.transition 1918, 5, :o4, 8718283123, 3600
-            tz.transition 1918, 9, :o3, 8718668473, 3600
-            tz.transition 1919, 5, :o4, 8719597123, 3600
-            tz.transition 1919, 6, :o5, 8719705423, 3600
-            tz.transition 1919, 8, :o6, 7266559, 3
-            tz.transition 1921, 2, :o5, 7268206, 3
-            tz.transition 1921, 3, :o7, 58146463, 24
-            tz.transition 1921, 8, :o5, 58150399, 24
-            tz.transition 1921, 9, :o6, 7268890, 3
-            tz.transition 1922, 9, :o8, 19386627, 8
-            tz.transition 1930, 6, :o6, 29113781, 12
+            tz.transition 1879, 12, :o1, -2840149820, 10401330509, 4320
+            tz.transition 1916, 7, :o2, -1688265000, 116210275, 48
+            tz.transition 1917, 7, :o3, -1656819048, 8717080873, 3600
+            tz.transition 1917, 12, :o2, -1641353448, 8717725273, 3600
+            tz.transition 1918, 5, :o4, -1627965048, 8718283123, 3600
+            tz.transition 1918, 9, :o3, -1618716648, 8718668473, 3600
+            tz.transition 1919, 5, :o4, -1596429048, 8719597123, 3600
+            tz.transition 1919, 6, :o5, -1593829848, 8719705423, 3600
+            tz.transition 1919, 8, :o6, -1589860800, 7266559, 3
+            tz.transition 1921, 2, :o5, -1542427200, 7268206, 3
+            tz.transition 1921, 3, :o7, -1539493200, 58146463, 24
+            tz.transition 1921, 8, :o5, -1525323600, 58150399, 24
+            tz.transition 1921, 9, :o6, -1522728000, 7268890, 3
+            tz.transition 1922, 9, :o8, -1491188400, 19386627, 8
+            tz.transition 1930, 6, :o6, -1247536800, 29113781, 12
             tz.transition 1981, 3, :o5, 354920400
             tz.transition 1981, 9, :o6, 370728000
             tz.transition 1982, 3, :o5, 386456400

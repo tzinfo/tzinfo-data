@@ -15,8 +15,8 @@ module TZInfo
             tz.offset :o4, 21600, 3600, :KRAST
             tz.offset :o5, 28800, 0, :KRAT
             
-            tz.transition 1920, 1, :o1, 5232231163, 2160
-            tz.transition 1930, 6, :o2, 9704593, 4
+            tz.transition 1920, 1, :o1, -1577513480, 5232231163, 2160
+            tz.transition 1930, 6, :o2, -1247551200, 9704593, 4
             tz.transition 1981, 3, :o3, 354906000
             tz.transition 1981, 9, :o2, 370713600
             tz.transition 1982, 3, :o3, 386442000

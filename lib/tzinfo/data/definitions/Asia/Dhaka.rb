@@ -16,11 +16,11 @@ module TZInfo
             tz.offset :o5, 21600, 0, :BDT
             tz.offset :o6, 21600, 3600, :BDST
             
-            tz.transition 1889, 12, :o1, 2083422167, 864
-            tz.transition 1941, 9, :o2, 524937943, 216
-            tz.transition 1942, 5, :o3, 116663723, 48
-            tz.transition 1942, 8, :o2, 116668957, 48
-            tz.transition 1951, 9, :o4, 116828123, 48
+            tz.transition 1889, 12, :o1, -2524543300, 2083422167, 864
+            tz.transition 1941, 9, :o2, -891582800, 524937943, 216
+            tz.transition 1942, 5, :o3, -872058600, 116663723, 48
+            tz.transition 1942, 8, :o2, -862637400, 116668957, 48
+            tz.transition 1951, 9, :o4, -576138600, 116828123, 48
             tz.transition 1971, 3, :o5, 38772000
             tz.transition 2009, 6, :o6, 1245430800
             tz.transition 2009, 12, :o5, 1262278740

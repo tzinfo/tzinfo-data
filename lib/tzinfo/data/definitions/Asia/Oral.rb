@@ -18,8 +18,8 @@ module TZInfo
             tz.offset :o7, 14400, 3600, :ORAST
             tz.offset :o8, 18000, 0, :ORAT
             
-            tz.transition 1924, 5, :o1, 17452132973, 7200
-            tz.transition 1930, 6, :o2, 7278445, 3
+            tz.transition 1924, 5, :o1, -1441164324, 17452132973, 7200
+            tz.transition 1930, 6, :o2, -1247544000, 7278445, 3
             tz.transition 1981, 3, :o3, 354913200
             tz.transition 1981, 9, :o4, 370720800
             tz.transition 1982, 3, :o3, 386445600

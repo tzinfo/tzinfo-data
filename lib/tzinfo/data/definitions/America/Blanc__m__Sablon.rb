@@ -14,12 +14,12 @@ module TZInfo
             tz.offset :o3, -14400, 3600, :AWT
             tz.offset :o4, -14400, 3600, :APT
             
-            tz.transition 1884, 1, :o1, 52038215827, 21600
-            tz.transition 1918, 4, :o2, 9686791, 4
-            tz.transition 1918, 10, :o1, 58125449, 24
-            tz.transition 1942, 2, :o3, 9721599, 4
-            tz.transition 1945, 8, :o4, 58360379, 24
-            tz.transition 1945, 9, :o1, 58361489, 24
+            tz.transition 1884, 1, :o1, -2713896692, 52038215827, 21600
+            tz.transition 1918, 4, :o2, -1632074400, 9686791, 4
+            tz.transition 1918, 10, :o1, -1615143600, 58125449, 24
+            tz.transition 1942, 2, :o3, -880221600, 9721599, 4
+            tz.transition 1945, 8, :o4, -769395600, 58360379, 24
+            tz.transition 1945, 9, :o1, -765399600, 58361489, 24
           end
         end
       end

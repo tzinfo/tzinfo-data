@@ -12,7 +12,7 @@ module TZInfo
             tz.offset :o1, -18000, 0, :ECT
             tz.offset :o2, -21600, 0, :GALT
             
-            tz.transition 1931, 1, :o1, 1091854237, 450
+            tz.transition 1931, 1, :o1, -1230746496, 1091854237, 450
             tz.transition 1986, 1, :o2, 504939600
           end
         end

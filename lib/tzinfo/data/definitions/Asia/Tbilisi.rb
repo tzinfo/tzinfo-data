@@ -19,9 +19,9 @@ module TZInfo
             tz.offset :o8, 14400, 0, :GET
             tz.offset :o9, 14400, 3600, :GEST
             
-            tz.transition 1879, 12, :o1, 52006652111, 21600
-            tz.transition 1924, 5, :o2, 52356399311, 21600
-            tz.transition 1957, 2, :o3, 19487187, 8
+            tz.transition 1879, 12, :o1, -2840151556, 52006652111, 21600
+            tz.transition 1924, 5, :o2, -1441162756, 52356399311, 21600
+            tz.transition 1957, 2, :o3, -405140400, 19487187, 8
             tz.transition 1981, 3, :o4, 354916800
             tz.transition 1981, 9, :o3, 370724400
             tz.transition 1982, 3, :o4, 386452800

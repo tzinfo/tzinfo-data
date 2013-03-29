@@ -12,7 +12,7 @@ module TZInfo
             tz.offset :o1, 21600, 0, :MAWT
             tz.offset :o2, 18000, 0, :MAWT
             
-            tz.transition 1954, 2, :o1, 4869573, 2
+            tz.transition 1954, 2, :o1, -501206400, 4869573, 2
             tz.transition 2009, 10, :o2, 1255809600
           end
         end

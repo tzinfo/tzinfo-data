@@ -11,7 +11,7 @@ module TZInfo
             tz.offset :o0, 6592, 0, :LMT
             tz.offset :o1, 7200, 0, :CAT
             
-            tz.transition 1897, 11, :o1, 1629610261, 675
+            tz.transition 1897, 11, :o1, -2276646592, 1629610261, 675
           end
         end
       end

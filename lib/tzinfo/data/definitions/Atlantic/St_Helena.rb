@@ -12,8 +12,8 @@ module TZInfo
             tz.offset :o1, -1368, 0, :JMT
             tz.offset :o2, 0, 0, :GMT
             
-            tz.transition 1890, 1, :o1, 2893642219, 1200
-            tz.transition 1951, 1, :o2, 2920377019, 1200
+            tz.transition 1890, 1, :o1, -2524520232, 2893642219, 1200
+            tz.transition 1951, 1, :o2, -599614632, 2920377019, 1200
           end
         end
       end

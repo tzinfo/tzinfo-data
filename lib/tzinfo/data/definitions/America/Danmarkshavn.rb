@@ -13,7 +13,7 @@ module TZInfo
             tz.offset :o2, -10800, 3600, :WGST
             tz.offset :o3, 0, 0, :GMT
             
-            tz.transition 1916, 7, :o1, 653689589, 270
+            tz.transition 1916, 7, :o1, -1686091520, 653689589, 270
             tz.transition 1980, 4, :o2, 323845200
             tz.transition 1980, 9, :o1, 338950800
             tz.transition 1981, 3, :o2, 354675600

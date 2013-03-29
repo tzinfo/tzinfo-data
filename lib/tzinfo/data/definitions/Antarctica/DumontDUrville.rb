@@ -12,9 +12,9 @@ module TZInfo
             tz.offset :o1, 36000, 0, :PMT
             tz.offset :o2, 36000, 0, :DDUT
             
-            tz.transition 1947, 1, :o1, 4864373, 2
-            tz.transition 1952, 1, :o0, 29208301, 12
-            tz.transition 1956, 11, :o2, 4871557, 2
+            tz.transition 1947, 1, :o1, -725846400, 4864373, 2
+            tz.transition 1952, 1, :o0, -566992800, 29208301, 12
+            tz.transition 1956, 11, :o2, -415497600, 4871557, 2
           end
         end
       end

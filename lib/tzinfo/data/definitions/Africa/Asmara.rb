@@ -13,9 +13,9 @@ module TZInfo
             tz.offset :o2, 9320, 0, :ADMT
             tz.offset :o3, 10800, 0, :EAT
             
-            tz.transition 1869, 12, :o1, 51927769267, 21600
-            tz.transition 1889, 12, :o2, 52085557267, 21600
-            tz.transition 1936, 5, :o3, 5245113727, 2160
+            tz.transition 1869, 12, :o1, -3155682932, 51927769267, 21600
+            tz.transition 1889, 12, :o2, -2524530932, 52085557267, 21600
+            tz.transition 1936, 5, :o3, -1062210920, 5245113727, 2160
           end
         end
       end

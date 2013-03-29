@@ -937,6 +937,8 @@ module TZInfo
     class TZDataTransition #:nodoc:
       include Comparable
       
+      EPOCH = DateTime.new(1970, 1, 1)
+      
       attr_reader :at_utc
       attr_reader :utc_offset
       attr_reader :std_offset
@@ -977,16 +979,20 @@ module TZInfo
           
       def write(file)        
         if @at_utc
-          file.puts "tz.transition #{@at_utc.year}, #{@at_utc.mon}, :#{@offset_name}, #{datetime_constructor(@at_utc)}" 
+          file.puts "tz.transition #{@at_utc.year}, #{@at_utc.mon}, :#{@offset_name}, #{timestamp_parameters(@at_utc)}" 
         end        
       end
        
       private
-        def datetime_constructor(datetime)      
-          if (1970..2037).include?(datetime.year)
-            "#{Time.utc(datetime.year, datetime.mon, datetime.mday, datetime.hour, datetime.min, datetime.sec).to_i}"
+        def timestamp_parameters(datetime)
+          timestamp = ((datetime - EPOCH) * 86400).to_i
+          
+          if timestamp < 0 || timestamp > 2147483647
+            # Output DateTime parameters as well as a timestamp for platforms
+            # where Time doesn't support negative or 64-bit values.
+            "#{timestamp}, #{datetime.ajd.numerator}, #{datetime.ajd.denominator}"
           else
-            "#{datetime.ajd.numerator}, #{datetime.ajd.denominator}"                    
+            timestamp
           end
         end
     end

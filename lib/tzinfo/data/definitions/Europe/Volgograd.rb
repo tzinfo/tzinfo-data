@@ -17,10 +17,10 @@ module TZInfo
             tz.offset :o6, 10800, 3600, :VOLST
             tz.offset :o7, 10800, 0, :VOLT
             
-            tz.transition 1920, 1, :o1, 10464449947, 4320
-            tz.transition 1925, 4, :o2, 19393971, 8
-            tz.transition 1930, 6, :o3, 19409187, 8
-            tz.transition 1961, 11, :o4, 7312843, 3
+            tz.transition 1920, 1, :o1, -1577761060, 10464449947, 4320
+            tz.transition 1925, 4, :o2, -1411873200, 19393971, 8
+            tz.transition 1930, 6, :o3, -1247540400, 19409187, 8
+            tz.transition 1961, 11, :o4, -256881600, 7312843, 3
             tz.transition 1981, 3, :o5, 354916800
             tz.transition 1981, 9, :o4, 370724400
             tz.transition 1982, 3, :o5, 386452800

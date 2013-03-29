@@ -12,7 +12,7 @@ module TZInfo
             tz.offset :o1, -30600, 0, :PNT
             tz.offset :o2, -28800, 0, :PST
             
-            tz.transition 1901, 1, :o1, 10434466921, 4320
+            tz.transition 1901, 1, :o1, -2177421580, 10434466921, 4320
             tz.transition 1998, 4, :o2, 893665800
           end
         end

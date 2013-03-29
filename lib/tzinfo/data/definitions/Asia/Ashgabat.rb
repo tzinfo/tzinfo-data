@@ -16,8 +16,8 @@ module TZInfo
             tz.offset :o5, 14400, 0, :TMT
             tz.offset :o6, 18000, 0, :TMT
             
-            tz.transition 1924, 5, :o1, 52356398497, 21600
-            tz.transition 1930, 6, :o2, 7278445, 3
+            tz.transition 1924, 5, :o1, -1441166012, 52356398497, 21600
+            tz.transition 1930, 6, :o2, -1247544000, 7278445, 3
             tz.transition 1981, 3, :o3, 354913200
             tz.transition 1981, 9, :o2, 370720800
             tz.transition 1982, 3, :o3, 386449200

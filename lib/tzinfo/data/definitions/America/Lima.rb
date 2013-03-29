@@ -13,14 +13,14 @@ module TZInfo
             tz.offset :o2, -18000, 0, :PET
             tz.offset :o3, -18000, 3600, :PEST
             
-            tz.transition 1890, 1, :o1, 17361854741, 7200
-            tz.transition 1908, 7, :o2, 17410685143, 7200
-            tz.transition 1938, 1, :o3, 58293593, 24
-            tz.transition 1938, 4, :o2, 7286969, 3
-            tz.transition 1938, 9, :o3, 58300001, 24
-            tz.transition 1939, 3, :o2, 7288046, 3
-            tz.transition 1939, 9, :o3, 58308737, 24
-            tz.transition 1940, 3, :o2, 7289138, 3
+            tz.transition 1890, 1, :o1, -2524503108, 17361854741, 7200
+            tz.transition 1908, 7, :o2, -1938538284, 17410685143, 7200
+            tz.transition 1938, 1, :o3, -1009825200, 58293593, 24
+            tz.transition 1938, 4, :o2, -1002052800, 7286969, 3
+            tz.transition 1938, 9, :o3, -986756400, 58300001, 24
+            tz.transition 1939, 3, :o2, -971035200, 7288046, 3
+            tz.transition 1939, 9, :o3, -955306800, 58308737, 24
+            tz.transition 1940, 3, :o2, -939585600, 7289138, 3
             tz.transition 1986, 1, :o3, 504939600
             tz.transition 1986, 4, :o2, 512712000
             tz.transition 1987, 1, :o3, 536475600

@@ -11,7 +11,7 @@ module TZInfo
             tz.offset :o0, -14932, 0, :LMT
             tz.offset :o1, -14400, 0, :AST
             
-            tz.transition 1911, 7, :o1, 13063780837, 5400
+            tz.transition 1911, 7, :o1, -1846266608, 13063780837, 5400
           end
         end
       end

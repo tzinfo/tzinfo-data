@@ -18,15 +18,15 @@ module TZInfo
             tz.offset :o7, 7200, 3600, :EEST
             tz.offset :o8, 10800, 0, :FET
             
-            tz.transition 1879, 12, :o1, 26003326573, 10800
-            tz.transition 1924, 5, :o2, 349042669, 144
-            tz.transition 1930, 6, :o3, 29113781, 12
-            tz.transition 1941, 6, :o4, 19441387, 8
-            tz.transition 1942, 11, :o5, 58335973, 24
-            tz.transition 1943, 3, :o4, 58339501, 24
-            tz.transition 1943, 10, :o5, 58344037, 24
-            tz.transition 1944, 4, :o4, 58348405, 24
-            tz.transition 1944, 7, :o3, 29175293, 12
+            tz.transition 1879, 12, :o1, -2840147416, 26003326573, 10800
+            tz.transition 1924, 5, :o2, -1441158600, 349042669, 144
+            tz.transition 1930, 6, :o3, -1247536800, 29113781, 12
+            tz.transition 1941, 6, :o4, -899780400, 19441387, 8
+            tz.transition 1942, 11, :o5, -857257200, 58335973, 24
+            tz.transition 1943, 3, :o4, -844556400, 58339501, 24
+            tz.transition 1943, 10, :o5, -828226800, 58344037, 24
+            tz.transition 1944, 4, :o4, -812502000, 58348405, 24
+            tz.transition 1944, 7, :o3, -804650400, 29175293, 12
             tz.transition 1981, 3, :o6, 354920400
             tz.transition 1981, 9, :o3, 370728000
             tz.transition 1982, 3, :o6, 386456400

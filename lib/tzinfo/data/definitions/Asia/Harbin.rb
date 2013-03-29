@@ -14,10 +14,10 @@ module TZInfo
             tz.offset :o3, 32400, 0, :CHAT
             tz.offset :o4, 28800, 3600, :CDT
             
-            tz.transition 1927, 12, :o1, 52385316799, 21600
-            tz.transition 1932, 2, :o2, 116484823, 48
-            tz.transition 1939, 12, :o3, 14577775, 6
-            tz.transition 1966, 4, :o1, 19513969, 8
+            tz.transition 1927, 12, :o1, -1325492804, 52385316799, 21600
+            tz.transition 1932, 2, :o2, -1194078600, 116484823, 48
+            tz.transition 1939, 12, :o3, -946800000, 14577775, 6
+            tz.transition 1966, 4, :o1, -115894800, 19513969, 8
             tz.transition 1980, 4, :o2, 325956600
             tz.transition 1986, 5, :o4, 515520000
             tz.transition 1986, 9, :o2, 527007600

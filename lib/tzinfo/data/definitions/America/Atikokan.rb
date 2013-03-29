@@ -15,13 +15,13 @@ module TZInfo
             tz.offset :o4, -21600, 3600, :CPT
             tz.offset :o5, -18000, 0, :EST
             
-            tz.transition 1895, 1, :o1, 52125006697, 21600
-            tz.transition 1918, 4, :o2, 14530187, 6
-            tz.transition 1918, 10, :o1, 58125451, 24
-            tz.transition 1940, 9, :o2, 9719607, 4
-            tz.transition 1942, 2, :o3, 14582399, 6
-            tz.transition 1945, 8, :o4, 58360379, 24
-            tz.transition 1945, 9, :o5, 58361491, 24
+            tz.transition 1895, 1, :o1, -2366733212, 52125006697, 21600
+            tz.transition 1918, 4, :o2, -1632067200, 14530187, 6
+            tz.transition 1918, 10, :o1, -1615136400, 58125451, 24
+            tz.transition 1940, 9, :o2, -923248800, 9719607, 4
+            tz.transition 1942, 2, :o3, -880214400, 14582399, 6
+            tz.transition 1945, 8, :o4, -769395600, 58360379, 24
+            tz.transition 1945, 9, :o5, -765392400, 58361491, 24
           end
         end
       end

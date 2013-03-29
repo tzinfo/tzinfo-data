@@ -1,4 +1,5 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), 'test_utils')
+require 'date'
 require 'tmpdir'
 
 class TCDefinitions < Test::Unit::TestCase
@@ -47,35 +48,50 @@ class TCDefinitions < Test::Unit::TestCase
   def check_zdump_line(zone, line)
     if line =~ /\A[^\s]+\s+([A-z][a-z]{2}\s[A-z][a-z]{2}\s+[0-9]+\s[0-9]+:[0-9]+:[0-9]+\s[0-9]+)\s[A-Z]+\s=\s([A-z][a-z]{2}\s[A-z][a-z]{2}\s+[0-9]+\s[0-9]+:[0-9]+:[0-9]+\s[0-9]+)\s([A-Za-z0-9+\-]+)\sisdst=([01])/ then
       assert_nothing_raised("Exception raised processing line:\n#{line}") do
-        utc = DateTime.parse($1)
-        local = DateTime.parse($2)
+        utc = yield $1
+        local = yield $2
         identifier = $3.to_sym
         is_dst = $4 == '1'
-     
-        tzi_local = zone.utc_to_local(utc)
-        tzi_period = zone.period_for_utc(utc)
-        tzi_identifier = tzi_period.zone_identifier
-        tzi_is_dst = tzi_period.dst?
-        
-        msg_zdump  = "zdump:         #{zone.identifier} #{utc} UTC #{local} #{identifier} is_dst=#{is_dst ? '1' : '0'}"
-        msg_tzinfo = "tzinfo (u->l): #{zone.identifier} #{utc} UTC #{tzi_local} #{tzi_identifier} is_dst=#{tzi_is_dst ? '1' : '0'}"
-        message = "#{msg_zdump}\n#{msg_tzinfo}"
-        
-        assert_equal(local, tzi_local, "Local times don't match:\n#{message}")
-        assert_equal(identifier, tzi_identifier, "Identifiers don't match:\n#{message}")
-        assert_equal(is_dst, tzi_is_dst, "DST flag doesn't match:\n#{message}")
-     
-     
-        tzi_utc = zone.local_to_utc(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}
-        tzi_local_identifier = (zone.period_for_local(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}).zone_identifier
+ 
+        if utc && local
+          tzi_local = zone.utc_to_local(utc)
+          tzi_period = zone.period_for_utc(utc)
+          tzi_identifier = tzi_period.zone_identifier
+          tzi_is_dst = tzi_period.dst?
+          
+          msg_zdump  = "zdump:         #{zone.identifier} #{utc} UTC #{local} #{identifier} is_dst=#{is_dst ? '1' : '0'}"
+          msg_tzinfo = "tzinfo (u->l): #{zone.identifier} #{utc} UTC #{tzi_local} #{tzi_identifier} is_dst=#{tzi_is_dst ? '1' : '0'}"
+          message = "#{msg_zdump}\n#{msg_tzinfo}"
+          
+          assert_equal(local, tzi_local, "Local times don't match:\n#{message}")
+          assert_equal(identifier, tzi_identifier, "Identifiers don't match:\n#{message}")
+          assert_equal(is_dst, tzi_is_dst, "DST flag doesn't match:\n#{message}")
+            
+          tzi_utc = zone.local_to_utc(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}
+          tzi_local_identifier = (zone.period_for_local(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}).zone_identifier
 
-        msg_zdump  = "zdump:         #{zone.identifier} #{utc} UTC #{local} #{identifier}"
-        msg_tzinfo = "tzinfo (l->u): #{zone.identifier} #{tzi_utc} UTC #{local} #{tzi_local_identifier}"
-        message = "#{msg_zdump}\n#{msg_tzinfo}"
+          msg_zdump  = "zdump:         #{zone.identifier} #{utc} UTC #{local} #{identifier}"
+          msg_tzinfo = "tzinfo (l->u): #{zone.identifier} #{tzi_utc} UTC #{local} #{tzi_local_identifier}"
+          message = "#{msg_zdump}\n#{msg_tzinfo}"
 
-        assert_equal(utc, tzi_utc, "UTC times don't match:\n#{message}")
-        assert_equal(identifier, tzi_local_identifier, "Local identifiers don't match:\n#{message}")
+          assert_equal(utc, tzi_utc, "UTC times don't match:\n#{message}")
+          assert_equal(identifier, tzi_local_identifier, "Local identifiers don't match:\n#{message}")
+        end
       end
+    end
+  end
+  
+  def parse_as_datetime(s)
+    DateTime.parse(s)
+  end
+  
+  def parse_as_time(s)
+    datetime = parse_as_datetime(s)
+    begin
+      Time.utc(datetime.year, datetime.mon, datetime.mday, datetime.hour, datetime.min, datetime.sec)
+    rescue
+      # Time doesn't support the full range required on all platforms.
+      nil
     end
   end
   
@@ -92,7 +108,8 @@ class TCDefinitions < Test::Unit::TestCase
         IO.popen("zdump -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
           io.each_line do |line|
             line.chomp!
-            check_zdump_line(zone, line)
+            check_zdump_line(zone, line) {|s| parse_as_datetime(s)}
+            check_zdump_line(zone, line) {|s| parse_as_time(s)}
           end
         end
       end

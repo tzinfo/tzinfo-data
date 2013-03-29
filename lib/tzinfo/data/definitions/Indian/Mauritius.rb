@@ -12,7 +12,7 @@ module TZInfo
             tz.offset :o1, 14400, 0, :MUT
             tz.offset :o2, 14400, 3600, :MUST
             
-            tz.transition 1906, 12, :o1, 348130993, 144
+            tz.transition 1906, 12, :o1, -1988164200, 348130993, 144
             tz.transition 1982, 10, :o2, 403041600
             tz.transition 1983, 3, :o1, 417034800
             tz.transition 2008, 10, :o2, 1224972000

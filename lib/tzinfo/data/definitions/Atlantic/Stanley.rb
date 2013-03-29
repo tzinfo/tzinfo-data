@@ -16,20 +16,20 @@ module TZInfo
             tz.offset :o5, -10800, 3600, :FKST
             tz.offset :o6, -10800, 0, :FKST
             
-            tz.transition 1890, 1, :o1, 17361854357, 7200
-            tz.transition 1912, 3, :o2, 17420210357, 7200
-            tz.transition 1937, 9, :o3, 7286408, 3
-            tz.transition 1938, 3, :o2, 19431821, 8
-            tz.transition 1938, 9, :o3, 7287500, 3
-            tz.transition 1939, 3, :o2, 19434733, 8
-            tz.transition 1939, 10, :o3, 7288613, 3
-            tz.transition 1940, 3, :o2, 19437701, 8
-            tz.transition 1940, 9, :o3, 7289705, 3
-            tz.transition 1941, 3, :o2, 19440613, 8
-            tz.transition 1941, 9, :o3, 7290797, 3
-            tz.transition 1942, 3, :o2, 19443525, 8
-            tz.transition 1942, 9, :o3, 7291889, 3
-            tz.transition 1943, 1, :o2, 19445805, 8
+            tz.transition 1890, 1, :o1, -2524507716, 17361854357, 7200
+            tz.transition 1912, 3, :o2, -1824235716, 17420210357, 7200
+            tz.transition 1937, 9, :o3, -1018209600, 7286408, 3
+            tz.transition 1938, 3, :o2, -1003093200, 19431821, 8
+            tz.transition 1938, 9, :o3, -986760000, 7287500, 3
+            tz.transition 1939, 3, :o2, -971643600, 19434733, 8
+            tz.transition 1939, 10, :o3, -954705600, 7288613, 3
+            tz.transition 1940, 3, :o2, -939589200, 19437701, 8
+            tz.transition 1940, 9, :o3, -923256000, 7289705, 3
+            tz.transition 1941, 3, :o2, -908139600, 19440613, 8
+            tz.transition 1941, 9, :o3, -891806400, 7290797, 3
+            tz.transition 1942, 3, :o2, -876690000, 19443525, 8
+            tz.transition 1942, 9, :o3, -860356800, 7291889, 3
+            tz.transition 1943, 1, :o2, -852066000, 19445805, 8
             tz.transition 1983, 5, :o4, 420609600
             tz.transition 1983, 9, :o5, 433306800
             tz.transition 1984, 4, :o4, 452052000

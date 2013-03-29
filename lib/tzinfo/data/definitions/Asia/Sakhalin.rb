@@ -16,9 +16,9 @@ module TZInfo
             tz.offset :o5, 36000, 3600, :SAKST
             tz.offset :o6, 36000, 0, :SAKT
             
-            tz.transition 1905, 8, :o1, 8701488373, 3600
-            tz.transition 1937, 12, :o2, 19431193, 8
-            tz.transition 1945, 8, :o3, 19453537, 8
+            tz.transition 1905, 8, :o1, -2031039048, 8701488373, 3600
+            tz.transition 1937, 12, :o2, -1009875600, 19431193, 8
+            tz.transition 1945, 8, :o3, -768560400, 19453537, 8
             tz.transition 1981, 3, :o4, 354891600
             tz.transition 1981, 9, :o3, 370699200
             tz.transition 1982, 3, :o4, 386427600

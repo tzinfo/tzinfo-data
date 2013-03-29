@@ -19,9 +19,9 @@ module TZInfo
             tz.offset :o8, 14400, 3600, :SAMST
             tz.offset :o9, 10800, 3600, :SAMST
             
-            tz.transition 1919, 6, :o1, 17439411197, 7200
-            tz.transition 1930, 6, :o2, 19409187, 8
-            tz.transition 1935, 1, :o3, 7283488, 3
+            tz.transition 1919, 6, :o1, -1593825636, 17439411197, 7200
+            tz.transition 1930, 6, :o2, -1247540400, 19409187, 8
+            tz.transition 1935, 1, :o3, -1102305600, 7283488, 3
             tz.transition 1981, 3, :o4, 354916800
             tz.transition 1981, 9, :o3, 370724400
             tz.transition 1982, 3, :o4, 386452800

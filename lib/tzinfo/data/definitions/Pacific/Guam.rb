@@ -13,8 +13,8 @@ module TZInfo
             tz.offset :o2, 36000, 0, :GST
             tz.offset :o3, 36000, 0, :ChST
             
-            tz.transition 1844, 12, :o1, 1149567407, 480
-            tz.transition 1900, 12, :o2, 1159384847, 480
+            tz.transition 1844, 12, :o1, -3944626740, 1149567407, 480
+            tz.transition 1900, 12, :o2, -2177487540, 1159384847, 480
             tz.transition 2000, 12, :o3, 977493600
           end
         end

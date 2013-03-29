@@ -18,8 +18,8 @@ module TZInfo
             tz.offset :o7, 43200, 0, :MAGT
             tz.offset :o8, 39600, 0, :VLAT
             
-            tz.transition 1919, 12, :o1, 34881222271, 14400
-            tz.transition 1930, 6, :o2, 14556889, 6
+            tz.transition 1919, 12, :o1, -1579426374, 34881222271, 14400
+            tz.transition 1930, 6, :o2, -1247558400, 14556889, 6
             tz.transition 1981, 3, :o3, 354898800
             tz.transition 1981, 9, :o4, 370699200
             tz.transition 1982, 3, :o3, 386427600

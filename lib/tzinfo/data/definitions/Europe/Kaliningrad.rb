@@ -19,23 +19,23 @@ module TZInfo
             tz.offset :o8, 7200, 0, :EET
             tz.offset :o9, 10800, 0, :FET
             
-            tz.transition 1893, 3, :o1, 1737039199, 720
-            tz.transition 1916, 4, :o2, 29051813, 12
-            tz.transition 1916, 9, :o1, 58107299, 24
-            tz.transition 1917, 4, :o2, 58112029, 24
-            tz.transition 1917, 9, :o1, 58115725, 24
-            tz.transition 1918, 4, :o2, 58120765, 24
-            tz.transition 1918, 9, :o1, 58124461, 24
-            tz.transition 1940, 4, :o2, 58313293, 24
-            tz.transition 1942, 11, :o1, 58335973, 24
-            tz.transition 1943, 3, :o2, 58339501, 24
-            tz.transition 1943, 10, :o1, 58344037, 24
-            tz.transition 1944, 4, :o2, 58348405, 24
-            tz.transition 1944, 10, :o1, 58352773, 24
-            tz.transition 1944, 12, :o3, 58354955, 24
-            tz.transition 1945, 4, :o4, 29178893, 12
-            tz.transition 1945, 10, :o3, 19454083, 8
-            tz.transition 1945, 12, :o5, 29181857, 12
+            tz.transition 1893, 3, :o1, -2422056120, 1737039199, 720
+            tz.transition 1916, 4, :o2, -1693706400, 29051813, 12
+            tz.transition 1916, 9, :o1, -1680483600, 58107299, 24
+            tz.transition 1917, 4, :o2, -1663455600, 58112029, 24
+            tz.transition 1917, 9, :o1, -1650150000, 58115725, 24
+            tz.transition 1918, 4, :o2, -1632006000, 58120765, 24
+            tz.transition 1918, 9, :o1, -1618700400, 58124461, 24
+            tz.transition 1940, 4, :o2, -938905200, 58313293, 24
+            tz.transition 1942, 11, :o1, -857257200, 58335973, 24
+            tz.transition 1943, 3, :o2, -844556400, 58339501, 24
+            tz.transition 1943, 10, :o1, -828226800, 58344037, 24
+            tz.transition 1944, 4, :o2, -812502000, 58348405, 24
+            tz.transition 1944, 10, :o1, -796777200, 58352773, 24
+            tz.transition 1944, 12, :o3, -788922000, 58354955, 24
+            tz.transition 1945, 4, :o4, -778730400, 29178893, 12
+            tz.transition 1945, 10, :o3, -762663600, 19454083, 8
+            tz.transition 1945, 12, :o5, -757389600, 29181857, 12
             tz.transition 1981, 3, :o6, 354920400
             tz.transition 1981, 9, :o5, 370728000
             tz.transition 1982, 3, :o6, 386456400
