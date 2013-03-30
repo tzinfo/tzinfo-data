@@ -169,17 +169,15 @@ module TZInfo
       # Reads the tzdata source and generates the classes. Progress information
       # is written to standard out.
       def execute
-        Dir.foreach(@input_dir) {|file|
-          load_rules(file) if file =~ /^[^\.]+$/        
-        }  
-        
-        Dir.foreach(@input_dir) {|file|
-          load_zones(file) if file =~ /^[^\.]+$/        
-        }
-        
-        Dir.foreach(@input_dir) {|file|
-          load_links(file) if file =~ /^[^\.]+$/        
-        }
+        files = Dir.entries(@input_dir).select do |file|
+          file =~ /\A[^\.]+\z/ &&            
+            !%w(README Makefile).include?(file) &&
+            File.file?(File.join(@input_dir, file))
+        end
+      
+        files.each {|file| load_rules(file) }
+        files.each {|file| load_zones(file) }
+        files.each {|file| load_links(file) }
         
         load_countries
         
@@ -205,7 +203,7 @@ module TZInfo
         end
       end
           
-      private
+      private     
         # Loads all the Rule definitions from the tz data and stores them in
         # @rule_sets.
         def load_rules(file)
