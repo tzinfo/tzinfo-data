@@ -3,8 +3,8 @@
 TZInfo::Data is the public domain {IANA Time Zone Database}[http://www.iana.org/time-zones]
 packaged as a set of Ruby modules for use with TZInfo[http://tzinfo.rubyforge.org].
 
-If TZInfo::Data is installed, TZInfo will automatically use it for its data
-source. If TZInfo::Data is not installed, TZInfo[http://tzinfo.rubyforge.org]
+If TZInfo::Data is installed, TZInfo will automatically use it as its source of
+time zone data. If TZInfo::Data is not installed, TZInfo[http://tzinfo.rubyforge.org]
 will attempt to use the system zoneinfo files instead. Please refer to the
 TZInfo[http://tzinfo.rubyforge.org] documentation for further details.
 
@@ -26,6 +26,9 @@ Tar, Zip and RubyGem packages of TZInfo can be downloaded from:
 == License
 
 TZInfo::Data is released under the MIT license, see LICENSE for details.
+
+Timezone data is based on the public domain 
+{IANA Time Zone Database}[http://www.iana.org/time-zones].
 
 
 == Support
