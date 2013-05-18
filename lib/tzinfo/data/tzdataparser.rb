@@ -358,6 +358,9 @@ module TZInfo
           open_file(File.join(dir, 'countries.rb'), 'w', :external_encoding => 'UTF-8', :universal_newline => true) do |file|
             file.puts('# encoding: UTF-8')
             file.puts('')
+            file.puts('# This file contains data derived from the IANA Time Zone Database')
+            file.puts('# (http://www.iana.org/time-zones).')
+            file.puts('')
             
             file.puts('module TZInfo')
             file.puts('  module Data')
@@ -383,6 +386,9 @@ module TZInfo
           
           open_file(File.join(dir, 'timezones.rb'), 'w', :external_encoding => 'UTF-8', :universal_newline => true) do |file|
             file.puts('# encoding: UTF-8')
+            file.puts('')
+            file.puts('# This file contains data derived from the IANA Time Zone Database')
+            file.puts('# (http://www.iana.org/time-zones).')
             file.puts('')
             
             file.puts('module TZInfo')
@@ -579,6 +585,9 @@ module TZInfo
           end
           
           file.puts('# encoding: UTF-8')
+          file.puts('')
+          file.puts('# This file contains data derived from the IANA Time Zone Database')
+          file.puts('# (http://www.iana.org/time-zones).')
           file.puts('')
           file.puts('module TZInfo')
           file.indent(2)
