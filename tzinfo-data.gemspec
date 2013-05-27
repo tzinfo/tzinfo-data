@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = 'tzinfo-data'
-  s.version = '1.2013.1'
+  s.version = '1.2013.3'
   s.summary = 'Data for the TZInfo library'
-  s.description = 'TZInfo::Data contains the IANA Time Zone database packaged as Ruby modules for use with TZInfo.'
+  s.description = 'TZInfo::Data contains data from the IANA Time Zone database packaged as Ruby modules for use with TZInfo.'
   s.author = 'Philip Ross'
   s.email = 'phil.ross@gmail.com'
   s.homepage = 'http://tzinfo.rubyforge.org'
