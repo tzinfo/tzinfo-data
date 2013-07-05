@@ -48,8 +48,8 @@ module TZInfo
             tz.transition 2012, 8, :o2, 1345428000
             tz.transition 2012, 9, :o1, 1348970400
             tz.transition 2013, 4, :o2, 1367114400
-            tz.transition 2013, 7, :o1, 1373335200
-            tz.transition 2013, 8, :o2, 1375927200
+            tz.transition 2013, 7, :o1, 1373162400
+            tz.transition 2013, 8, :o2, 1376100000
             tz.transition 2013, 9, :o1, 1380420000
             tz.transition 2014, 4, :o2, 1398564000
             tz.transition 2014, 6, :o1, 1404007200

@@ -128,7 +128,7 @@ module TZInfo
         country 'BO', 'Bolivia' do |c|
           c.timezone 'America/La_Paz', -33, 2, -1363, 20
         end
-        country 'BQ', 'Bonaire Sint Eustatius & Saba' do |c|
+        country 'BQ', 'Bonaire, St Eustatius & Saba' do |c|
           c.timezone 'America/Kralendijk', 14581, 1200, -20483, 300
         end
         country 'BR', 'Brazil' do |c|
@@ -404,7 +404,7 @@ module TZInfo
           c.timezone 'Europe/Dublin', 160, 3, -25, 4
         end
         country 'IL', 'Israel' do |c|
-          c.timezone 'Asia/Jerusalem', 953, 30, 1057, 30
+          c.timezone 'Asia/Jerusalem', 11441, 360, 63403, 1800
         end
         country 'IM', 'Isle of Man' do |c|
           c.timezone 'Europe/Isle_of_Man', 1083, 20, -67, 15
@@ -771,7 +771,7 @@ module TZInfo
         country 'SV', 'El Salvador' do |c|
           c.timezone 'America/El_Salvador', 137, 10, -446, 5
         end
-        country 'SX', 'Sint Maarten' do |c|
+        country 'SX', 'St Maarten (Dutch part)' do |c|
           c.timezone 'America/Lower_Princes', 12997, 720, -22697, 360
         end
         country 'SY', 'Syria' do |c|
