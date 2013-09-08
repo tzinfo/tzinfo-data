@@ -1,7 +1,16 @@
-require 'rake/testtask'
-require 'rdoc/task'
 require 'rubygems'
 require 'rubygems/package_task'
+require 'rake/testtask'
+
+# Ignore errors loading rdoc and rdoc/task (rdoc.rb is not included in Ruby 1.8,
+# rdoc/task.rb is not included prior to Ruby 1.9.2 and on Ruby 1.9.2, the 
+# built-in version of rdoc/task.rb is not compatible with later versions of 
+# rake - causing a RuntimeError to be raised when required).
+begin
+  require 'rdoc'
+  require 'rdoc/task'
+rescue LoadError, RuntimeError
+end
 
 BASE_DIR = File.dirname(__FILE__)
 LIB_DIR = File.join(BASE_DIR, 'lib')
@@ -32,13 +41,16 @@ package_task = TZInfoPackageTask.new(spec) do |pkg|
   pkg.tar_command = '__tar_with_owner__'
 end
 
-RDoc::Task.new do |rdoc|
-  rdoc.rdoc_dir = 'doc'
-  rdoc.title = 'TZInfo::Data'
-  rdoc.main = 'README'
-  rdoc.options.concat spec.rdoc_options
-  rdoc.rdoc_files.include(spec.extra_rdoc_files) 
-  rdoc.rdoc_files.include('lib')  
+# Skip the rdoc task if RDoc::Task is unavailable
+if defined?(RDoc) && defined?(RDoc::Task)
+  RDoc::Task.new do |rdoc|
+    rdoc.rdoc_dir = 'doc'
+    rdoc.title = 'TZInfo::Data'
+    rdoc.main = 'README'
+    rdoc.options.concat spec.rdoc_options
+    rdoc.rdoc_files.include(spec.extra_rdoc_files) 
+    rdoc.rdoc_files.include('lib')  
+  end
 end
 
 Rake::Task[package_task.package_dir_path].enhance do
