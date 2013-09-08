@@ -1,3 +1,25 @@
+#--
+# Copyright (c) 2005-2013 Philip Ross
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#++
+
 require 'rubygems'
 require 'rubygems/package_task'
 require 'rake/testtask'
@@ -77,7 +99,7 @@ def recurse_chmod(dir)
   end
 end
 
-Rake::TestTask.new('test') do |t|
+Rake::TestTask.new(:test) do |t|
   require 'tzinfo'
   
   t.libs = ['lib']
@@ -91,6 +113,7 @@ Rake::TestTask.new('test') do |t|
   t.pattern = File.join(File.expand_path(File.dirname(__FILE__)), 'test', 'ts_all.rb')
 end
 
+desc 'Read the TZ database files in the data directory and produce TZInfo::Data Ruby modules' 
 task :build_tz_modules do
   require File.join(LIB_DIR, 'tzinfo', 'data', 'tzdataparser')
   
@@ -245,7 +268,7 @@ class SvnScm < Scm
   end
 end
 
-
+desc "Rebuild the Ruby module for a single zone specified by the 'zone' environment variable"
 task :build_tz_module do
   require File.join(LIB_DIR, 'tzinfo', 'data', 'tzdataparser')
   p = TZInfo::Data::TZDataParser.new(DATA_DIR, DATA_OUTPUT_DIR)
@@ -254,6 +277,7 @@ task :build_tz_module do
   p.execute
 end
 
+desc 'Rebuild the countries index'
 task :build_countries do
   require File.join(LIB_DIR, 'tzinfo', 'data', 'tzdataparser')
   p = TZInfo::Data::TZDataParser.new(DATA_DIR, DATA_OUTPUT_DIR)
