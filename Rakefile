@@ -40,6 +40,8 @@ BUILD_TZ_MODULES_DIR = File.join(BASE_DIR, '.build_tz_modules')
 DATA_DIR = File.join(BASE_DIR, 'data')
 DATA_OUTPUT_DIR = File.join(BASE_DIR, 'lib', 'tzinfo', 'data')
 
+task :default => [:test]
+
 spec = eval(File.read('tzinfo-data.gemspec'))
 
 class TZInfoPackageTask < Gem::PackageTask
