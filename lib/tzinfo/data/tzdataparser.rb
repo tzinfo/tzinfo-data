@@ -27,6 +27,8 @@ module TZInfo
   module Data
   
     # Utility methods used by TZDataParser and associated classes.
+    #
+    # @private
     module TZDataParserUtils #:nodoc:
       
       begin
@@ -205,7 +207,7 @@ module TZInfo
           
       private     
         # Loads all the Rule definitions from the tz data and stores them in
-        # @rule_sets.
+        # the rule_sets instance variable.
         def load_rules(file)
           puts 'load_rules: ' + file
           
@@ -304,7 +306,7 @@ module TZInfo
         end
         
         # Loads countries from iso3166.tab and zone.tab and stores the result in
-        # @countries.
+        # the countries instance variable.
         def load_countries
           puts 'load_countries'
           
@@ -411,6 +413,8 @@ module TZInfo
     end
     
     # Base class for all rule sets.
+    #
+    # @private
     class TZDataRules #:nodoc:
       # Name of the rule set, e.g. EU.
       attr_reader :name
@@ -425,6 +429,8 @@ module TZInfo
     end
     
     # Empty rule set with a fixed daylight savings (std) offset.
+    #
+    # @private
     class TZDataFixedOffsetRules < TZDataRules #:nodoc:
       attr_reader :offset
       
@@ -435,6 +441,8 @@ module TZInfo
     end
     
     # An empty set of rules.
+    #
+    # @private
     class TZDataNoRules < TZDataRules #:nodoc:
       def initialize
         super('-')
@@ -442,6 +450,8 @@ module TZInfo
     end
     
     # A rule set (as defined by Rule name in the tz data).
+    #
+    # @private
     class TZDataRuleSet < TZDataRules #:nodoc:       
       attr_reader :rules
       
@@ -465,6 +475,8 @@ module TZInfo
     end    
     
     # A rule in a RuleSet (a single Rule line in the tz data).
+    #
+    # @private
     class TZDataRule #:nodoc:
       include TZDataParserUtils
     
@@ -548,6 +560,8 @@ module TZInfo
     end
     
     # Base class for Zones and Links.
+    #
+    # @private
     class TZDataDefinition #:nodoc:
       include TZDataParserUtils
       
@@ -621,6 +635,8 @@ module TZInfo
     end
     
     # A tz data Link.
+    #
+    # @private
     class TZDataLink < TZDataDefinition #:nodoc:
       include TZDataParserUtils
     
@@ -647,6 +663,8 @@ module TZInfo
     end
     
     # A tz data Zone. Each line from the tz data is loaded as a TZDataObservance.
+    #
+    # @private
     class TZDataZone < TZDataDefinition #:nodoc:
       include TZDataParserUtils
       
@@ -780,6 +798,8 @@ module TZInfo
     end
     
     # A observance within a zone (a line within the zone definition).
+    #
+    # @private
     class TZDataObservance #:nodoc:
       include TZDataParserUtils
     
@@ -805,6 +825,8 @@ module TZInfo
     end
     
     # Collection of TZDataTransition instances used when building a zone class.
+    #
+    # @private
     class TZDataTransitions #:nodoc:
       include TZDataParserUtils
       
@@ -941,6 +963,8 @@ module TZInfo
     end
     
     # A transition that will be used to write the periods in a zone class.
+    #
+    # @private
     class TZDataTransition #:nodoc:
       include Comparable
       
@@ -1005,6 +1029,8 @@ module TZInfo
     end
      
     # An instance of a rule for a year.
+    #
+    # @private
     class TZDataActivatedRule #:nodoc:
       attr_reader :rule
       attr_reader :year
@@ -1023,6 +1049,8 @@ module TZInfo
     
     # A tz data time definition - an hour, minute, second and reference. Reference
     # is either :utc, :standard or :wall_clock.
+    #
+    # @private
     class TZDataTime #:nodoc:
       attr_reader :hour
       attr_reader :minute
@@ -1057,6 +1085,8 @@ module TZInfo
       
     # A tz data day of the month reference. Can either be an absolute day,
     # a last week day or a week day >= or <= than a specific day of month.
+    #
+    # @private
     class TZDataDayOfMonth #:nodoc:
       attr_reader :type
       attr_reader :day_of_month
@@ -1141,6 +1171,8 @@ module TZInfo
     end   
     
     # A tz data Zone until reference.
+    #
+    # @private
     class TZDataUntil #:nodoc:
       include TZDataParserUtils
     
@@ -1167,6 +1199,8 @@ module TZInfo
     
     # A tz data Zone format string. Either alternate standard/daylight-savings,
     # substitution (%s) format or a fixed string.
+    #
+    # @private
     class TZDataFormat #:nodoc:        
       def initialize(spec)
         if spec =~ /([A-z]+)\/([A-z]+)/
@@ -1209,6 +1243,8 @@ module TZInfo
     end
     
     # A location (latitude + longitude)
+    #
+    # @private
     class TZDataLocation #:nodoc:
       attr_reader :latitude
       attr_reader :longitude
@@ -1231,10 +1267,13 @@ module TZInfo
         @longitude = -@longitude if $5 == '-'
       end
     end  
-    
+
+    # @private
     TZDataCountryTimezone = Struct.new(:timezone, :description, :location)  #:nodoc:
     
     # An ISO 3166 country.
+    #
+    # @private
     class TZDataCountry #:nodoc:
       include TZDataParserUtils
       
