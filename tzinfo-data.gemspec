@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.description = 'TZInfo::Data contains data from the IANA Time Zone database packaged as Ruby modules for use with TZInfo.'
   s.author = 'Philip Ross'
   s.email = 'phil.ross@gmail.com'
-  s.homepage = 'http://tzinfo.rubyforge.org'
+  s.homepage = 'http://tzinfo.github.io'
   s.license = 'MIT' 
   s.files = ['LICENSE', 'README', '.yardopts'] +
             Dir['lib/**/*.rb'].delete_if {|f| f.include?('.svn')}
