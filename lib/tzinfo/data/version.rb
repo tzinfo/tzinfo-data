@@ -30,7 +30,7 @@ module TZInfo
       
       # The version of the {IANA Time Zone Database}[http://www.iana.org/time-zones]
       # used to generate this version of TZInfo::Data.
-      TZDATA = '2013d'
+      TZDATA = '2013e'
     end
   end
 end

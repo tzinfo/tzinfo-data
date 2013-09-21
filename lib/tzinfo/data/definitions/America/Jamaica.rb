@@ -11,13 +11,13 @@ module TZInfo
           include TimezoneDefinition
           
           timezone 'America/Jamaica' do |tz|
-            tz.offset :o0, -18432, 0, :LMT
-            tz.offset :o1, -18432, 0, :KMT
+            tz.offset :o0, -18431, 0, :LMT
+            tz.offset :o1, -18431, 0, :KMT
             tz.offset :o2, -18000, 0, :EST
             tz.offset :o3, -18000, 3600, :EDT
             
-            tz.transition 1890, 1, :o1, -2524503168, 361705307, 150
-            tz.transition 1912, 2, :o2, -1827687168, 362915057, 150
+            tz.transition 1890, 1, :o1, -2524503169, 208342256831, 86400
+            tz.transition 1912, 2, :o2, -1827687169, 209039072831, 86400
             tz.transition 1974, 4, :o3, 136364400
             tz.transition 1974, 10, :o2, 152085600
             tz.transition 1975, 2, :o3, 162370800
