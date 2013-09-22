@@ -7,13 +7,13 @@ Gem::Specification.new do |s|
   s.email = 'phil.ross@gmail.com'
   s.homepage = 'http://tzinfo.github.io'
   s.license = 'MIT' 
-  s.files = ['LICENSE', 'README', '.yardopts'] +
+  s.files = ['LICENSE', 'README.md', '.yardopts'] +
             Dir['lib/**/*.rb'].delete_if {|f| f.include?('.svn')}
   s.platform = Gem::Platform::RUBY
   s.require_path = 'lib'
   s.add_development_dependency 'tzinfo', '>= 1.0.0'
   s.add_runtime_dependency 'tzinfo', '>= 1.0.0'
-  s.extra_rdoc_files = ['README', 'LICENSE']
-  s.rdoc_options = %w[--title TZInfo::Data --main README --exclude definitions --exclude indexes]
+  s.extra_rdoc_files = ['README.md', 'LICENSE']
+  s.rdoc_options = %w[--title TZInfo::Data --main README.md --exclude definitions --exclude indexes]
   s.required_ruby_version = '>= 1.8.6'
 end
