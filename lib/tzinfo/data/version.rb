@@ -20,6 +20,7 @@
 # THE SOFTWARE.
 #++
 
+
 module TZInfo
   module Data
     # TZInfo::Data version information.
