@@ -31,7 +31,7 @@ class TCDefinitions < Test::Unit::TestCase
   def data_files
     files = Dir.entries(DATA_DIR).select do |name| 
       name =~ /\A[^\.]+\z/ &&            
-        !%w(README Makefile leapseconds).include?(name) &&
+        !%w(leapseconds leapseconds.awk leap-seconds.list Makefile README SOURCE).include?(name) &&
         File.file?(File.join(DATA_DIR, name))
     end
     

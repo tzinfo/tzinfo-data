@@ -173,7 +173,7 @@ module TZInfo
       def execute
         files = Dir.entries(@input_dir).select do |file|
           file =~ /\A[^\.]+\z/ &&            
-            !%w(README Makefile).include?(file) &&
+            !%w(leapseconds leapseconds.awk leap-seconds.list Makefile README SOURCE).include?(file) &&
             File.file?(File.join(@input_dir, file))
         end
       
