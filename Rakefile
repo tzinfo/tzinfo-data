@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2005-2013 Philip Ross
+# Copyright (c) 2005-2014 Philip Ross
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -101,7 +101,7 @@ Rake::TestTask.new(:test) do |t|
   t.libs = ['lib']
   
   $:.each do |dir|
-    if File.exists?(File.join(dir, 'tzinfo.rb'))
+    if File.exist?(File.join(dir, 'tzinfo.rb'))
       t.libs << File.expand_path(dir)
     end
   end
