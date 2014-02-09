@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2012-2013 Philip Ross
+# Copyright (c) 2012-2014 Philip Ross
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -135,7 +135,9 @@ class TCDefinitions < Test::Unit::TestCase
   end
   
   def test_all
-    max_year = Time.now.year + 50
+    # 50 years of future transitions are generated. Assume that the year from
+    # the tzdata version is the year the TZInfo::Data modules were generated.
+    max_year = TZInfo::Data::Version::TZDATA.to_i + 50
 
     Dir.mktmpdir('tzinfo-data-test') do |dir|
       compile_data(dir)
