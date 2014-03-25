@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2012-2013 Philip Ross
+# Copyright (c) 2012-2014 Philip Ross
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ module TZInfo
       
       # The version of the {IANA Time Zone Database}[http://www.iana.org/time-zones]
       # used to generate this version of TZInfo::Data.
-      TZDATA = '2014a'
+      TZDATA = '2014b'
     end
   end
 end
