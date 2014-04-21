@@ -23,7 +23,7 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), 'test_utils')
 require 'tzinfo/data/indexes/countries'
 
-class TCCountryIndex < Test::Unit::TestCase
+class TCCountryIndex < Minitest::Test
   DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
 
   def countries

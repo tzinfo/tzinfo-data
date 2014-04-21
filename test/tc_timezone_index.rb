@@ -23,7 +23,7 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), 'test_utils')
 require 'tzinfo/data/indexes/timezones'
 
-class TCTimezoneIndex < Test::Unit::TestCase
+class TCTimezoneIndex < Minitest::Test
   DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
   
   def data_files

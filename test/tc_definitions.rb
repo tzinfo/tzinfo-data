@@ -24,7 +24,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), 'test_utils')
 require 'date'
 require 'tmpdir'
 
-class TCDefinitions < Test::Unit::TestCase
+class TCDefinitions < Minitest::Test
   
   DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
   
