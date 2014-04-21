@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'tzinfo', '>= 1.0.0'
   s.extra_rdoc_files = ['README.md', 'LICENSE']
   s.rdoc_options = %w[--title TZInfo::Data --main README.md --exclude definitions --exclude indexes]
-  s.required_ruby_version = '>= 1.8.6'
+  s.required_ruby_version = '>= 1.8.7'
 end
