@@ -100,6 +100,7 @@ Rake::TestTask.new(:test) do |t|
   end
 
   t.pattern = File.join(File.expand_path(File.dirname(__FILE__)), 'test', 'ts_all.rb')
+  t.warning = true
 end
 
 desc 'Read the TZ database files in the data directory and produce TZInfo::Data Ruby modules' 
