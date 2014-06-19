@@ -1072,7 +1072,7 @@ module TZInfo
       attr_reader :operator
       
       def initialize(spec)
-        raise "Invalid on: #{spec}" if spec !~ /^([0-9]+)|(last([A-z]+))|(([A-z]+)([<>]=)([0-9]+))$/
+        raise "Invalid on: #{spec}" if spec !~ /^([0-9]+)|(last([A-Za-z]+))|(([A-Za-z]+)([<>]=)([0-9]+))$/
         
         if $1
           @type = :absolute
@@ -1181,7 +1181,7 @@ module TZInfo
     # @private
     class TZDataFormat #:nodoc:        
       def initialize(spec)
-        if spec =~ /([A-z]+)\/([A-z]+)/
+        if spec =~ /([A-Z]+)\/([A-Z]+)/i
           @type = :alternate
           @standard_abbrev = $1
           @daylight_abbrev = $2

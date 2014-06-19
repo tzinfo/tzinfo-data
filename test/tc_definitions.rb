@@ -51,7 +51,7 @@ class TCDefinitions < Minitest::Test
   end
   
   def check_zdump_line(zone, line)
-    if line =~ /\A[^\s]+\s+([A-z][a-z]{2}\s[A-z][a-z]{2}\s+[0-9]+\s[0-9]+:[0-9]+:[0-9]+\s[0-9]+)\s[A-Z]+\s=\s([A-z][a-z]{2}\s[A-z][a-z]{2}\s+[0-9]+\s[0-9]+:[0-9]+:[0-9]+\s[0-9]+)\s([A-Za-z0-9+\-]+)\sisdst=([01])/ then
+    if line =~ /\A[^\s]+\s+([A-Za-z][a-z]{2}\s[A-Za-z][a-z]{2}\s+[0-9]+\s[0-9]+:[0-9]+:[0-9]+\s[0-9]+)\s[A-Z]+\s=\s([A-Za-z][a-z]{2}\s[A-Za-z][a-z]{2}\s+[0-9]+\s[0-9]+:[0-9]+:[0-9]+\s[0-9]+)\s([A-Za-z0-9+\-]+)\sisdst=([01])/ then
       assert_nothing_raised("Exception raised processing line:\n#{line}") do
         utc = yield $1
         local = yield $2
