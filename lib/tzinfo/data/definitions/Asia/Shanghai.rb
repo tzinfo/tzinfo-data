@@ -11,11 +11,11 @@ module TZInfo
           include TimezoneDefinition
           
           timezone 'Asia/Shanghai' do |tz|
-            tz.offset :o0, 29157, 0, :LMT
+            tz.offset :o0, 29143, 0, :LMT
             tz.offset :o1, 28800, 0, :CST
             tz.offset :o2, 28800, 3600, :CDT
             
-            tz.transition 1927, 12, :o1, -1325491557, 69847089481, 28800
+            tz.transition 1900, 12, :o1, -2177481943, 208689278057, 86400
             tz.transition 1940, 6, :o2, -933494400, 14578699, 6
             tz.transition 1940, 9, :o1, -923130000, 19439225, 8
             tz.transition 1941, 3, :o2, -908784000, 14580415, 6

@@ -12,8 +12,8 @@ module TZInfo
           
           timezone 'Australia/Currie' do |tz|
             tz.offset :o0, 34528, 0, :LMT
-            tz.offset :o1, 36000, 0, :EST
-            tz.offset :o2, 36000, 3600, :EST
+            tz.offset :o1, 36000, 0, :AEST
+            tz.offset :o2, 36000, 3600, :AEDT
             
             tz.transition 1895, 8, :o1, -2345794528, 6516280171, 2700
             tz.transition 1916, 9, :o2, -1680508800, 14526823, 6

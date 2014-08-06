@@ -11,8 +11,8 @@ module TZInfo
           include TimezoneDefinition
           
           timezone 'Asia/Tbilisi' do |tz|
-            tz.offset :o0, 10756, 0, :LMT
-            tz.offset :o1, 10756, 0, :TBMT
+            tz.offset :o0, 10746, 0, :LMT
+            tz.offset :o1, 10746, 0, :TBMT
             tz.offset :o2, 10800, 0, :TBIT
             tz.offset :o3, 14400, 0, :TBIT
             tz.offset :o4, 14400, 3600, :TBIST
@@ -22,8 +22,8 @@ module TZInfo
             tz.offset :o8, 14400, 0, :GET
             tz.offset :o9, 14400, 3600, :GEST
             
-            tz.transition 1879, 12, :o1, -2840151556, 52006652111, 21600
-            tz.transition 1924, 5, :o2, -1441162756, 52356399311, 21600
+            tz.transition 1879, 12, :o1, -2840151546, 3852344601, 1600
+            tz.transition 1924, 5, :o2, -1441162746, 3878251801, 1600
             tz.transition 1957, 2, :o3, -405140400, 19487187, 8
             tz.transition 1981, 3, :o4, 354916800
             tz.transition 1981, 9, :o3, 370724400

@@ -12,8 +12,8 @@ module TZInfo
           
           timezone 'Australia/Perth' do |tz|
             tz.offset :o0, 27804, 0, :LMT
-            tz.offset :o1, 28800, 0, :WST
-            tz.offset :o2, 28800, 3600, :WST
+            tz.offset :o1, 28800, 0, :AWST
+            tz.offset :o2, 28800, 3600, :AWDT
             
             tz.transition 1895, 11, :o1, -2337925404, 17377402883, 7200
             tz.transition 1916, 12, :o2, -1672559940, 3486570001, 1440

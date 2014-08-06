@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Jayapura' do |tz|
             tz.offset :o0, 33768, 0, :LMT
             tz.offset :o1, 32400, 0, :WIT
-            tz.offset :o2, 34200, 0, :CST
+            tz.offset :o2, 34200, 0, :ACST
             
             tz.transition 1932, 10, :o1, -1172913768, 2912414531, 1200
             tz.transition 1944, 8, :o2, -799491600, 19450673, 8

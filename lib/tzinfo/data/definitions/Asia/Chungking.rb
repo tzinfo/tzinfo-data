@@ -10,7 +10,7 @@ module TZInfo
         module Chungking
           include TimezoneDefinition
           
-          linked_timezone 'Asia/Chungking', 'Asia/Chongqing'
+          linked_timezone 'Asia/Chungking', 'Asia/Shanghai'
         end
       end
     end

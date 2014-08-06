@@ -12,8 +12,8 @@ module TZInfo
           
           timezone 'Australia/Brisbane' do |tz|
             tz.offset :o0, 36728, 0, :LMT
-            tz.offset :o1, 36000, 0, :EST
-            tz.offset :o2, 36000, 3600, :EST
+            tz.offset :o1, 36000, 0, :AEST
+            tz.offset :o2, 36000, 3600, :AEDT
             
             tz.transition 1894, 12, :o1, -2366791928, 26062496009, 10800
             tz.transition 1916, 12, :o2, -1672567140, 3486569881, 1440
