@@ -6,13 +6,13 @@ class TCCountryIndex < Minitest::Test
 
   def countries
     zones = {}
-    
-    File.open(File.join(DATA_DIR, 'zone.tab')) do |file|
+
+    open_file(File.join(DATA_DIR, 'zone1970.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
       file.each_line do |line|
         line.chomp!
         
-        if line =~ /\A([A-Z]{2})\t(?:([+\-])(\d{2})(\d{2})([+\-])(\d{3})(\d{2})|([+\-])(\d{2})(\d{2})(\d{2})([+\-])(\d{3})(\d{2})(\d{2}))\t([^\t]+)(?:\t([^\t]+))?\z/
-          code = $1
+        if line =~ /\A([A-Z]{2}(?:,[A-Z]{2})*)\t(?:([+\-])(\d{2})(\d{2})([+\-])(\d{3})(\d{2})|([+\-])(\d{2})(\d{2})(\d{2})([+\-])(\d{3})(\d{2})(\d{2}))\t([^\t]+)(?:\t([^\t]+))?\z/
+          codes = $1
           
           if $2
             latitude = dms_to_rational($2, $3, $4)
@@ -24,15 +24,19 @@ class TCCountryIndex < Minitest::Test
           
           zone_identifier = $16
           description = $17
-          
-          (zones[code] ||= []) << {:zone_identifier => zone_identifier, :latitude => latitude, :longitude => longitude, :description => description}
+
+          country_timezone = {:zone_identifier => zone_identifier, :latitude => latitude, :longitude => longitude, :description => description}
+
+          codes.split(',').each do |code|
+            (zones[code] ||= []) << country_timezone
+          end
         end
       end
     end
     
     countries = {}
-    
-    File.open(File.join(DATA_DIR, 'iso3166.tab')) do |file|
+
+    open_file(File.join(DATA_DIR, 'iso3166.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
       file.each_line do |line|
         line.chomp!
         

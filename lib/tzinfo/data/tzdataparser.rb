@@ -283,13 +283,13 @@ module TZInfo
           end
         end
         
-        # Loads countries from iso3166.tab and zone.tab and stores the result in
-        # the countries instance variable.
+        # Loads countries from iso3166.tab and zone1970.tab and stores the
+        # result in the countries instance variable.
         def load_countries
           puts 'load_countries'
           
-          # Files are in ASCII, but may change to UTF-8 (a superset of ASCII)
-          # in the future.
+          # iso3166.tab is ASCII encoded, but is planned to change to UTF-8 (a
+          # superset of ASCII) in the future.
           open_file(File.join(@input_dir, 'iso3166.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
             file.each_line do |line|
           
@@ -301,21 +301,17 @@ module TZInfo
             end
           end
 
-          # Files are in ASCII, but may change to UTF-8 (a superset of ASCII)
-          # in the future.
-          open_file(File.join(@input_dir, 'zone.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
+          # zone1970.tab is UTF-8 encoded.
+          open_file(File.join(@input_dir, 'zone1970.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
             file.each_line do |line|
                     
               line.chomp!          
 
-              if line =~ /^([A-Z]{2})\t([^\t]+)\t([^\t]+)(\t(.*))?$/
-                code = $1
+              if line =~ /^([A-Z]{2}(?:,[A-Z]{2})*)\t([^\t]+)\t([^\t]+)(\t(.*))?$/
+                codes = $1
                 location_str = $2
                 zone_name = $3
                 description = $5
-
-                country = @countries[code]
-                raise "Country not found: #{code}" if country.nil?
                 
                 location = TZDataLocation.new(location_str)
                 
@@ -324,7 +320,14 @@ module TZInfo
                 
                 description = nil if description == ''
                 
-                country.add_zone(TZDataCountryTimezone.new(zone, description, location))
+                country_timezone = TZDataCountryTimezone.new(zone, description, location)
+
+                codes.split(',').each do |code|
+                  country = @countries[code]
+                  raise "Country not found: #{code}" if country.nil?
+
+                  country.add_zone(country_timezone)
+                end
               end
             end
           end
