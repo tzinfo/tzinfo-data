@@ -26,21 +26,14 @@ module Kernel
       assert(false, full_message)
     end
   end
-end
 
-begin
-  Encoding
-  SUPPORTS_ENCODING = true
-rescue NameError
-  SUPPORTS_ENCODING = false
-end
-
-if SUPPORTS_ENCODING
-  def open_file(file_name, mode, opts, &block)
-    File.open(file_name, mode, opts, &block)
-  end
-else
-  def open_file(file_name, mode, opts, &block)
-    File.open(file_name, mode, &block)
+  if RUBY_VERSION =~ /\A1\.[0-8]\./
+    def open_file(file_name, mode, opts, &block)
+      File.open(file_name, mode, &block)
+    end
+  else
+    def open_file(file_name, mode, opts, &block)
+      File.open(file_name, mode, opts, &block)
+    end
   end
 end

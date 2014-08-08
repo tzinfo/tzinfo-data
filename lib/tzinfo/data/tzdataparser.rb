@@ -8,21 +8,16 @@ module TZInfo
     #
     # @private
     module TZDataParserUtils #:nodoc:
-      
-      begin
-        Encoding
-        SUPPORTS_ENCODING = true
-      rescue NameError
-        SUPPORTS_ENCODING = false
-      end
-      
-      if SUPPORTS_ENCODING
+      # Wrapper for File.open that supports passing hash options for specifying
+      # encodings on Ruby 1.9+. The options are ignored on earlier versions of
+      # Ruby.
+      if RUBY_VERSION =~ /\A1\.[0-8]\./
         def open_file(file_name, mode, opts, &block)
-          File.open(file_name, mode, opts, &block)
+          File.open(file_name, mode, &block)
         end
       else
         def open_file(file_name, mode, opts, &block)
-          File.open(file_name, mode, &block)
+          File.open(file_name, mode, opts, &block)
         end
       end
       
@@ -581,19 +576,17 @@ module TZInfo
         FileUtils.mkdir_p(dir)
         
         open_file(File.join(output_dir, 'definitions', @name_elements.join(File::SEPARATOR)) + '.rb', 'w', :external_encoding => 'UTF-8', :universal_newline => true) do |file|
+
+          file.instance_variable_set(:@tz_indent, 0)
           
           def file.indent(by)
-            if @tz_indent
-              @tz_indent += by
-            else
-              @tz_indent = by
-            end
+            @tz_indent += by
           end
           
           def file.puts(s)
-            super("#{' ' * (@tz_indent || 0)}#{s}")
+            super("#{' ' * @tz_indent}#{s}")
           end
-          
+
           file.puts('# encoding: UTF-8')
           file.puts('')
           file.puts('# This file contains data derived from the IANA Time Zone Database')
