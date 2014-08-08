@@ -301,6 +301,9 @@ module TZInfo
             end
           end
 
+          primary_zones = {}
+          secondary_zones = {}
+
           # zone1970.tab is UTF-8 encoded.
           open_file(File.join(@input_dir, 'zone1970.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
             file.each_line do |line|
@@ -308,7 +311,7 @@ module TZInfo
               line.chomp!          
 
               if line =~ /^([A-Z]{2}(?:,[A-Z]{2})*)\t([^\t]+)\t([^\t]+)(\t(.*))?$/
-                codes = $1
+                codes = $1.split(',')
                 location_str = $2
                 zone_name = $3
                 description = $5
@@ -322,12 +325,22 @@ module TZInfo
                 
                 country_timezone = TZDataCountryTimezone.new(zone, description, location)
 
-                codes.split(',').each do |code|
-                  country = @countries[code]
-                  raise "Country not found: #{code}" if country.nil?
+                (primary_zones[codes.first] ||= []) << country_timezone
 
-                  country.add_zone(country_timezone)
+                codes[1..-1].each do |code|
+                  (secondary_zones[code] ||= []) << country_timezone
                 end
+              end
+            end
+          end
+
+          [primary_zones, secondary_zones].each do |zones|
+            zones.each_pair do |code, country_timezones|
+              country = @countries[code]
+              raise "Country not found: #{code}" if country.nil?
+
+              country_timezones.each do |country_timezone|
+                country.add_zone(country_timezone)
               end
             end
           end
