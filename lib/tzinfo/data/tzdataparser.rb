@@ -311,7 +311,7 @@ module TZInfo
               line.chomp!          
 
               if line =~ /^([A-Z]{2}(?:,[A-Z]{2})*)\t([^\t]+)\t([^\t]+)(\t(.*))?$/
-                codes = $1.split(',')
+                codes = $1
                 location_str = $2
                 zone_name = $3
                 description = $5
@@ -324,6 +324,8 @@ module TZInfo
                 description = nil if description == ''
                 
                 country_timezone = TZDataCountryTimezone.new(zone, description, location)
+
+                codes = codes.split(',')
 
                 (primary_zones[codes.first] ||= []) << country_timezone
 

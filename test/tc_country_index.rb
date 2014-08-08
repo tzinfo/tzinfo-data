@@ -13,7 +13,7 @@ class TCCountryIndex < Minitest::Test
         line.chomp!
         
         if line =~ /\A([A-Z]{2}(?:,[A-Z]{2})*)\t(?:([+\-])(\d{2})(\d{2})([+\-])(\d{3})(\d{2})|([+\-])(\d{2})(\d{2})(\d{2})([+\-])(\d{3})(\d{2})(\d{2}))\t([^\t]+)(?:\t([^\t]+))?\z/
-          codes = $1.split(',')
+          codes = $1
           
           if $2
             latitude = dms_to_rational($2, $3, $4)
@@ -27,6 +27,7 @@ class TCCountryIndex < Minitest::Test
           description = $17
 
           country_timezone = {:zone_identifier => zone_identifier, :latitude => latitude, :longitude => longitude, :description => description}
+          codes = codes.split(',')
 
           (primary_zones[codes.first] ||= []) << country_timezone
 
@@ -36,7 +37,7 @@ class TCCountryIndex < Minitest::Test
         end
       end
     end
-    
+
     countries = {}
 
     open_file(File.join(DATA_DIR, 'iso3166.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
@@ -47,7 +48,7 @@ class TCCountryIndex < Minitest::Test
           code = $1
           name = $2
           zones = (primary_zones[code] || []) + (secondary_zones[code] || [])
-          countries[code] = {:name => name, :zones => zones || []}
+          countries[code] = {:name => name, :zones => zones}
         end
       end
     end
