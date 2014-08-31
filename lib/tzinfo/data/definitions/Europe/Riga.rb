@@ -11,9 +11,9 @@ module TZInfo
           include TimezoneDefinition
           
           timezone 'Europe/Riga' do |tz|
-            tz.offset :o0, 5788, 0, :LMT
-            tz.offset :o1, 5788, 0, :RMT
-            tz.offset :o2, 5788, 3600, :LST
+            tz.offset :o0, 5794, 0, :LMT
+            tz.offset :o1, 5794, 0, :RMT
+            tz.offset :o2, 5794, 3600, :LST
             tz.offset :o3, 7200, 0, :EET
             tz.offset :o4, 10800, 0, :MSK
             tz.offset :o5, 3600, 3600, :CEST
@@ -21,12 +21,12 @@ module TZInfo
             tz.offset :o7, 10800, 3600, :MSD
             tz.offset :o8, 7200, 3600, :EEST
             
-            tz.transition 1879, 12, :o1, -2840146588, 52006653353, 21600
-            tz.transition 1918, 4, :o2, -1632008188, 52308687953, 21600
-            tz.transition 1918, 9, :o1, -1618702588, 52312014353, 21600
-            tz.transition 1919, 4, :o2, -1601681788, 52316269553, 21600
-            tz.transition 1919, 5, :o1, -1597275388, 52317371153, 21600
-            tz.transition 1926, 5, :o3, -1377308188, 52372362953, 21600
+            tz.transition 1879, 12, :o1, -2840146594, 104013306703, 43200
+            tz.transition 1918, 4, :o2, -1632008194, 104617375903, 43200
+            tz.transition 1918, 9, :o1, -1618702594, 104624028703, 43200
+            tz.transition 1919, 4, :o2, -1601681794, 104632539103, 43200
+            tz.transition 1919, 5, :o1, -1597275394, 104634742303, 43200
+            tz.transition 1926, 5, :o3, -1377308194, 104744725903, 43200
             tz.transition 1940, 8, :o4, -928029600, 29158157, 12
             tz.transition 1941, 6, :o5, -899521200, 19441411, 8
             tz.transition 1942, 11, :o6, -857257200, 58335973, 24
