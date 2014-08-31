@@ -5,7 +5,7 @@ class TCTimezoneIndex < Minitest::Test
   DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
   
   def data_files
-    files = Dir.entries(DATA_DIR).select {|name| name =~ /^[^\.]+$/ && name != 'leapseconds'}
+    files = Dir.entries(DATA_DIR).select {|name| name =~ /\A[^\.]+\z/ && !%w(backzone leapseconds).include?(name) }
     files.collect {|name| File.join(DATA_DIR, name)}
   end
   
