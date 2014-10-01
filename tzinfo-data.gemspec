@@ -1,6 +1,12 @@
+tzinfo_data_version_file = File.join(File.expand_path(File.dirname(__FILE__)), 'lib', 'tzinfo', 'data', 'version.rb').untaint
+
+tzinfo_data_version = File.open(tzinfo_data_version_file, RUBY_VERSION =~ /\A1\.[0-8]\./ ? 'r' : 'r:utf-8') do |file|
+  file.readlines.grep(/\s*VERSION\s*=\s*['"](\d+(\.\d+){2})['"]/) { $1 }.first
+end
+
 Gem::Specification.new do |s|
   s.name = 'tzinfo-data'
-  s.version = '1.2014.8'
+  s.version = tzinfo_data_version
   s.summary = 'Timezone Data for TZInfo'
   s.description = 'TZInfo::Data contains data from the IANA Time Zone database packaged as Ruby modules for use with TZInfo.'
   s.author = 'Philip Ross'
