@@ -442,7 +442,7 @@ module TZInfo
           c.timezone 'Asia/Bishkek', 429, 10, 373, 5
         end
         country 'KH', 'Cambodia' do |c|
-          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60
+          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60, 'most of Indochina'
         end
         country 'KI', 'Kiribati' do |c|
           c.timezone 'Pacific/Tarawa', 17, 12, 173, 1, 'Gilbert Islands'
@@ -475,7 +475,7 @@ module TZInfo
           c.timezone 'Asia/Oral', 3073, 60, 1027, 20, 'West Kazakhstan'
         end
         country 'LA', 'Laos' do |c|
-          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60
+          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60, 'most of Indochina'
         end
         country 'LB', 'Lebanon' do |c|
           c.timezone 'Asia/Beirut', 2033, 60, 71, 2
@@ -643,7 +643,8 @@ module TZInfo
           c.timezone 'Pacific/Gambier', -347, 15, -2699, 20, 'Gambier Islands'
         end
         country 'PG', 'Papua New Guinea' do |c|
-          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6
+          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'most locations'
+          c.timezone 'Pacific/Bougainville', -373, 60, 4667, 30, 'Bougainville'
         end
         country 'PH', 'Philippines' do |c|
           c.timezone 'Asia/Manila', 175, 12, 121, 1
@@ -793,7 +794,7 @@ module TZInfo
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
         end
         country 'TH', 'Thailand' do |c|
-          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60
+          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60, 'most of Indochina'
         end
         country 'TJ', 'Tajikistan' do |c|
           c.timezone 'Asia/Dushanbe', 463, 12, 344, 5
@@ -895,7 +896,8 @@ module TZInfo
           c.timezone 'America/Port_of_Spain', 213, 20, -3691, 60
         end
         country 'VN', 'Vietnam' do |c|
-          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60
+          c.timezone 'Asia/Ho_Chi_Minh', 43, 4, 320, 3, 'south Vietnam'
+          c.timezone 'Asia/Bangkok', 55, 4, 6031, 60, 'most of Indochina'
         end
         country 'VU', 'Vanuatu' do |c|
           c.timezone 'Pacific/Efate', -53, 3, 2021, 12
