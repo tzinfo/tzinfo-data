@@ -9,7 +9,7 @@ module TZInfo
       # TZInfo is version 1.
       FORMAT = 1
 
-      # TZInfo version number.
+      # TZInfo::Data version number.
       STRING = VERSION
       
       # The version of the {IANA Time Zone Database}[http://www.iana.org/time-zones]
