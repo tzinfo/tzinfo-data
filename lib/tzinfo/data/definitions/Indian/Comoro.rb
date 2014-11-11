@@ -10,12 +10,7 @@ module TZInfo
         module Comoro
           include TimezoneDefinition
           
-          timezone 'Indian/Comoro' do |tz|
-            tz.offset :o0, 10384, 0, :LMT
-            tz.offset :o1, 10800, 0, :EAT
-            
-            tz.transition 1911, 6, :o1, -1846291984, 13063779251, 5400
-          end
+          linked_timezone 'Indian/Comoro', 'Africa/Nairobi'
         end
       end
     end
