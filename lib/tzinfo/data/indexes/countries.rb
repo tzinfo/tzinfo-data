@@ -83,7 +83,7 @@ module TZInfo
         country 'AW', 'Aruba' do |c|
           c.timezone 'America/Curacao', 731, 60, -69, 1
         end
-        country 'AX', 'Aaland Islands' do |c|
+        country 'AX', 'Åland Islands' do |c|
           c.timezone 'Europe/Helsinki', 361, 6, 749, 30
         end
         country 'AZ', 'Azerbaijan' do |c|
@@ -210,7 +210,7 @@ module TZInfo
         country 'CH', 'Switzerland' do |c|
           c.timezone 'Europe/Zurich', 2843, 60, 128, 15, 'Swiss time'
         end
-        country 'CI', 'Cote d\'Ivoire' do |c|
+        country 'CI', 'Côte d\'Ivoire' do |c|
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
         end
         country 'CK', 'Cook Islands' do |c|
@@ -465,7 +465,7 @@ module TZInfo
           c.timezone 'Asia/Riyadh', 739, 30, 2803, 60
         end
         country 'KY', 'Cayman Islands' do |c|
-          c.timezone 'America/Panama', 269, 30, -1193, 15
+          c.timezone 'America/Cayman', 193, 10, -4883, 60
         end
         country 'KZ', 'Kazakhstan' do |c|
           c.timezone 'Asia/Almaty', 173, 4, 1539, 20, 'most locations'
@@ -682,7 +682,7 @@ module TZInfo
         country 'QA', 'Qatar' do |c|
           c.timezone 'Asia/Qatar', 1517, 60, 773, 15
         end
-        country 'RE', 'Reunion' do |c|
+        country 'RE', 'Réunion' do |c|
           c.timezone 'Indian/Reunion', -313, 15, 832, 15, 'Réunion, Crozet Is, Scattered Is'
         end
         country 'RO', 'Romania' do |c|
