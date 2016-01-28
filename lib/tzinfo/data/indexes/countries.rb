@@ -466,7 +466,7 @@ module TZInfo
           c.timezone 'Asia/Riyadh', 739, 30, 2803, 60
         end
         country 'KY', 'Cayman Islands' do |c|
-          c.timezone 'America/Cayman', 193, 10, -4883, 60
+          c.timezone 'America/Panama', 269, 30, -1193, 15
         end
         country 'KZ', 'Kazakhstan' do |c|
           c.timezone 'Asia/Almaty', 173, 4, 1539, 20, 'most locations'
@@ -581,8 +581,7 @@ module TZInfo
           c.timezone 'America/Chihuahua', 859, 30, -1273, 12, 'Mexican Mountain Time - Chihuahua away from US border'
           c.timezone 'America/Ojinaga', 887, 30, -1253, 12, 'US Mountain Time - Chihuahua near US border'
           c.timezone 'America/Hermosillo', 436, 15, -3329, 30, 'Mountain Standard Time - Sonora'
-          c.timezone 'America/Tijuana', 488, 15, -7021, 60, 'US Pacific Time - Baja California near US border'
-          c.timezone 'America/Santa_Isabel', 303, 10, -1723, 15, 'Mexican Pacific Time - Baja California away from US border'
+          c.timezone 'America/Tijuana', 488, 15, -7021, 60, 'US Pacific Time - Baja California state'
           c.timezone 'America/Bahia_Banderas', 104, 5, -421, 4, 'Mexican Central Time - Bahía de Banderas'
         end
         country 'MY', 'Malaysia' do |c|
@@ -865,10 +864,10 @@ module TZInfo
           c.timezone 'America/Boise', 157009, 3600, -46481, 400, 'Mountain Time - south Idaho & east Oregon'
           c.timezone 'America/Phoenix', 20069, 600, -16811, 150, 'Mountain Standard Time - Arizona (except Navajo)'
           c.timezone 'America/Los_Angeles', 30647, 900, -212837, 1800, 'Pacific Time'
-          c.timezone 'America/Metlakatla', 198457, 3600, -18947, 144, 'Pacific Standard Time - Annette Island, Alaska'
           c.timezone 'America/Anchorage', 44077, 720, -539641, 3600, 'Alaska Time'
           c.timezone 'America/Juneau', 209887, 3600, -483911, 3600, 'Alaska Time - Alaska panhandle'
           c.timezone 'America/Sitka', 41167, 720, -487087, 3600, 'Alaska Time - southeast Alaska panhandle'
+          c.timezone 'America/Metlakatla', 198457, 3600, -18947, 144, 'Alaska Time - Annette Island'
           c.timezone 'America/Yakutat', 214369, 3600, -251509, 1800, 'Alaska Time - Alaska panhandle neck'
           c.timezone 'America/Nome', 58051, 900, -595463, 3600, 'Alaska Time - west Alaska'
           c.timezone 'America/Adak', 1297, 25, -635969, 3600, 'Aleutian Islands'
