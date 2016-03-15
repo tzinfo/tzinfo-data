@@ -3,5 +3,6 @@
 --exclude ^lib/tzinfo/data/indexes/
 lib/**/*.rb
 -
+CONTRIBUTING.md
 LICENSE
 README.md
