@@ -1197,7 +1197,7 @@ module TZInfo
     # @private
     class TZDataFormat #:nodoc:        
       def initialize(spec)
-        if spec =~ /([A-Z]+)\/([A-Z]+)/i
+        if spec =~ /\A([^\/]*)\/(.*)\z/
           @type = :alternate
           @standard_abbrev = $1
           @daylight_abbrev = $2
