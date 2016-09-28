@@ -120,7 +120,7 @@ class TCDefinitions < Minitest::Test
     Dir.mktmpdir('tzinfo-data-test') do |dir|
       compile_data(dir)
 
-      enum_timezones(dir, nil, ['localtime', 'posix', 'posixrules', 'right', 'Factory']) do |identifier|
+      enum_timezones(dir, nil, ['localtime', 'posix', 'posixrules', 'right']) do |identifier|
         zone = TZInfo::Timezone.get(identifier)
         assert_equal(identifier, zone.identifier)
         
@@ -148,7 +148,7 @@ class TCDefinitions < Minitest::Test
     data_files.each do |data_file|
       File.open(data_file, 'r') do |file|
         file.each do |line|
-          if line =~ /\AZone\s+([^\s]+)\s/ && $1 != 'Factory'
+          if line =~ /\AZone\s+([^\s]+)\s/
             zone = TZInfo::Timezone.get($1)
             assert_equal($1, zone.identifier)
             assert_kind_of(TZInfo::DataTimezone, zone)

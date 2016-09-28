@@ -537,7 +537,7 @@ module TZInfo
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
         end
         country 'MM', 'Myanmar (Burma)' do |c|
-          c.timezone 'Asia/Rangoon', 1007, 60, 577, 6
+          c.timezone 'Asia/Yangon', 1007, 60, 577, 6
         end
         country 'MN', 'Mongolia' do |c|
           c.timezone 'Asia/Ulaanbaatar', 575, 12, 6413, 60, 'Mongolia (most areas)'

@@ -15,7 +15,7 @@ class TCTimezoneIndex < Minitest::Test
     data_files.each do |data_file|
       File.open(data_file, 'r') do |file|
         file.each do |line|
-          if (data && line =~ /\AZone\s+([^\s]+)\s/ && $1 != 'Factory') || (linked && line =~ /\ALink\s+[^\s]+\s+([^\s]+)/)
+          if (data && line =~ /\AZone\s+([^\s]+)\s/) || (linked && line =~ /\ALink\s+[^\s]+\s+([^\s]+)/)
             result << $1
           end
         end

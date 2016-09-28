@@ -6,14 +6,12 @@
 module TZInfo
   module Data
     module Definitions
-      module Etc
-        module GMT__p__6
-          include TimezoneDefinition
+      module Factory
+        include TimezoneDefinition
+        
+        timezone 'Factory' do |tz|
+          tz.offset :o0, 0, 0, :'-00'
           
-          timezone 'Etc/GMT+6' do |tz|
-            tz.offset :o0, -21600, 0, :'-06'
-            
-          end
         end
       end
     end
