@@ -269,6 +269,7 @@ module TZInfo
         timezone 'Asia/Dili'
         timezone 'Asia/Dubai'
         timezone 'Asia/Dushanbe'
+        timezone 'Asia/Famagusta'
         timezone 'Asia/Gaza'
         linked_timezone 'Asia/Harbin'
         timezone 'Asia/Hebron'
