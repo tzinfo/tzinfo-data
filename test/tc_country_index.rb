@@ -80,7 +80,12 @@ class TCCountryIndex < Minitest::Test
         assert_equal(expected_zone[:zone_identifier], actual_zone.identifier)
         assert_equal(expected_zone[:latitude], actual_zone.latitude)
         assert_equal(expected_zone[:longitude], actual_zone.longitude)
-        assert_equal(expected_zone[:description], actual_zone.description)
+
+        if expected_zone[:description]
+          assert_equal(expected_zone[:description], actual_zone.description)
+        else
+          assert_nil(actual_zone.description)
+        end
       end
     end
   end
