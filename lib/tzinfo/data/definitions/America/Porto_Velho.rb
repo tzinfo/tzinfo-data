@@ -12,8 +12,8 @@ module TZInfo
           
           timezone 'America/Porto_Velho' do |tz|
             tz.offset :o0, -15336, 0, :LMT
-            tz.offset :o1, -14400, 0, :AMT
-            tz.offset :o2, -14400, 3600, :AMST
+            tz.offset :o1, -14400, 0, :'-04'
+            tz.offset :o2, -14400, 3600, :'-03'
             
             tz.transition 1914, 1, :o1, -1767210264, 968053471, 400
             tz.transition 1931, 10, :o2, -1206954000, 19412945, 8

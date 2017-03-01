@@ -12,8 +12,8 @@ module TZInfo
           
           timezone 'America/Bahia' do |tz|
             tz.offset :o0, -9244, 0, :LMT
-            tz.offset :o1, -10800, 0, :BRT
-            tz.offset :o2, -10800, 3600, :BRST
+            tz.offset :o1, -10800, 0, :'-03'
+            tz.offset :o2, -10800, 3600, :'-02'
             
             tz.transition 1914, 1, :o1, -1767216356, 52274885911, 21600
             tz.transition 1931, 10, :o2, -1206957600, 29119417, 12

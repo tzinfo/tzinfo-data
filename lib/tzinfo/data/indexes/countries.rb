@@ -219,6 +219,7 @@ module TZInfo
         end
         country 'CL', 'Chile' do |c|
           c.timezone 'America/Santiago', -669, 20, -212, 3, 'Chile (most areas)'
+          c.timezone 'America/Punta_Arenas', -1063, 20, -851, 12, 'Region of Magallanes'
           c.timezone 'Pacific/Easter', -543, 20, -3283, 30, 'Easter Island'
         end
         country 'CM', 'Cameroon' do |c|

@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Africa/Monrovia' do |tz|
             tz.offset :o0, -2588, 0, :LMT
             tz.offset :o1, -2588, 0, :MMT
-            tz.offset :o2, -2670, 0, :LRT
+            tz.offset :o2, -2670, 0, :'-004430'
             tz.offset :o3, 0, 0, :GMT
             
             tz.transition 1882, 1, :o1, -2776979812, 52022445047, 21600

@@ -12,7 +12,7 @@ module TZInfo
           
           timezone 'Pacific/Wallis' do |tz|
             tz.offset :o0, 44120, 0, :LMT
-            tz.offset :o1, 43200, 0, :WFT
+            tz.offset :o1, 43200, 0, :'+12'
             
             tz.transition 1900, 12, :o1, -2177496920, 5217231577, 2160
           end
