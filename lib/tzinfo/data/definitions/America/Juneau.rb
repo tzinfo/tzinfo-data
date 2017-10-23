@@ -22,7 +22,7 @@ module TZInfo
             tz.offset :o8, -32400, 0, :AKST
             tz.offset :o9, -32400, 3600, :AKDT
             
-            tz.transition 1867, 10, :o1, -3225366139, 207641393861, 86400
+            tz.transition 1867, 10, :o1, -3225223727, 207641536273, 86400
             tz.transition 1900, 8, :o2, -2188954939, 208677805061, 86400
             tz.transition 1942, 2, :o3, -880207200, 29164799, 12
             tz.transition 1945, 8, :o4, -769395600, 58360379, 24
