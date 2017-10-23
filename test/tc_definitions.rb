@@ -9,7 +9,7 @@ class TCDefinitions < Minitest::Test
   def data_files
     files = Dir.entries(DATA_DIR).select do |name| 
       name =~ /\A[^\.]+\z/ &&            
-        !%w(backzone checktab.awk leapseconds leapseconds.awk leap-seconds.list CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version zoneinfo2tdf.pl).include?(name) &&
+        !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
         File.file?(File.join(DATA_DIR, name))
     end
     

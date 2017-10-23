@@ -151,7 +151,7 @@ module TZInfo
 
         files = Dir.entries(@input_dir).select do |file|
           file =~ /\A[^\.]+\z/ &&            
-            !%w(backzone checktab.awk leapseconds leapseconds.awk leap-seconds.list CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version zoneinfo2tdf.pl).include?(file) &&
+            !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(file) &&
             File.file?(File.join(@input_dir, file))
         end
       
