@@ -215,7 +215,7 @@ module TZInfo
         def get_rules(ref)
           if ref == '-'
             @no_rules
-          elsif ref =~ /^[0-9]+:[0-9]+$/
+          elsif ref =~ /^-?[0-9]+:[0-9]+$/
             TZDataFixedOffsetRules.new(parse_offset(ref))
           else
             rule_set = @rule_sets[ref]
