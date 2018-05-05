@@ -1,7 +1,7 @@
 module TZInfo
   module Data
     # TZInfo::Data version number.
-    VERSION = '1.2018.4'
+    VERSION = '1.2018.5'
   
     # TZInfo::Data version information.
     module Version
@@ -14,7 +14,7 @@ module TZInfo
       
       # The version of the {IANA Time Zone Database}[http://www.iana.org/time-zones]
       # used to generate this version of TZInfo::Data.
-      TZDATA = '2018d'
+      TZDATA = '2018e'
     end
   end
 end
