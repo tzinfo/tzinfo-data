@@ -13,7 +13,7 @@ class TCVersion < Minitest::Test
   def test_version_string
     assert(TZInfo::Data::Version::STRING =~ /\A\d+\.\d{4}\.\d+\z/)
   end
-  
+
   def test_version_tzdata
     assert(TZInfo::Data::Version::TZDATA =~ /\A[0-9]{4}[a-z]\z/)
   end

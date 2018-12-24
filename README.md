@@ -25,7 +25,7 @@ License
 
 TZInfo::Data is released under the MIT license, see LICENSE for details.
 
-Timezone data is based on the public domain 
+Timezone data is based on the public domain
 [IANA Time Zone Database](http://www.iana.org/time-zones).
 
 
@@ -38,5 +38,5 @@ Source code for TZInfo::Data is available on [GitHub](https://github.com/tzinfo/
 Issue Tracker
 -------------
 
-Please post any bugs, issues, feature requests or questions to the 
+Please post any bugs, issues, feature requests or questions to the
 [GitHub issue tracker](https://github.com/tzinfo/tzinfo-data/issues).

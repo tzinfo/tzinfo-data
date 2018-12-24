@@ -17,7 +17,7 @@ module Kernel
     condition = (expected.size == actual.size) && (expected - actual == [])
     assert(condition, full_message)
   end
-  
+
   def assert_nothing_raised(msg = nil)
     begin
       yield

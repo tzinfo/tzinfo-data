@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.author = 'Philip Ross'
   s.email = 'phil.ross@gmail.com'
   s.homepage = 'http://tzinfo.github.io'
-  s.license = 'MIT' 
+  s.license = 'MIT'
   s.files = ['CONTRIBUTING.md', 'LICENSE', 'README.md', '.yardopts'] +
             Dir['lib/**/*.rb'].delete_if {|f| f.include?('.svn')}
   s.platform = Gem::Platform::RUBY

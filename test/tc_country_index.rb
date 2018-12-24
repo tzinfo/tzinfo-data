@@ -11,10 +11,10 @@ class TCCountryIndex < Minitest::Test
     open_file(File.join(DATA_DIR, 'zone1970.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
       file.each_line do |line|
         line.chomp!
-        
+
         if line =~ /\A([A-Z]{2}(?:,[A-Z]{2})*)\t(?:([+\-])(\d{2})(\d{2})([+\-])(\d{3})(\d{2})|([+\-])(\d{2})(\d{2})(\d{2})([+\-])(\d{3})(\d{2})(\d{2}))\t([^\t]+)(?:\t([^\t]+))?\z/
           codes = $1
-          
+
           if $2
             latitude = dms_to_rational($2, $3, $4)
             longitude = dms_to_rational($5, $6, $7)
@@ -22,7 +22,7 @@ class TCCountryIndex < Minitest::Test
             latitude = dms_to_rational($8, $9, $10, $11)
             longitude = dms_to_rational($12, $13, $14, $15)
           end
-          
+
           zone_identifier = $16
           description = $17
 
@@ -43,7 +43,7 @@ class TCCountryIndex < Minitest::Test
     open_file(File.join(DATA_DIR, 'iso3166.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
       file.each_line do |line|
         line.chomp!
-        
+
         if line =~ /\A([A-Z]{2})\t(.+)\z/
           code = $1
           name = $2
@@ -52,10 +52,10 @@ class TCCountryIndex < Minitest::Test
         end
       end
     end
-    
+
     countries
   end
-  
+
   def dms_to_rational(sign, degrees, minutes, seconds = nil)
     result = degrees.to_i + Rational(minutes.to_i, 60)
     result += Rational(seconds.to_i, 3600) if seconds
@@ -68,14 +68,14 @@ class TCCountryIndex < Minitest::Test
     actual = TZInfo::Data::Indexes::Countries.countries
 
     assert_array_same_items(expected.keys.sort, actual.keys.sort)
-    
+
     expected.each do |code, expected_country|
       actual_country = actual[code]
-      
+
       assert_equal(code, actual_country.code)
       assert_equal(expected_country[:name], actual_country.name)
       assert_equal(expected_country[:zones].length, actual_country.zones.length)
-      
+
       expected_country[:zones].zip(actual_country.zones).each do |expected_zone, actual_zone|
         assert_equal(expected_zone[:zone_identifier], actual_zone.identifier)
         assert_equal(expected_zone[:latitude], actual_zone.latitude)
