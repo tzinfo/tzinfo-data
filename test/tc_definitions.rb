@@ -39,7 +39,7 @@ class TCDefinitions < Minitest::Test
 
   def resolve_ambiguity(periods, identifier, tzi_period)
     # Attempt to resolve by just the identifier.
-    result = periods.select {|period| period.zone_identifier == identifier}
+    result = periods.select {|period| period.zone_identifier.to_s == identifier}
 
     if result.length > 1
       # No observable difference. Resolve by finding the actual period
@@ -55,25 +55,36 @@ class TCDefinitions < Minitest::Test
       assert_nothing_raised("Exception raised processing line:\n#{line}") do
         utc = yield $1
         local = yield $2
-        identifier = $3.to_sym
+        identifier = $3
         is_dst = $4 == '1'
 
         if utc && local
           tzi_local = zone.utc_to_local(utc)
           tzi_period = zone.period_for_utc(utc)
-          tzi_identifier = tzi_period.zone_identifier
+          tzi_identifier = tzi_period.zone_identifier.to_s
           tzi_is_dst = tzi_period.dst?
+
+          # TZInfo v2 returns times with a local offset, TZInfo v1 doesn't. For
+          # now, compare just the date and time, by removing the offset.
+          # Eventually this will be changed to check the offset is correct.
+          if tzi_local.respond_to?(:offset) && tzi_local.offset != 0 && tzi_local.respond_to?(:new_offset)
+            # DateTime
+            tzi_local = tzi_local.new_offset(0) + tzi_local.offset
+          elsif tzi_local.respond_to?(:utc_offset) && tzi_local.utc_offset != 0 && tzi_local.respond_to?(:getutc)
+            # Time
+            tzi_local = tzi_local.getutc + tzi_local.utc_offset
+          end
 
           msg_zdump  = "zdump:         #{zone.identifier} #{utc} UTC #{local} #{identifier} is_dst=#{is_dst ? '1' : '0'}"
           msg_tzinfo = "tzinfo (u->l): #{zone.identifier} #{utc} UTC #{tzi_local} #{tzi_identifier} is_dst=#{tzi_is_dst ? '1' : '0'}"
           message = "#{msg_zdump}\n#{msg_tzinfo}"
 
           assert_equal(local, tzi_local, "Local times don't match:\n#{message}")
-          assert_equal(identifier, tzi_identifier, "Identifiers don't match:\n#{message}")
+          assert_equal(identifier, tzi_identifier, "Identifiers don't match:\n#{message}\n#")
           assert_equal(is_dst, tzi_is_dst, "DST flag doesn't match:\n#{message}")
 
           tzi_utc = zone.local_to_utc(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}
-          tzi_local_identifier = (zone.period_for_local(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}).zone_identifier
+          tzi_local_identifier = (zone.period_for_local(local, is_dst) {|periods| resolve_ambiguity(periods, identifier, tzi_period)}).zone_identifier.to_s
 
           msg_zdump  = "zdump:         #{zone.identifier} #{utc} UTC #{local} #{identifier}"
           msg_tzinfo = "tzinfo (l->u): #{zone.identifier} #{tzi_utc} UTC #{local} #{tzi_local_identifier}"

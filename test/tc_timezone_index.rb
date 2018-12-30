@@ -25,8 +25,11 @@ class TCTimezoneIndex < Minitest::Test
     result.sort
   end
 
-  def test_timezones
-    assert_array_same_items(get_zones(true, true), TZInfo::Data::Indexes::Timezones.timezones)
+  # TZInfo v2 removed the timezones method.
+  if TZInfo::Data::Indexes::Timezones.respond_to?(:timezones)
+    def test_timezones
+      assert_array_same_items(get_zones(true, true), TZInfo::Data::Indexes::Timezones.timezones)
+    end
   end
 
   def test_data_timezones
