@@ -36,4 +36,18 @@ module Kernel
       File.open(file_name, mode, opts, &block)
     end
   end
+
+  def get_env(name)
+    result = ENV[name]
+    raise "The #{name} environment variable is not set" unless result
+    result
+  end
+
+  [:tzdata, :zdump, :zic].each do |name|
+    env_name = name.to_s.upcase
+
+    define_method("#{name}_path") do
+      get_env(env_name)
+    end
+  end
 end

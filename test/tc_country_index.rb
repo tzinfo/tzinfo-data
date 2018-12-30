@@ -2,13 +2,13 @@ require File.join(File.expand_path(File.dirname(__FILE__)), 'test_utils')
 require 'tzinfo/data/indexes/countries'
 
 class TCCountryIndex < Minitest::Test
-  DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
-
   def countries
+    data_dir = tzdata_path
+
     primary_zones = {}
     secondary_zones = {}
 
-    open_file(File.join(DATA_DIR, 'zone1970.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
+    open_file(File.join(data_dir, 'zone1970.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
       file.each_line do |line|
         line.chomp!
 
@@ -40,7 +40,7 @@ class TCCountryIndex < Minitest::Test
 
     countries = {}
 
-    open_file(File.join(DATA_DIR, 'iso3166.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
+    open_file(File.join(data_dir, 'iso3166.tab'), 'r', :external_encoding => 'UTF-8', :internal_encoding => 'UTF-8') do |file|
       file.each_line do |line|
         line.chomp!
 

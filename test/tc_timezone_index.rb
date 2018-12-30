@@ -2,11 +2,10 @@ require File.join(File.expand_path(File.dirname(__FILE__)), 'test_utils')
 require 'tzinfo/data/indexes/timezones'
 
 class TCTimezoneIndex < Minitest::Test
-  DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
-
   def data_files
-    files = Dir.entries(DATA_DIR).select {|name| name =~ /\A[^\.]+\z/ && !%w(backzone leapseconds).include?(name) }
-    files.collect {|name| File.join(DATA_DIR, name)}
+    data_dir = tzdata_path
+    files = Dir.entries(data_dir).select {|name| name =~ /\A[^\.]+\z/ && !%w(backzone leapseconds).include?(name) }
+    files.collect {|name| File.join(data_dir, name)}
   end
 
   def get_zones(data, linked)

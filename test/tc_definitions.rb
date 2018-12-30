@@ -4,20 +4,20 @@ require 'tmpdir'
 
 class TCDefinitions < Minitest::Test
 
-  DATA_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', 'data'))
-
   def data_files
-    files = Dir.entries(DATA_DIR).select do |name|
+    data_dir = tzdata_path
+
+    files = Dir.entries(data_dir).select do |name|
       name =~ /\A[^\.]+\z/ &&
         !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
-        File.file?(File.join(DATA_DIR, name))
+        File.file?(File.join(data_dir, name))
     end
 
-    files.collect {|name| File.join(DATA_DIR, name)}
+    files.collect {|name| File.join(data_dir, name)}
   end
 
   def compile_data(dest_dir)
-    unless system('zic', '-d', dest_dir, *data_files)
+    unless system(zic_path, '-d', dest_dir, *data_files)
       raise 'Could not execute zic'
     end
   end
@@ -124,6 +124,8 @@ class TCDefinitions < Minitest::Test
   end
 
   def test_all
+    zdump = zdump_path
+
     # 50 years of future transitions are generated. Assume that the year from
     # the tzdata version is the year the TZInfo::Data modules were generated.
     max_year = TZInfo::Data::Version::TZDATA.to_i + 50
@@ -141,7 +143,7 @@ class TCDefinitions < Minitest::Test
           # that can be understood
           ENV['LANG'] = 'C'
 
-          IO.popen("zdump -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
+          IO.popen("'#{zdump}' -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
             io.each_line do |line|
               line.chomp!
               check_zdump_line(zone, line) {|s| parse_as_datetime(s)}

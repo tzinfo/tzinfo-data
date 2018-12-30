@@ -1,4 +1,5 @@
 doc
 Gemfile.lock
 pkg
+tzdb
 .yardoc
