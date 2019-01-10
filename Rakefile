@@ -179,9 +179,15 @@ namespace :env do
 
   [:zdump, :zic].each do |exe|
     env_name = exe.to_s.upcase
-    if ENV[env_name]
+    path = ENV[env_name]
+    if path
       task exe do
-        puts "The #{env_name} environment variable is set. Using #{exe} from: #{File.absolute_path(ENV[env_name])}"
+        puts "The #{env_name} environment variable is set. Using #{exe} from: #{File.absolute_path(path)}"
+        version = `#{path} --version`
+        unless version =~ Regexp.new("\\b#{Regexp.escape(tzdb_version)}\\b")
+          puts "Warning: The version of #{exe} specified by #{env_name} does not match the tzdata version (#{tzdb_version})."
+          puts "The reported #{exe} version is: #{version}"
+        end
       end
     else
       task exe => tzdb_exe_path(exe) do
