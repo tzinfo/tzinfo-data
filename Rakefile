@@ -51,6 +51,18 @@ class << self
     send("tzdb_#{ext}_name", type, options)
   end
 
+  [:bin, :combined, :zoneinfo].each do |t|
+    name = t.to_s
+
+    define_method("tzdb_#{name}_name") do |*args|
+      tzdb_name(name, args.first || {})
+    end
+
+    define_method("tzdb_#{name}_path") do |*args|
+      tzdb_path(send("tzdb_#{name}_name", args.first || {}))
+    end
+  end
+
   def tzdb_combined_name(options = {})
     tzdb_name('combined', options)
   end
@@ -77,12 +89,6 @@ class << self
 
   def tzdb_ext_path(ext, type, options = {})
     send("tzdb_#{ext}_path", type, options)
-  end
-
-  [:combined, :bin].each do |t|
-    define_method("tzdb_#{t}_path") do |*args|
-      tzdb_path(send("tzdb_#{t}_name", args.first || {}))
-    end
   end
 
   def tzdb_exe_path(exe)
@@ -167,37 +173,38 @@ def recurse_chmod(dir)
 end
 
 namespace :env do
-  if ENV['TZDATA']
-    task :tzdata do
-      puts "The TZDATA environment variable is set. Using tzdata files from: #{File.absolute_path(ENV['TZDATA'])}"
-    end
-  else
-    task :tzdata => tzdb_data_dir_path do
-      ENV['TZDATA'] = tzdb_data_dir_path
+  [[:tzdata, :data], [:zoneinfo, :zoneinfo]].each do |env, dir|
+    env_name = env.to_s.upcase
+    path = ENV[env_name]
+    if path
+      task env do
+        puts "The #{env_name} environment variable is set. Using #{env} files from: #{File.absolute_path(path)}"
+      end
+    else
+      task env => tzdb_dir_path(dir) do
+        ENV[env_name] = tzdb_dir_path(dir)
+      end
     end
   end
 
-  [:zdump, :zic].each do |exe|
-    env_name = exe.to_s.upcase
-    path = ENV[env_name]
-    if path
-      task exe do
-        puts "The #{env_name} environment variable is set. Using #{exe} from: #{File.absolute_path(path)}"
-        version = `#{path} --version`
-        unless version =~ Regexp.new("\\b#{Regexp.escape(tzdb_version)}\\b")
-          puts "Warning: The version of #{exe} specified by #{env_name} does not match the tzdata version (#{tzdb_version})."
-          puts "The reported #{exe} version is: #{version}"
-        end
+  if ENV['ZDUMP']
+    task :zdump do
+      path = ENV['ZDUMP']
+      puts "The ZDUMP environment variable is set. Using zdump from: #{File.absolute_path(path)}"
+      version = `#{path} --version`
+      unless version =~ Regexp.new("\\b#{Regexp.escape(tzdb_version)}\\b")
+        puts "Warning: The version of zdump specified by ZDUMP does not match the tzdata version (#{tzdb_version})."
+        puts "The reported zdump version is: #{version}"
       end
-    else
-      task exe => tzdb_exe_path(exe) do
-        ENV[env_name] = tzdb_exe_path(exe)
-      end
+    end
+  else
+    task :zdump => tzdb_exe_path(:zdump) do
+      ENV['ZDUMP'] = tzdb_exe_path(:zdump)
     end
   end
 end
 
-Rake::TestTask.new(:test => ['env:tzdata', 'env:zdump', 'env:zic']) do |t|
+Rake::TestTask.new(:test => ['env:tzdata', 'env:zdump', 'env:zoneinfo']) do |t|
   require 'tzinfo'
 
   t.libs = ['lib']
@@ -477,6 +484,22 @@ directory tzdb_bin_path => tzdb_path
   end
 end
 
+file_create tzdb_zoneinfo_path => [tzdb_path, tzdb_data_dir_path, tzdb_exe_path(:zic)] do
+  tmp_path = tzdb_zoneinfo_path(:temp => true)
+  rm_rf(tmp_path)
+  mkdir_p(tmp_path)
+
+  data_path = tzdb_data_dir_path
+  files = Dir.entries(data_path).select do |name|
+    name =~ /\A[^\.]+\z/ &&
+      !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
+      File.file?(File.join(data_path, name))
+  end
+
+  sh("#{tzdb_exe_path(:zic)} -d \"#{tmp_path}\" #{files.map {|f| "\"#{File.join(data_path, f)}\""}.join(' ')}")
+  mv(tmp_path, tzdb_zoneinfo_path)
+end
+
 namespace :tzdb do
   [:download, :extract].each do |task_name|
     desc "#{task_name.to_s.capitalize}s the tzcode and tzdata releases (version #{tzdb_version})"
@@ -492,6 +515,9 @@ namespace :tzdb do
       task exe => tzdb_exe_path(exe)
     end
   end
+
+  desc "Builds zoneinfo files (version #{tzdb_version})"
+  task :zoneinfo => tzdb_zoneinfo_path
 
   desc "Removes all Time Zone Database files"
   task :clean do

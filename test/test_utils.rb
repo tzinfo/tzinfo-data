@@ -43,7 +43,7 @@ module Kernel
     result
   end
 
-  [:tzdata, :zdump, :zic].each do |name|
+  [:tzdata, :zdump, :zoneinfo].each do |name|
     env_name = name.to_s.upcase
 
     define_method("#{name}_path") do

@@ -4,38 +4,95 @@ require 'tmpdir'
 
 class TCDefinitions < Minitest::Test
 
-  def data_files
-    data_dir = tzdata_path
+  class << self
+    private
 
-    files = Dir.entries(data_dir).select do |name|
-      name =~ /\A[^\.]+\z/ &&
-        !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
-        File.file?(File.join(data_dir, name))
+    def enum_timezones(base_dir, dir = nil, &block)
+      Dir.foreach(dir ? File.join(base_dir, dir) : base_dir) do |entry|
+        unless entry =~ /\A\./
+          path = dir ? File.join(dir, entry) : entry
+          full_path = File.join(base_dir, path)
+
+          if File.directory?(full_path)
+            enum_timezones(base_dir, path, &block)
+          else
+            yield path
+          end
+        end
+      end
     end
 
-    files.collect {|name| File.join(data_dir, name)}
-  end
+    def data_files
+      data_dir = tzdata_path
 
-  def compile_data(dest_dir)
-    unless system(zic_path, '-d', dest_dir, *data_files)
-      raise 'Could not execute zic'
+      files = Dir.entries(data_dir).select do |name|
+        name =~ /\A[^\.]+\z/ &&
+          !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
+          File.file?(File.join(data_dir, name))
+      end
+
+      files.collect {|name| File.join(data_dir, name)}
     end
   end
 
-  def enum_timezones(base_dir, dir, exclude = [], &block)
-    Dir.foreach(dir ? File.join(base_dir, dir) : base_dir) do |entry|
-      unless entry =~ /\./ || exclude.include?(entry)
-        path = dir ? File.join(dir, entry) : entry
-        full_path = File.join(base_dir, path)
+  enum_timezones(zoneinfo_path) do |identifier|
+    define_method("test_#{identifier}") do
+      # 50 years of future transitions are generated. Assume that the year from
+      # the tzdata version is the year the TZInfo::Data modules were generated.
+      max_year = TZInfo::Data::Version::TZDATA.to_i + 50
 
-        if File.directory?(full_path)
-          enum_timezones(base_dir, path, &block)
-        else
-          yield path
+      zone = TZInfo::Timezone.get(identifier)
+      assert_equal(identifier, zone.identifier)
+
+      old_lang = ENV['LANG']
+      begin
+        # Use standard C locale to ensure that zdump outputs dates in a format
+        # that can be understood
+        ENV['LANG'] = 'C'
+
+        zdump_cmdline = "'#{zdump_path}' -c #{max_year} -v \"#{File.absolute_path(File.join(zoneinfo_path, identifier))}\""
+        IO.popen(zdump_cmdline) do |io|
+          io.each_line do |line|
+            line.chomp!
+            check_zdump_line(zone, line) {|s| parse_as_datetime(s)}
+            check_zdump_line(zone, line) {|s| parse_as_time(s)}
+          end
+        end
+
+        raise "Failed to execute #{zdump_cmdline}" unless $? == 0
+      ensure
+        ENV['LANG'] = old_lang
+      end
+    end
+  end
+
+  data_files.each do |data_file|
+    File.open(data_file, 'r') do |file|
+      file.each do |line|
+        if line =~ /\AZone\s+([^\s]+)\s/
+          identifier = $1
+
+          define_method("test_#{identifier}_is_data") do
+            zone = TZInfo::Timezone.get(identifier)
+            assert_equal(identifier, zone.identifier)
+            assert_kind_of(TZInfo::DataTimezone, zone)
+          end
+        elsif line =~ /\ALink\s+([^\s]+)\s+([^\s]+)/
+          link_to_identifier = $1
+          identifier = $2
+
+          define_method("test_#{identifier}_is_link_to_#{link_to_identifier}") do
+            zone = TZInfo::Timezone.get(identifier)
+            assert_equal(identifier, zone.identifier)
+            assert_kind_of(TZInfo::LinkedTimezone, zone)
+            assert_equal(link_to_identifier, zone.send(:info).link_to_identifier)
+          end
         end
       end
     end
   end
+
+  private
 
   def resolve_ambiguity(periods, identifier, tzi_period)
     # Attempt to resolve by just the identifier.
@@ -120,59 +177,6 @@ class TCDefinitions < Minitest::Test
     rescue
       # Time doesn't support the full range required on all platforms.
       nil
-    end
-  end
-
-  def test_all
-    zdump = zdump_path
-
-    # 50 years of future transitions are generated. Assume that the year from
-    # the tzdata version is the year the TZInfo::Data modules were generated.
-    max_year = TZInfo::Data::Version::TZDATA.to_i + 50
-
-    Dir.mktmpdir('tzinfo-data-test') do |dir|
-      compile_data(dir)
-
-      enum_timezones(dir, nil, ['localtime', 'posix', 'posixrules', 'right']) do |identifier|
-        zone = TZInfo::Timezone.get(identifier)
-        assert_equal(identifier, zone.identifier)
-
-        old_lang = ENV['LANG']
-        begin
-          # Use standard C locale to ensure that zdump outputs dates in a format
-          # that can be understood
-          ENV['LANG'] = 'C'
-
-          IO.popen("'#{zdump}' -c #{max_year} -v \"#{File.join(dir, identifier)}\"") do |io|
-            io.each_line do |line|
-              line.chomp!
-              check_zdump_line(zone, line) {|s| parse_as_datetime(s)}
-              check_zdump_line(zone, line) {|s| parse_as_time(s)}
-            end
-          end
-        ensure
-          ENV['LANG'] = old_lang
-        end
-      end
-    end
-  end
-
-  def test_zone_types
-    data_files.each do |data_file|
-      File.open(data_file, 'r') do |file|
-        file.each do |line|
-          if line =~ /\AZone\s+([^\s]+)\s/
-            zone = TZInfo::Timezone.get($1)
-            assert_equal($1, zone.identifier)
-            assert_kind_of(TZInfo::DataTimezone, zone)
-          elsif line =~ /\ALink\s+([^\s]+)\s+([^\s]+)/
-            zone = TZInfo::Timezone.get($2)
-            assert_equal($2, zone.identifier)
-            assert_kind_of(TZInfo::LinkedTimezone, zone)
-            assert_equal($1, zone.send(:info).link_to_identifier)
-          end
-        end
-      end
     end
   end
 end
