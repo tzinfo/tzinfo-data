@@ -9,7 +9,7 @@ module TZInfo
       module UCT
         include TimezoneDefinition
         
-        linked_timezone 'UCT', 'Etc/UCT'
+        linked_timezone 'UCT', 'Etc/UTC'
       end
     end
   end
