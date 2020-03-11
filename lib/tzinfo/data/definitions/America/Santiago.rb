@@ -14,9 +14,9 @@ module TZInfo
             tz.offset :o0, -16966, 0, :LMT
             tz.offset :o1, -16966, 0, :SMT
             tz.offset :o2, -18000, 0, :'-05'
-            tz.offset :o3, -14400, 0, :'-04'
-            tz.offset :o4, -18000, 3600, :'-04'
-            tz.offset :o5, -14400, 3600, :'-03'
+            tz.offset :o3, -14400, 0, :'CLT'
+            tz.offset :o4, -18000, 3600, :'CLT'
+            tz.offset :o5, -14400, 3600, :'CLST'
             
             tz.transition 1890, 1, :o1, -2524504634, 104171127683, 43200
             tz.transition 1910, 1, :o2, -1892661434, 104487049283, 43200

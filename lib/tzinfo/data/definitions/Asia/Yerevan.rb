@@ -13,8 +13,8 @@ module TZInfo
           timezone 'Asia/Yerevan' do |tz|
             tz.offset :o0, 10680, 0, :LMT
             tz.offset :o1, 10800, 0, :'+03'
-            tz.offset :o2, 14400, 0, :'+04'
-            tz.offset :o3, 14400, 3600, :'+05'
+            tz.offset :o2, 14400, 0, :'AMT'
+            tz.offset :o3, 14400, 3600, :'AMST'
             tz.offset :o4, 10800, 3600, :'+04'
             
             tz.transition 1924, 5, :o1, -1441162680, 1745213311, 720

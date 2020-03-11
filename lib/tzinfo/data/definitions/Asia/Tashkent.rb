@@ -12,7 +12,7 @@ module TZInfo
           
           timezone 'Asia/Tashkent' do |tz|
             tz.offset :o0, 16631, 0, :LMT
-            tz.offset :o1, 18000, 0, :'+05'
+            tz.offset :o1, 18000, 0, :'UZT'
             tz.offset :o2, 21600, 0, :'+06'
             tz.offset :o3, 21600, 3600, :'+07'
             tz.offset :o4, 18000, 3600, :'+06'

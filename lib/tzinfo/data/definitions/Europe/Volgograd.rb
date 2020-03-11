@@ -12,10 +12,10 @@ module TZInfo
           
           timezone 'Europe/Volgograd' do |tz|
             tz.offset :o0, 10660, 0, :LMT
-            tz.offset :o1, 10800, 0, :'+03'
-            tz.offset :o2, 14400, 0, :'+04'
+            tz.offset :o1, 10800, 0, :'MSK'
+            tz.offset :o2, 14400, 0, :'VOLT'
             tz.offset :o3, 14400, 3600, :'+05'
-            tz.offset :o4, 10800, 3600, :'+04'
+            tz.offset :o4, 10800, 3600, :'MSD'
             
             tz.transition 1920, 1, :o1, -1577761060, 10464449947, 4320
             tz.transition 1930, 6, :o2, -1247540400, 19409187, 8

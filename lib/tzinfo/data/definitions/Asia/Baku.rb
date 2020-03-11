@@ -13,9 +13,9 @@ module TZInfo
           timezone 'Asia/Baku' do |tz|
             tz.offset :o0, 11964, 0, :LMT
             tz.offset :o1, 10800, 0, :'+03'
-            tz.offset :o2, 14400, 0, :'+04'
-            tz.offset :o3, 14400, 3600, :'+05'
-            tz.offset :o4, 10800, 3600, :'+04'
+            tz.offset :o2, 14400, 0, :'AZT'
+            tz.offset :o3, 14400, 3600, :'AZST'
+            tz.offset :o4, 10800, 3600, :'AZT'
             
             tz.transition 1924, 5, :o1, -1441163964, 17452133003, 7200
             tz.transition 1957, 2, :o2, -405140400, 19487187, 8

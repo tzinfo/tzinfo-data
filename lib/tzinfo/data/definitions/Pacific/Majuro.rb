@@ -15,7 +15,7 @@ module TZInfo
             tz.offset :o1, 39600, 0, :'+11'
             tz.offset :o2, 32400, 0, :'+09'
             tz.offset :o3, 36000, 0, :'+10'
-            tz.offset :o4, 43200, 0, :'+12'
+            tz.offset :o4, 43200, 0, :'MHT'
             
             tz.transition 1900, 12, :o1, -2177493888, 1086923261, 450
             tz.transition 1914, 9, :o2, -1743678000, 58089745, 24

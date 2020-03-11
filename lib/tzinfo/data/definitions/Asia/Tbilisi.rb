@@ -14,7 +14,7 @@ module TZInfo
             tz.offset :o0, 10751, 0, :LMT
             tz.offset :o1, 10751, 0, :TBMT
             tz.offset :o2, 10800, 0, :'+03'
-            tz.offset :o3, 14400, 0, :'+04'
+            tz.offset :o3, 14400, 0, :'GET'
             tz.offset :o4, 14400, 3600, :'+05'
             tz.offset :o5, 10800, 3600, :'+04'
             

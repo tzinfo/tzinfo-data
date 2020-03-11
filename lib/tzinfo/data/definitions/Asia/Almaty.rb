@@ -13,9 +13,9 @@ module TZInfo
           timezone 'Asia/Almaty' do |tz|
             tz.offset :o0, 18468, 0, :LMT
             tz.offset :o1, 18000, 0, :'+05'
-            tz.offset :o2, 21600, 0, :'+06'
-            tz.offset :o3, 21600, 3600, :'+07'
-            tz.offset :o4, 18000, 3600, :'+06'
+            tz.offset :o2, 21600, 0, :'ALMT'
+            tz.offset :o3, 21600, 3600, :'ALMST'
+            tz.offset :o4, 18000, 3600, :'ALMT'
             
             tz.transition 1924, 5, :o1, -1441170468, 1939125829, 800
             tz.transition 1930, 6, :o2, -1247547600, 58227559, 24

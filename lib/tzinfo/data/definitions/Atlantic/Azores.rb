@@ -16,8 +16,8 @@ module TZInfo
             tz.offset :o2, -7200, 0, :'-02'
             tz.offset :o3, -7200, 3600, :'-01'
             tz.offset :o4, -7200, 7200, :'+00'
-            tz.offset :o5, -3600, 0, :'-01'
-            tz.offset :o6, -3600, 3600, :'+00'
+            tz.offset :o5, -3600, 0, :'AZOT'
+            tz.offset :o6, -3600, 3600, :'AZOST'
             tz.offset :o7, 0, 0, :WET
             
             tz.transition 1884, 1, :o1, -2713904240, 2601910697, 1080

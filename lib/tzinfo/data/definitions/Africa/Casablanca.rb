@@ -12,10 +12,10 @@ module TZInfo
           
           timezone 'Africa/Casablanca' do |tz|
             tz.offset :o0, -1820, 0, :LMT
-            tz.offset :o1, 0, 0, :'+00'
-            tz.offset :o2, 0, 3600, :'+01'
-            tz.offset :o3, 3600, 0, :'+01'
-            tz.offset :o4, 3600, -3600, :'+00'
+            tz.offset :o1, 0, 0, :'WET'
+            tz.offset :o2, 0, 3600, :'CET'
+            tz.offset :o3, 3600, 0, :'CET'
+            tz.offset :o4, 3600, -3600, :'WET'
             
             tz.transition 1913, 10, :o1, -1773012580, 10454687371, 4320
             tz.transition 1939, 9, :o2, -956361600, 4859037, 2

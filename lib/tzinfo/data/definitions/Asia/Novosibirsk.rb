@@ -12,10 +12,10 @@ module TZInfo
           
           timezone 'Asia/Novosibirsk' do |tz|
             tz.offset :o0, 19900, 0, :LMT
-            tz.offset :o1, 21600, 0, :'+06'
-            tz.offset :o2, 25200, 0, :'+07'
-            tz.offset :o3, 25200, 3600, :'+08'
-            tz.offset :o4, 21600, 3600, :'+07'
+            tz.offset :o1, 21600, 0, :'NOVT'
+            tz.offset :o2, 25200, 0, :'NOVT'
+            tz.offset :o3, 25200, 3600, :'NOVST'
+            tz.offset :o4, 21600, 3600, :'NOVST'
             
             tz.transition 1919, 12, :o1, -1579476700, 2092872833, 864
             tz.transition 1930, 6, :o2, -1247551200, 9704593, 4

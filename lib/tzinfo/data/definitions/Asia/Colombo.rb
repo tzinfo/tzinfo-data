@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Colombo' do |tz|
             tz.offset :o0, 19164, 0, :LMT
             tz.offset :o1, 19172, 0, :MMT
-            tz.offset :o2, 19800, 0, :'+0530'
+            tz.offset :o2, 19800, 0, :'SLST'
             tz.offset :o3, 19800, 1800, :'+06'
             tz.offset :o4, 19800, 3600, :'+0630'
             tz.offset :o5, 23400, 0, :'+0630'

@@ -13,8 +13,8 @@ module TZInfo
           timezone 'Asia/Ulaanbaatar' do |tz|
             tz.offset :o0, 25652, 0, :LMT
             tz.offset :o1, 25200, 0, :'+07'
-            tz.offset :o2, 28800, 0, :'+08'
-            tz.offset :o3, 28800, 3600, :'+09'
+            tz.offset :o2, 28800, 0, :'ULAT'
+            tz.offset :o3, 28800, 3600, :'ULAST'
             
             tz.transition 1905, 7, :o1, -2032931252, 52208457187, 21600
             tz.transition 1977, 12, :o2, 252435600

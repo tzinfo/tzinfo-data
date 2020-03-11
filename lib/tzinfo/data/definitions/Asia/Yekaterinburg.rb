@@ -13,11 +13,11 @@ module TZInfo
           timezone 'Asia/Yekaterinburg' do |tz|
             tz.offset :o0, 14553, 0, :LMT
             tz.offset :o1, 13505, 0, :PMT
-            tz.offset :o2, 14400, 0, :'+04'
-            tz.offset :o3, 18000, 0, :'+05'
-            tz.offset :o4, 18000, 3600, :'+06'
-            tz.offset :o5, 14400, 3600, :'+05'
-            tz.offset :o6, 21600, 0, :'+06'
+            tz.offset :o2, 14400, 0, :'SVET'
+            tz.offset :o3, 18000, 0, :'YEKT'
+            tz.offset :o4, 18000, 3600, :'YEKST'
+            tz.offset :o5, 14400, 3600, :'SVEST'
+            tz.offset :o6, 21600, 0, :'YEKT'
             
             tz.transition 1916, 7, :o1, -1688270553, 7747351461, 3200
             tz.transition 1919, 7, :o2, -1592610305, 41854829939, 17280

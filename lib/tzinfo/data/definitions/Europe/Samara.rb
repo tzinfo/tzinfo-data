@@ -12,10 +12,10 @@ module TZInfo
           
           timezone 'Europe/Samara' do |tz|
             tz.offset :o0, 12020, 0, :LMT
-            tz.offset :o1, 10800, 0, :'+03'
-            tz.offset :o2, 14400, 0, :'+04'
-            tz.offset :o3, 14400, 3600, :'+05'
-            tz.offset :o4, 10800, 3600, :'+04'
+            tz.offset :o1, 10800, 0, :'SAMT'
+            tz.offset :o2, 14400, 0, :'SAMT'
+            tz.offset :o3, 14400, 3600, :'SAMST'
+            tz.offset :o4, 10800, 3600, :'SAMST'
             tz.offset :o5, 7200, 3600, :'+03'
             
             tz.transition 1919, 7, :o1, -1593820800, 4844281, 2

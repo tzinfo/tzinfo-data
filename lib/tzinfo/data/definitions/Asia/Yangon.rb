@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Yangon' do |tz|
             tz.offset :o0, 23087, 0, :LMT
             tz.offset :o1, 23087, 0, :RMT
-            tz.offset :o2, 23400, 0, :'+0630'
+            tz.offset :o2, 23400, 0, :'MMT'
             tz.offset :o3, 32400, 0, :'+09'
             
             tz.transition 1879, 12, :o1, -2840163887, 208026596113, 86400

@@ -17,8 +17,8 @@ module TZInfo
             tz.offset :o3, -12600, 1800, :'-03'
             tz.offset :o4, -12600, 0, :'-0330'
             tz.offset :o5, -10800, 1800, :'-0230'
-            tz.offset :o6, -10800, 0, :'-03'
-            tz.offset :o7, -10800, 3600, :'-02'
+            tz.offset :o6, -10800, 0, :'UYT'
+            tz.offset :o7, -10800, 3600, :'UYST'
             tz.offset :o8, -10800, 5400, :'-0130'
             
             tz.transition 1908, 6, :o1, -1942690509, 23213785499, 9600
