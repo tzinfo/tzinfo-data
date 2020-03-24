@@ -31,10 +31,19 @@ module Kernel
     def open_file(file_name, mode, opts, &block)
       File.open(file_name, mode, &block)
     end
-  else
+  elsif RUBY_VERSION =~ /\A1\.9\./
     def open_file(file_name, mode, opts, &block)
       File.open(file_name, mode, opts, &block)
     end
+  else
+    # Evaluate method as a string because **opts isn't valid syntax prior to
+    # Ruby 2.0.
+    eval(<<-EOF
+      def open_file(file_name, mode, opts, &block)
+        File.open(file_name, mode, **opts, &block)
+      end
+    EOF
+    )
   end
 
   def get_env(name)
