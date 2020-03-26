@@ -1,7 +1,7 @@
 TZInfo::Data - Timezone Data for TZInfo
 =======================================
 
-[![Gem Version](https://badge.fury.io/rb/tzinfo-data.svg)](https://badge.fury.io/rb/tzinfo-data)
+[![RubyGems](https://img.shields.io/gem/v/tzinfo-data)](https://rubygems.org/gems/tzinfo-data)
 
 TZInfo::Data is the public domain [IANA Time Zone Database](https://www.iana.org/time-zones)
 packaged as a set of Ruby modules for use with [TZInfo](https://tzinfo.github.io).
