@@ -366,7 +366,7 @@ module TZInfo
             file.puts('# encoding: UTF-8')
             file.puts('')
             file.puts('# This file contains data derived from the IANA Time Zone Database')
-            file.puts('# (http://www.iana.org/time-zones).')
+            file.puts('# (https://www.iana.org/time-zones).')
             file.puts('')
 
             file.puts('module TZInfo')
@@ -395,7 +395,7 @@ module TZInfo
             file.puts('# encoding: UTF-8')
             file.puts('')
             file.puts('# This file contains data derived from the IANA Time Zone Database')
-            file.puts('# (http://www.iana.org/time-zones).')
+            file.puts('# (https://www.iana.org/time-zones).')
             file.puts('')
 
             file.puts('module TZInfo')
@@ -605,7 +605,7 @@ module TZInfo
           file.puts('# encoding: UTF-8')
           file.puts('')
           file.puts('# This file contains data derived from the IANA Time Zone Database')
-          file.puts('# (http://www.iana.org/time-zones).')
+          file.puts('# (https://www.iana.org/time-zones).')
           file.puts('')
           file.puts('module TZInfo')
           file.indent(2)
