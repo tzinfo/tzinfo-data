@@ -12,7 +12,7 @@ module TZInfo
       # TZInfo::Data version number.
       STRING = VERSION
 
-      # The version of the {IANA Time Zone Database}[http://www.iana.org/time-zones]
+      # The version of the {IANA Time Zone Database}[https://www.iana.org/time-zones]
       # used to generate this version of TZInfo::Data.
       TZDATA = '2019c'
     end
