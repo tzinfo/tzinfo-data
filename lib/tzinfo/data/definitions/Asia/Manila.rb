@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Manila' do |tz|
             tz.offset :o0, -57360, 0, :LMT
             tz.offset :o1, 29040, 0, :LMT
-            tz.offset :o2, 28800, 0, :PST
+            tz.offset :o2, 28800, 0, :PHT
             tz.offset :o3, 28800, 3600, :PDT
             tz.offset :o4, 32400, 0, :JST
             
