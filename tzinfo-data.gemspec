@@ -1,4 +1,8 @@
-tzinfo_data_version_file = File.join(File.expand_path(File.dirname(__FILE__)), 'lib', 'tzinfo', 'data', 'version.rb').untaint
+tzinfo_data_version_file = File.join(File.expand_path(File.dirname(__FILE__)), 'lib', 'tzinfo', 'data', 'version.rb')
+
+if tzinfo_data_version_file.respond_to?(:untaint) && RUBY_VERSION =~ /\A(\d+)\.(\d+)(?:\.|\z)/ && ($1 == '2' && $2.to_i < 7 || $1.to_i <= 1)
+  tzinfo_data_version_file.untaint
+end
 
 tzinfo_data_version = File.open(tzinfo_data_version_file, RUBY_VERSION =~ /\A1\.[0-8]\./ ? 'r' : 'r:utf-8') do |file|
   file.readlines.grep(/\s*VERSION\s*=\s*['"](\d+(\.\d+){2})['"]/) { $1 }.first
