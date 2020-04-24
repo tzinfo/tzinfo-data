@@ -415,7 +415,7 @@ directory tzdb_path => TZDB_DIR
       attempt = 1
       begin
         puts "Downloading #{url}"
-        open(url) do |http|
+        URI.open(url) do |http|
           File.open(temp_path, 'wb') do |temp_file|
             copy_stream(http, temp_file)
           end
