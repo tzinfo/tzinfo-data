@@ -359,7 +359,7 @@ module TZInfo
         timezone 'Australia/Brisbane'
         timezone 'Australia/Broken_Hill'
         linked_timezone 'Australia/Canberra'
-        timezone 'Australia/Currie'
+        linked_timezone 'Australia/Currie'
         timezone 'Australia/Darwin'
         timezone 'Australia/Eucla'
         timezone 'Australia/Hobart'
