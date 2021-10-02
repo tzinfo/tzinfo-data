@@ -32,7 +32,7 @@ class TCDefinitions < Minitest::Test
 
       files = Dir.entries(data_dir).select do |name|
         name =~ /\A[^\.]+\z/ &&
-          !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
+          !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SECURITY SOURCE Theory version).include?(name) &&
           File.file?(File.join(data_dir, name))
       end
 

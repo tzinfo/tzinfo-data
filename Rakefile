@@ -492,7 +492,7 @@ file_create tzdb_zoneinfo_path => [tzdb_path, tzdb_data_dir_path, tzdb_exe_path(
   data_path = tzdb_data_dir_path
   files = Dir.entries(data_path).select do |name|
     name =~ /\A[^\.]+\z/ &&
-      !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
+      !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SECURITY SOURCE Theory version).include?(name) &&
       File.file?(File.join(data_path, name))
   end
 
