@@ -13,7 +13,7 @@ module TZInfo
           timezone 'America/Guayaquil' do |tz|
             tz.offset :o0, -19160, 0, :LMT
             tz.offset :o1, -18840, 0, :QMT
-            tz.offset :o2, -18000, 0, :'-05'
+            tz.offset :o2, -18000, 0, :ECT
             tz.offset :o3, -18000, 3600, :'-04'
             
             tz.transition 1890, 1, :o1, -2524502440, 5208556439, 2160
