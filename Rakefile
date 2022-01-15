@@ -467,7 +467,7 @@ file_create tzdb_combined_path => [tzdb_path, tzdb_dir_path('code'), tzdb_dir_pa
     Dir.entries(src_dir).each do |entry|
       if entry != '.' && entry != '..'
         dest_path = File.join(tmp_path, entry)
-        ln(File.join(src_dir, entry), dest_path) unless File.exists?(dest_path)
+        ln(File.join(src_dir, entry), dest_path) unless File.exist?(dest_path)
       end
     end
   end
