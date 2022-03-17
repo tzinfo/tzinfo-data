@@ -178,7 +178,7 @@ class TCDefinitions < Minitest::Test
         end
       end
     else
-      assert_match(/\s=\sNULL\z/, line, "Unexpected zdump format")
+      assert_match(/(?:-?\d+\s\(gmtime failed\)\s=\s|\s=\s(?:NULL|-?\d+\s\(localtime failed\))\z)/, line, 'Unexpected zdump format')
     end
   end
 
