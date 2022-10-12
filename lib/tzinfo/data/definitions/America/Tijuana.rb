@@ -18,7 +18,7 @@ module TZInfo
             tz.offset :o4, -28800, 3600, :PWT
             tz.offset :o5, -28800, 3600, :PPT
             
-            tz.transition 1922, 1, :o1, -1514736000, 14538335, 6
+            tz.transition 1922, 1, :o1, -1514739600, 58153339, 24
             tz.transition 1924, 1, :o2, -1451667600, 58170859, 24
             tz.transition 1927, 6, :o1, -1343062800, 58201027, 24
             tz.transition 1930, 11, :o2, -1234803600, 58231099, 24
