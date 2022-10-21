@@ -54,12 +54,12 @@ jobs:
       - run: bundle --version
       - id: determine_tzdata_version
         name: Determine tzdata version
-        run: echo "::set-output name=tzdata_version::`ruby -r bundler/setup -r tzinfo/data -e 'puts TZInfo::Data::Version::TZDATA'`"
+        run: echo "tzdata_version=`ruby -r bundler/setup -r tzinfo/data -e 'puts TZInfo::Data::Version::TZDATA'`" >> $GITHUB_OUTPUT
       - id: determine_os_version
         name: Determine OS version
         run: |
-          echo "::set-output name=os::`lsb_release -si`"
-          echo "::set-output name=os_version::`lsb_release -sr`"
+          echo "os=`lsb_release -si`" >> $GITHUB_OUTPUT
+          echo "os_version=`lsb_release -sr`" >> $GITHUB_OUTPUT
       - name: Cache tzdb
         uses: actions/cache@v3
         with:
