@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -9,7 +9,7 @@ module TZInfo
       module Iceland
         include TimezoneDefinition
         
-        linked_timezone 'Iceland', 'Atlantic/Reykjavik'
+        linked_timezone 'Iceland', 'Africa/Abidjan'
       end
     end
   end

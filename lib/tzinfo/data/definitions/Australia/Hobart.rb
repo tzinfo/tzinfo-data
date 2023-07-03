@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -17,13 +17,17 @@ module TZInfo
             
             tz.transition 1895, 8, :o1, -2345795356, 52130241161, 21600
             tz.transition 1916, 9, :o2, -1680508800, 14526823, 6
-            tz.transition 1917, 3, :o1, -1665392400, 19370497, 8
+            tz.transition 1917, 3, :o1, -1665388800, 14527873, 6
+            tz.transition 1917, 10, :o2, -1646640000, 14529175, 6
+            tz.transition 1918, 3, :o1, -1635753600, 14529931, 6
+            tz.transition 1918, 10, :o2, -1615190400, 14531359, 6
+            tz.transition 1919, 3, :o1, -1604304000, 14532115, 6
             tz.transition 1941, 12, :o2, -883641600, 14582161, 6
-            tz.transition 1942, 3, :o1, -876128400, 19443577, 8
+            tz.transition 1942, 3, :o1, -876124800, 14582683, 6
             tz.transition 1942, 9, :o2, -860400000, 14583775, 6
-            tz.transition 1943, 3, :o1, -844678800, 19446489, 8
+            tz.transition 1943, 3, :o1, -844675200, 14584867, 6
             tz.transition 1943, 10, :o2, -828345600, 14586001, 6
-            tz.transition 1944, 3, :o1, -813229200, 19449401, 8
+            tz.transition 1944, 3, :o1, -813225600, 14587051, 6
             tz.transition 1967, 9, :o2, -71136000, 14638585, 6
             tz.transition 1968, 3, :o1, -55411200, 14639677, 6
             tz.transition 1968, 10, :o2, -37267200, 14640937, 6
@@ -228,6 +232,14 @@ module TZInfo
             tz.transition 2068, 3, :o1, 3100435200, 14858833, 6
             tz.transition 2068, 10, :o2, 3116764800, 14859967, 6
             tz.transition 2069, 4, :o1, 3132489600, 14861059, 6
+            tz.transition 2069, 10, :o2, 3148214400, 14862151, 6
+            tz.transition 2070, 4, :o1, 3163939200, 14863243, 6
+            tz.transition 2070, 10, :o2, 3179664000, 14864335, 6
+            tz.transition 2071, 4, :o1, 3195388800, 14865427, 6
+            tz.transition 2071, 10, :o2, 3211113600, 14866519, 6
+            tz.transition 2072, 4, :o1, 3226838400, 14867611, 6
+            tz.transition 2072, 10, :o2, 3242563200, 14868703, 6
+            tz.transition 2073, 4, :o1, 3258288000, 14869795, 6
           end
         end
       end

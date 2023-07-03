@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -10,7 +10,7 @@ module TZInfo
         module Longyearbyen
           include TimezoneDefinition
           
-          linked_timezone 'Arctic/Longyearbyen', 'Europe/Oslo'
+          linked_timezone 'Arctic/Longyearbyen', 'Europe/Berlin'
         end
       end
     end

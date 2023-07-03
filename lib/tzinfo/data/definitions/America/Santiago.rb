@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -11,19 +11,19 @@ module TZInfo
           include TimezoneDefinition
           
           timezone 'America/Santiago' do |tz|
-            tz.offset :o0, -16966, 0, :LMT
-            tz.offset :o1, -16966, 0, :SMT
+            tz.offset :o0, -16965, 0, :LMT
+            tz.offset :o1, -16965, 0, :SMT
             tz.offset :o2, -18000, 0, :'-05'
             tz.offset :o3, -14400, 0, :'CLT'
             tz.offset :o4, -18000, 3600, :'CLT'
             tz.offset :o5, -14400, 3600, :'CLST'
             
-            tz.transition 1890, 1, :o1, -2524504634, 104171127683, 43200
-            tz.transition 1910, 1, :o2, -1892661434, 104487049283, 43200
+            tz.transition 1890, 1, :o1, -2524504635, 4629827897, 1920
+            tz.transition 1910, 1, :o2, -1892661435, 4643868857, 1920
             tz.transition 1916, 7, :o1, -1688410800, 58105097, 24
-            tz.transition 1918, 9, :o3, -1619205434, 104623777283, 43200
+            tz.transition 1918, 9, :o3, -1619205435, 4649945657, 1920
             tz.transition 1919, 7, :o1, -1593806400, 7266422, 3
-            tz.transition 1927, 9, :o4, -1335986234, 104765386883, 43200
+            tz.transition 1927, 9, :o4, -1335986235, 4656239417, 1920
             tz.transition 1928, 4, :o2, -1317585600, 7276013, 3
             tz.transition 1928, 9, :o4, -1304362800, 58211777, 24
             tz.transition 1929, 4, :o2, -1286049600, 7277108, 3
@@ -37,7 +37,7 @@ module TZInfo
             tz.transition 1942, 6, :o2, -870552000, 7291535, 3
             tz.transition 1942, 8, :o3, -865278000, 58333745, 24
             tz.transition 1946, 7, :o5, -740520000, 7296050, 3
-            tz.transition 1946, 9, :o3, -736376400, 19456517, 8
+            tz.transition 1946, 8, :o4, -736635600, 19456493, 8
             tz.transition 1947, 4, :o2, -718056000, 7296830, 3
             tz.transition 1947, 5, :o3, -713649600, 7296983, 3
             tz.transition 1968, 11, :o5, -36619200, 7320491, 3
@@ -146,7 +146,7 @@ module TZInfo
             tz.transition 2021, 4, :o3, 1617505200
             tz.transition 2021, 9, :o5, 1630814400
             tz.transition 2022, 4, :o3, 1648954800
-            tz.transition 2022, 9, :o5, 1662264000
+            tz.transition 2022, 9, :o5, 1662868800
             tz.transition 2023, 4, :o3, 1680404400
             tz.transition 2023, 9, :o5, 1693713600
             tz.transition 2024, 4, :o3, 1712458800
@@ -240,6 +240,14 @@ module TZInfo
             tz.transition 2068, 4, :o3, 3101079600, 19811837, 8
             tz.transition 2068, 9, :o5, 3113784000, 7429880, 3
             tz.transition 2069, 4, :o3, 3132529200, 19814749, 8
+            tz.transition 2069, 9, :o5, 3145838400, 7430993, 3
+            tz.transition 2070, 4, :o3, 3163978800, 19817661, 8
+            tz.transition 2070, 9, :o5, 3177288000, 7432085, 3
+            tz.transition 2071, 4, :o3, 3195428400, 19820573, 8
+            tz.transition 2071, 9, :o5, 3208737600, 7433177, 3
+            tz.transition 2072, 4, :o3, 3226878000, 19823485, 8
+            tz.transition 2072, 9, :o5, 3240187200, 7434269, 3
+            tz.transition 2073, 4, :o3, 3258327600, 19826397, 8
           end
         end
       end

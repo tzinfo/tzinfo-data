@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -126,7 +126,7 @@ module TZInfo
             tz.transition 2021, 4, :o4, 1617505200
             tz.transition 2021, 9, :o5, 1630814400
             tz.transition 2022, 4, :o4, 1648954800
-            tz.transition 2022, 9, :o5, 1662264000
+            tz.transition 2022, 9, :o5, 1662868800
             tz.transition 2023, 4, :o4, 1680404400
             tz.transition 2023, 9, :o5, 1693713600
             tz.transition 2024, 4, :o4, 1712458800
@@ -220,6 +220,14 @@ module TZInfo
             tz.transition 2068, 4, :o4, 3101079600, 19811837, 8
             tz.transition 2068, 9, :o5, 3113784000, 7429880, 3
             tz.transition 2069, 4, :o4, 3132529200, 19814749, 8
+            tz.transition 2069, 9, :o5, 3145838400, 7430993, 3
+            tz.transition 2070, 4, :o4, 3163978800, 19817661, 8
+            tz.transition 2070, 9, :o5, 3177288000, 7432085, 3
+            tz.transition 2071, 4, :o4, 3195428400, 19820573, 8
+            tz.transition 2071, 9, :o5, 3208737600, 7433177, 3
+            tz.transition 2072, 4, :o4, 3226878000, 19823485, 8
+            tz.transition 2072, 9, :o5, 3240187200, 7434269, 3
+            tz.transition 2073, 4, :o4, 3258327600, 19826397, 8
           end
         end
       end

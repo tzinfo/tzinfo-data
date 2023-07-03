@@ -1,0 +1,73 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: ${{ matrix.ruby }} with TZInfo ${{ matrix.tzinfo }}${{ matrix.name_suffix }}
+    strategy:
+      matrix:
+        ruby: ['1.9.3', '3.2', jruby-9.0, jruby-9.4]
+        tzinfo: [v1, v2]
+        name_suffix: ['']
+        experimental: [false]
+        include:
+          - ruby: '3.2'
+            tzinfo: head
+            name_suffix: ' (experimental)'
+            experimental: true
+          - ruby: head
+            tzinfo: v1
+            name_suffix: ' (experimental)'
+            experimental: true
+          - ruby: jruby-head
+            tzinfo: v1
+            name_suffix: ' (experimental)'
+            experimental: true
+          - ruby: head
+            tzinfo: v2
+            name_suffix: ' (experimental)'
+            experimental: true
+          - ruby: jruby-head
+            tzinfo: v2
+            name_suffix: ' (experimental)'
+            experimental: true
+      fail-fast: false
+    runs-on: ubuntu-20.04
+    continue-on-error: ${{ matrix.experimental }}
+    env:
+      TZINFO_GEM: ${{ matrix.tzinfo }}
+    steps:
+      - uses: actions/checkout@v3
+      - if: startsWith(matrix.ruby, 'jruby-9.0')
+        uses: philr/setup-ruby@legacy-v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - if: ${{ !startsWith(matrix.ruby, 'jruby-9.0') }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: ruby --version
+      - run: gem --version
+      - run: bundle --version
+      - id: determine_tzdata_version
+        name: Determine tzdata version
+        run: echo "tzdata_version=`ruby -r bundler/setup -r tzinfo/data -e 'puts TZInfo::Data::Version::TZDATA'`" >> $GITHUB_OUTPUT
+      - id: determine_os_version
+        name: Determine OS version
+        run: |
+          echo "os=`lsb_release -si`" >> $GITHUB_OUTPUT
+          echo "os_version=`lsb_release -sr`" >> $GITHUB_OUTPUT
+      - name: Cache tzdb
+        uses: actions/cache@v3
+        with:
+          path: tzdb
+          key: tzdb-${{ steps.determine_os_version.outputs.os }}-${{ steps.determine_os_version.outputs.os_version }}-${{ steps.determine_tzdata_version.outputs.tzdata_version }}
+          restore-keys: |
+            tzdb-${{ steps.determine_os_version.outputs.os }}-${{ steps.determine_os_version.outputs.os_version }}-
+      - run: bundle exec rake test
+        env:
+          TESTOPTS: --verbose
+      - run: bundle exec rake tzdb:clean:other

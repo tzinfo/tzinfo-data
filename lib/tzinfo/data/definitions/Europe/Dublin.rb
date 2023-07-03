@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -11,7 +11,7 @@ module TZInfo
           include TimezoneDefinition
           
           timezone 'Europe/Dublin' do |tz|
-            tz.offset :o0, -1500, 0, :LMT
+            tz.offset :o0, -1521, 0, :LMT
             tz.offset :o1, -1521, 0, :DMT
             tz.offset :o2, -1521, 3600, :IST
             tz.offset :o3, 0, 0, :GMT
@@ -20,7 +20,7 @@ module TZInfo
             tz.offset :o6, 3600, 0, :IST
             tz.offset :o7, 3600, -3600, :GMT
             
-            tz.transition 1880, 8, :o1, -2821649700, 693483701, 288
+            tz.transition 1880, 8, :o1, -2821649679, 23116123369, 9600
             tz.transition 1916, 5, :o2, -1691962479, 7747214723, 3200
             tz.transition 1916, 10, :o3, -1680471279, 7747640323, 3200
             tz.transition 1917, 4, :o4, -1664143200, 29055919, 12
@@ -311,6 +311,14 @@ module TZInfo
             tz.transition 2068, 3, :o6, 3099862800, 59435173, 24
             tz.transition 2068, 10, :o7, 3118611600, 59440381, 24
             tz.transition 2069, 3, :o6, 3131917200, 59444077, 24
+            tz.transition 2069, 10, :o7, 3150061200, 59449117, 24
+            tz.transition 2070, 3, :o6, 3163366800, 59452813, 24
+            tz.transition 2070, 10, :o7, 3181510800, 59457853, 24
+            tz.transition 2071, 3, :o6, 3194816400, 59461549, 24
+            tz.transition 2071, 10, :o7, 3212960400, 59466589, 24
+            tz.transition 2072, 3, :o6, 3226266000, 59470285, 24
+            tz.transition 2072, 10, :o7, 3245014800, 59475493, 24
+            tz.transition 2073, 3, :o6, 3257715600, 59479021, 24
           end
         end
       end

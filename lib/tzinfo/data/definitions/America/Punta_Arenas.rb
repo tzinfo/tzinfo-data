@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # This file contains data derived from the IANA Time Zone Database
-# (http://www.iana.org/time-zones).
+# (https://www.iana.org/time-zones).
 
 module TZInfo
   module Data
@@ -12,7 +12,7 @@ module TZInfo
           
           timezone 'America/Punta_Arenas' do |tz|
             tz.offset :o0, -17020, 0, :LMT
-            tz.offset :o1, -16966, 0, :SMT
+            tz.offset :o1, -16965, 0, :SMT
             tz.offset :o2, -18000, 0, :'-05'
             tz.offset :o3, -14400, 0, :'-04'
             tz.offset :o4, -18000, 3600, :'-04'
@@ -20,11 +20,11 @@ module TZInfo
             tz.offset :o6, -10800, 0, :'-03'
             
             tz.transition 1890, 1, :o1, -2524504580, 10417112771, 4320
-            tz.transition 1910, 1, :o2, -1892661434, 104487049283, 43200
+            tz.transition 1910, 1, :o2, -1892661435, 4643868857, 1920
             tz.transition 1916, 7, :o1, -1688410800, 58105097, 24
-            tz.transition 1918, 9, :o3, -1619205434, 104623777283, 43200
+            tz.transition 1918, 9, :o3, -1619205435, 4649945657, 1920
             tz.transition 1919, 7, :o1, -1593806400, 7266422, 3
-            tz.transition 1927, 9, :o4, -1335986234, 104765386883, 43200
+            tz.transition 1927, 9, :o4, -1335986235, 4656239417, 1920
             tz.transition 1928, 4, :o2, -1317585600, 7276013, 3
             tz.transition 1928, 9, :o4, -1304362800, 58211777, 24
             tz.transition 1929, 4, :o2, -1286049600, 7277108, 3
@@ -37,6 +37,7 @@ module TZInfo
             tz.transition 1932, 9, :o3, -1178132400, 58246841, 24
             tz.transition 1942, 6, :o2, -870552000, 7291535, 3
             tz.transition 1942, 8, :o3, -865278000, 58333745, 24
+            tz.transition 1946, 8, :o4, -736632000, 7296185, 3
             tz.transition 1947, 4, :o2, -718056000, 7296830, 3
             tz.transition 1947, 5, :o3, -713649600, 7296983, 3
             tz.transition 1968, 11, :o5, -36619200, 7320491, 3

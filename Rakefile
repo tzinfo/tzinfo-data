@@ -415,7 +415,7 @@ directory tzdb_path => TZDB_DIR
       attempt = 1
       begin
         puts "Downloading #{url}"
-        open(url) do |http|
+        URI.parse(url).open do |http|
           File.open(temp_path, 'wb') do |temp_file|
             copy_stream(http, temp_file)
           end
@@ -467,7 +467,7 @@ file_create tzdb_combined_path => [tzdb_path, tzdb_dir_path('code'), tzdb_dir_pa
     Dir.entries(src_dir).each do |entry|
       if entry != '.' && entry != '..'
         dest_path = File.join(tmp_path, entry)
-        ln(File.join(src_dir, entry), dest_path) unless File.exists?(dest_path)
+        ln(File.join(src_dir, entry), dest_path) unless File.exist?(dest_path)
       end
     end
   end
@@ -492,7 +492,7 @@ file_create tzdb_zoneinfo_path => [tzdb_path, tzdb_data_dir_path, tzdb_exe_path(
   data_path = tzdb_data_dir_path
   files = Dir.entries(data_path).select do |name|
     name =~ /\A[^\.]+\z/ &&
-      !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SOURCE Theory version).include?(name) &&
+      !%w(backzone calendars leapseconds CONTRIBUTING LICENSE Makefile NEWS README SECURITY SOURCE Theory version).include?(name) &&
       File.file?(File.join(data_path, name))
   end
 
