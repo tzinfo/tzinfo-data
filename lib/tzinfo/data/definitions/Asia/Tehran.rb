@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Tehran' do |tz|
             tz.offset :o0, 12344, 0, :LMT
             tz.offset :o1, 12344, 0, :TMT
-            tz.offset :o2, 12600, 0, :'+0330'
+            tz.offset :o2, 12600, 0, :'IRST'
             tz.offset :o3, 12600, 3600, :'+0430'
             tz.offset :o4, 14400, 0, :'+04'
             tz.offset :o5, 14400, 3600, :'+05'
