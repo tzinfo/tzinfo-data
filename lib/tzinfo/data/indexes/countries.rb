@@ -819,7 +819,7 @@ module TZInfo
         country 'TO', 'Tonga' do |c|
           c.timezone 'Pacific/Tongatapu', -317, 15, -876, 5
         end
-        country 'TR', 'Turkey' do |c|
+        country 'TR', 'Türkiye' do |c|
           c.timezone 'Europe/Istanbul', 2461, 60, 869, 30
         end
         country 'TT', 'Trinidad & Tobago' do |c|

@@ -9,7 +9,7 @@ module TZInfo
       module Turkey
         include TimezoneDefinition
         
-        linked_timezone 'Turkey', 'Europe/Istanbul'
+        linked_timezone 'Türkiye', 'Europe/Istanbul'
       end
     end
   end
