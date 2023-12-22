@@ -16,6 +16,8 @@ LIB_DIR = File.join(BASE_DIR, 'lib')
 BUILD_TZ_MODULES_DIR = File.join(BASE_DIR, '.build_tz_modules')
 DATA_OUTPUT_DIR = File.join(BASE_DIR, 'lib', 'tzinfo', 'data')
 
+GEMSPEC_PATH = File.join(BASE_DIR, 'tzinfo-data.gemspec')
+
 TZDB_DIR = 'tzdb'
 TZDB_GPG_KEYRING = 'gpg.keyring'
 TZDB_GPG_KEYRING_PATH = File.join(TZDB_DIR, TZDB_GPG_KEYRING)
@@ -98,7 +100,7 @@ end
 
 task :default => [:test]
 
-spec = eval(File.read('tzinfo-data.gemspec'))
+spec = TOPLEVEL_BINDING.eval(File.read(GEMSPEC_PATH), GEMSPEC_PATH)
 
 class TZInfoPackageTask < Gem::PackageTask
   alias_method :orig_sh, :sh
