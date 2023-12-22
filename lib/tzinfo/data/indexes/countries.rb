@@ -13,16 +13,16 @@ module TZInfo
           c.timezone 'Europe/Andorra', 85, 2, 91, 60
         end
         country 'AE', 'United Arab Emirates' do |c|
-          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet, Scattered Is'
+          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet'
         end
         country 'AF', 'Afghanistan' do |c|
           c.timezone 'Asia/Kabul', 2071, 60, 346, 5
         end
         country 'AG', 'Antigua & Barbuda' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'AI', 'Anguilla' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'AL', 'Albania' do |c|
           c.timezone 'Europe/Tirane', 124, 3, 119, 6
@@ -40,7 +40,7 @@ module TZInfo
           c.timezone 'Antarctica/Palmer', -324, 5, -641, 10, 'Palmer'
           c.timezone 'Antarctica/Rothera', -2027, 30, -1022, 15, 'Rothera'
           c.timezone 'Antarctica/Troll', -259241, 3600, 507, 200, 'Troll'
-          c.timezone 'Asia/Urumqi', 219, 5, 1051, 12, 'Xinjiang Time, Vostok'
+          c.timezone 'Antarctica/Vostok', -392, 5, 1069, 10, 'Vostok'
           c.timezone 'Pacific/Auckland', -553, 15, 5243, 30, 'New Zealand time'
           c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d\'Urville'
           c.timezone 'Asia/Riyadh', 739, 30, 2803, 60, 'Syowa'
@@ -51,7 +51,7 @@ module TZInfo
           c.timezone 'America/Argentina/Salta', -1487, 60, -785, 12, 'Salta (SA, LP, NQ, RN)'
           c.timezone 'America/Argentina/Jujuy', -1451, 60, -653, 10, 'Jujuy (JY)'
           c.timezone 'America/Argentina/Tucuman', -1609, 60, -3913, 60, 'Tucumán (TM)'
-          c.timezone 'America/Argentina/Catamarca', -427, 15, -3947, 60, 'Catamarca (CT); Chubut (CH)'
+          c.timezone 'America/Argentina/Catamarca', -427, 15, -3947, 60, 'Catamarca (CT), Chubut (CH)'
           c.timezone 'America/Argentina/La_Rioja', -883, 30, -1337, 20, 'La Rioja (LR)'
           c.timezone 'America/Argentina/San_Juan', -473, 15, -4111, 60, 'San Juan (SJ)'
           c.timezone 'America/Argentina/Mendoza', -1973, 60, -4129, 60, 'Mendoza (MZ)'
@@ -80,7 +80,7 @@ module TZInfo
           c.timezone 'Australia/Eucla', -1903, 60, 1933, 15, 'Western Australia (Eucla)'
         end
         country 'AW', 'Aruba' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'AX', 'Åland Islands' do |c|
           c.timezone 'Europe/Helsinki', 361, 6, 749, 30
@@ -116,7 +116,7 @@ module TZInfo
           c.timezone 'Africa/Lagos', 129, 20, 17, 5, 'West Africa Time'
         end
         country 'BL', 'St Barthelemy' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'BM', 'Bermuda' do |c|
           c.timezone 'Atlantic/Bermuda', 1937, 60, -1943, 30
@@ -128,11 +128,11 @@ module TZInfo
           c.timezone 'America/La_Paz', -33, 2, -1363, 20
         end
         country 'BQ', 'Caribbean NL' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'BR', 'Brazil' do |c|
           c.timezone 'America/Noronha', -77, 20, -389, 12, 'Atlantic islands'
-          c.timezone 'America/Belem', -29, 20, -2909, 60, 'Pará (east); Amapá'
+          c.timezone 'America/Belem', -29, 20, -2909, 60, 'Pará (east), Amapá'
           c.timezone 'America/Fortaleza', -223, 60, -77, 2, 'Brazil (northeast: MA, PI, CE, RN, PB)'
           c.timezone 'America/Recife', -161, 20, -349, 10, 'Pernambuco'
           c.timezone 'America/Araguaina', -36, 5, -241, 5, 'Tocantins'
@@ -149,7 +149,7 @@ module TZInfo
           c.timezone 'America/Rio_Branco', -299, 30, -339, 5, 'Acre'
         end
         country 'BS', 'Bahamas' do |c|
-          c.timezone 'America/Toronto', 873, 20, -4763, 60, 'Eastern - ON, QC (most areas)'
+          c.timezone 'America/Toronto', 873, 20, -4763, 60, 'Eastern - ON & QC (most areas)'
         end
         country 'BT', 'Bhutan' do |c|
           c.timezone 'Asia/Thimphu', 412, 15, 1793, 20
@@ -165,19 +165,19 @@ module TZInfo
           c.timezone 'America/Belize', 35, 2, -441, 5
         end
         country 'CA', 'Canada' do |c|
-          c.timezone 'America/St_Johns', 1427, 30, -3163, 60, 'Newfoundland; Labrador (southeast)'
-          c.timezone 'America/Halifax', 893, 20, -318, 5, 'Atlantic - NS (most areas); PE'
+          c.timezone 'America/St_Johns', 1427, 30, -3163, 60, 'Newfoundland, Labrador (SE)'
+          c.timezone 'America/Halifax', 893, 20, -318, 5, 'Atlantic - NS (most areas), PE'
           c.timezone 'America/Glace_Bay', 231, 5, -1199, 20, 'Atlantic - NS (Cape Breton)'
           c.timezone 'America/Moncton', 461, 10, -3887, 60, 'Atlantic - New Brunswick'
           c.timezone 'America/Goose_Bay', 160, 3, -725, 12, 'Atlantic - Labrador (most areas)'
-          c.timezone 'America/Toronto', 873, 20, -4763, 60, 'Eastern - ON, QC (most areas)'
+          c.timezone 'America/Toronto', 873, 20, -4763, 60, 'Eastern - ON & QC (most areas)'
           c.timezone 'America/Iqaluit', 956, 15, -1027, 15, 'Eastern - NU (most areas)'
-          c.timezone 'America/Winnipeg', 2993, 60, -1943, 20, 'Central - ON (west); Manitoba'
+          c.timezone 'America/Winnipeg', 2993, 60, -1943, 20, 'Central - ON (west), Manitoba'
           c.timezone 'America/Resolute', 33613, 450, -22759, 240, 'Central - NU (Resolute)'
           c.timezone 'America/Rankin_Inlet', 3769, 60, -331499, 3600, 'Central - NU (central)'
           c.timezone 'America/Regina', 252, 5, -2093, 20, 'CST - SK (most areas)'
           c.timezone 'America/Swift_Current', 3017, 60, -647, 6, 'CST - SK (midwest)'
-          c.timezone 'America/Edmonton', 1071, 20, -1702, 15, 'Mountain - AB; BC (E); NT (E); SK (W)'
+          c.timezone 'America/Edmonton', 1071, 20, -1702, 15, 'Mountain - AB, BC(E), NT(E), SK(W)'
           c.timezone 'America/Cambridge_Bay', 24881, 360, -37819, 360, 'Mountain - NU (west)'
           c.timezone 'America/Inuvik', 246059, 3600, -8023, 60, 'Mountain - NT (west)'
           c.timezone 'America/Dawson_Creek', 1673, 30, -3607, 30, 'MST - BC (Dawson Cr, Ft St John)'
@@ -186,7 +186,7 @@ module TZInfo
           c.timezone 'America/Dawson', 961, 15, -1673, 12, 'MST - Yukon (west)'
           c.timezone 'America/Vancouver', 739, 15, -7387, 60, 'Pacific - BC (most areas)'
           c.timezone 'America/Panama', 269, 30, -1193, 15, 'EST - ON (Atikokan), NU (Coral H)'
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
           c.timezone 'America/Phoenix', 20069, 600, -16811, 150, 'MST - AZ (most areas), Creston BC'
         end
         country 'CC', 'Cocos (Keeling) Islands' do |c|
@@ -221,7 +221,7 @@ module TZInfo
         end
         country 'CN', 'China' do |c|
           c.timezone 'Asia/Shanghai', 937, 30, 1822, 15, 'Beijing Time'
-          c.timezone 'Asia/Urumqi', 219, 5, 1051, 12, 'Xinjiang Time, Vostok'
+          c.timezone 'Asia/Urumqi', 219, 5, 1051, 12, 'Xinjiang Time'
         end
         country 'CO', 'Colombia' do |c|
           c.timezone 'America/Bogota', 23, 5, -889, 12
@@ -236,7 +236,7 @@ module TZInfo
           c.timezone 'Atlantic/Cape_Verde', 179, 12, -1411, 60
         end
         country 'CW', 'Curaçao' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'CX', 'Christmas Island' do |c|
           c.timezone 'Asia/Bangkok', 55, 4, 6031, 60, 'north Vietnam'
@@ -259,7 +259,7 @@ module TZInfo
           c.timezone 'Europe/Berlin', 105, 2, 401, 30, 'most of Germany'
         end
         country 'DM', 'Dominica' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'DO', 'Dominican Republic' do |c|
           c.timezone 'America/Santo_Domingo', 277, 15, -699, 10
@@ -318,7 +318,7 @@ module TZInfo
           c.timezone 'Europe/London', 6181, 120, -451, 3600
         end
         country 'GD', 'Grenada' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'GE', 'Georgia' do |c|
           c.timezone 'Asia/Tbilisi', 2503, 60, 2689, 60
@@ -348,7 +348,7 @@ module TZInfo
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
         end
         country 'GP', 'Guadeloupe' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'GQ', 'Equatorial Guinea' do |c|
           c.timezone 'Africa/Lagos', 129, 20, 17, 5, 'West Africa Time'
@@ -390,8 +390,8 @@ module TZInfo
         country 'ID', 'Indonesia' do |c|
           c.timezone 'Asia/Jakarta', -37, 6, 534, 5, 'Java, Sumatra'
           c.timezone 'Asia/Pontianak', -1, 30, 328, 3, 'Borneo (west, central)'
-          c.timezone 'Asia/Makassar', -307, 60, 597, 5, 'Borneo (east, south); Sulawesi/Celebes, Bali, Nusa Tengarra; Timor (west)'
-          c.timezone 'Asia/Jayapura', -38, 15, 1407, 10, 'New Guinea (West Papua / Irian Jaya); Malukus/Moluccas'
+          c.timezone 'Asia/Makassar', -307, 60, 597, 5, 'Borneo (east, south), Sulawesi/Celebes, Bali, Nusa Tengarra, Timor (west)'
+          c.timezone 'Asia/Jayapura', -38, 15, 1407, 10, 'New Guinea (West Papua / Irian Jaya), Malukus/Moluccas'
         end
         country 'IE', 'Ireland' do |c|
           c.timezone 'Europe/Dublin', 160, 3, -25, 4
@@ -450,7 +450,7 @@ module TZInfo
           c.timezone 'Africa/Nairobi', -77, 60, 2209, 60
         end
         country 'KN', 'St Kitts & Nevis' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'KP', 'Korea (North)' do |c|
           c.timezone 'Asia/Pyongyang', 2341, 60, 503, 4
@@ -480,7 +480,7 @@ module TZInfo
           c.timezone 'Asia/Beirut', 2033, 60, 71, 2
         end
         country 'LC', 'St Lucia' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'LI', 'Liechtenstein' do |c|
           c.timezone 'Europe/Zurich', 2843, 60, 128, 15, 'Büsingen'
@@ -519,7 +519,7 @@ module TZInfo
           c.timezone 'Europe/Belgrade', 269, 6, 41, 2
         end
         country 'MF', 'St Martin (French)' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'MG', 'Madagascar' do |c|
           c.timezone 'Africa/Nairobi', -77, 60, 2209, 60
@@ -555,7 +555,7 @@ module TZInfo
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
         end
         country 'MS', 'Montserrat' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'MT', 'Malta' do |c|
           c.timezone 'Europe/Malta', 359, 10, 871, 60
@@ -628,7 +628,7 @@ module TZInfo
           c.timezone 'Pacific/Chatham', -879, 20, -3531, 20, 'Chatham Islands'
         end
         country 'OM', 'Oman' do |c|
-          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet, Scattered Is'
+          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet'
         end
         country 'PA', 'Panama' do |c|
           c.timezone 'America/Panama', 269, 30, -1193, 15, 'EST - ON (Atikokan), NU (Coral H)'
@@ -661,7 +661,7 @@ module TZInfo
           c.timezone 'Pacific/Pitcairn', -376, 15, -1561, 12
         end
         country 'PR', 'Puerto Rico' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'PS', 'Palestine' do |c|
           c.timezone 'Asia/Gaza', 63, 2, 517, 15, 'Gaza Strip'
@@ -682,7 +682,7 @@ module TZInfo
           c.timezone 'Asia/Qatar', 1517, 60, 773, 15
         end
         country 'RE', 'Réunion' do |c|
-          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet, Scattered Is'
+          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet'
         end
         country 'RO', 'Romania' do |c|
           c.timezone 'Europe/Bucharest', 1333, 30, 261, 10
@@ -715,7 +715,7 @@ module TZInfo
           c.timezone 'Asia/Ust-Nera', 232417, 3600, 10742, 75, 'MSK+07 - Oymyakonsky'
           c.timezone 'Asia/Magadan', 1787, 30, 754, 5, 'MSK+08 - Magadan'
           c.timezone 'Asia/Sakhalin', 1409, 30, 1427, 10, 'MSK+08 - Sakhalin Island'
-          c.timezone 'Asia/Srednekolymsk', 1012, 15, 9223, 60, 'MSK+08 - Sakha (E); N Kuril Is'
+          c.timezone 'Asia/Srednekolymsk', 1012, 15, 9223, 60, 'MSK+08 - Sakha (E), N Kuril Is'
           c.timezone 'Asia/Kamchatka', 3181, 60, 3173, 20, 'MSK+09 - Kamchatka'
           c.timezone 'Asia/Anadyr', 259, 4, 10649, 60, 'MSK+09 - Bering Sea'
         end
@@ -729,7 +729,7 @@ module TZInfo
           c.timezone 'Pacific/Guadalcanal', -143, 15, 801, 5, 'Pohnpei'
         end
         country 'SC', 'Seychelles' do |c|
-          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet, Scattered Is'
+          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet'
         end
         country 'SD', 'Sudan' do |c|
           c.timezone 'Africa/Khartoum', 78, 5, 488, 15
@@ -777,7 +777,7 @@ module TZInfo
           c.timezone 'America/El_Salvador', 137, 10, -446, 5
         end
         country 'SX', 'St Maarten (Dutch)' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'SY', 'Syria' do |c|
           c.timezone 'Asia/Damascus', 67, 2, 363, 10
@@ -792,7 +792,7 @@ module TZInfo
           c.timezone 'Africa/Ndjamena', 727, 60, 301, 20
         end
         country 'TF', 'French S. Terr.' do |c|
-          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet, Scattered Is'
+          c.timezone 'Asia/Dubai', 253, 10, 553, 10, 'Crozet'
           c.timezone 'Indian/Maldives', 25, 6, 147, 2, 'Kerguelen, St Paul I, Amsterdam I'
         end
         country 'TG', 'Togo' do |c|
@@ -823,7 +823,7 @@ module TZInfo
           c.timezone 'Europe/Istanbul', 2461, 60, 869, 30
         end
         country 'TT', 'Trinidad & Tobago' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'TV', 'Tuvalu' do |c|
           c.timezone 'Pacific/Tarawa', 17, 12, 173, 1, 'Gilberts, Marshalls, Wake'
@@ -864,7 +864,7 @@ module TZInfo
           c.timezone 'America/North_Dakota/New_Salem', 9369, 200, -121693, 1200, 'Central - ND (Morton rural)'
           c.timezone 'America/North_Dakota/Beulah', 56717, 1200, -916, 9, 'Central - ND (Mercer)'
           c.timezone 'America/Denver', 47687, 1200, -125981, 1200, 'Mountain (most areas)'
-          c.timezone 'America/Boise', 157009, 3600, -46481, 400, 'Mountain - ID (south); OR (east)'
+          c.timezone 'America/Boise', 157009, 3600, -46481, 400, 'Mountain - ID (south), OR (east)'
           c.timezone 'America/Phoenix', 20069, 600, -16811, 150, 'MST - AZ (most areas), Creston BC'
           c.timezone 'America/Los_Angeles', 30647, 900, -212837, 1800, 'Pacific'
           c.timezone 'America/Anchorage', 44077, 720, -539641, 3600, 'Alaska (most areas)'
@@ -887,16 +887,16 @@ module TZInfo
           c.timezone 'Europe/Rome', 419, 10, 749, 60
         end
         country 'VC', 'St Vincent' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'VE', 'Venezuela' do |c|
           c.timezone 'America/Caracas', 21, 2, -1004, 15
         end
         country 'VG', 'Virgin Islands (UK)' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'VI', 'Virgin Islands (US)' do |c|
-          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST'
+          c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
         end
         country 'VN', 'Vietnam' do |c|
           c.timezone 'Asia/Ho_Chi_Minh', 43, 4, 320, 3, 'south Vietnam'
