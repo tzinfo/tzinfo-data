@@ -38,7 +38,7 @@ jobs:
     env:
       TZINFO_GEM: ${{ matrix.tzinfo }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - if: startsWith(matrix.ruby, 'jruby-9.0')
         uses: philr/setup-ruby@legacy-v1
         with:
@@ -61,7 +61,7 @@ jobs:
           echo "os=`lsb_release -si`" >> $GITHUB_OUTPUT
           echo "os_version=`lsb_release -sr`" >> $GITHUB_OUTPUT
       - name: Cache tzdb
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: tzdb
           key: tzdb-${{ steps.determine_os_version.outputs.os }}-${{ steps.determine_os_version.outputs.os_version }}-${{ steps.determine_tzdata_version.outputs.tzdata_version }}
