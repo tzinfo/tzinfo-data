@@ -33,18 +33,18 @@ jobs:
             name_suffix: ' (experimental)'
             experimental: true
       fail-fast: false
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     continue-on-error: ${{ matrix.experimental }}
     env:
       TZINFO_GEM: ${{ matrix.tzinfo }}
     steps:
       - uses: actions/checkout@v4
-      - if: startsWith(matrix.ruby, 'jruby-9.0')
+      - if: startsWith(matrix.ruby, '1.') || startsWith(matrix.ruby, 'jruby-9.0')
         uses: philr/setup-ruby@legacy-v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - if: ${{ !startsWith(matrix.ruby, 'jruby-9.0') }}
+      - if: ${{ !(startsWith(matrix.ruby, '1.') || startsWith(matrix.ruby, 'jruby-9.0')) }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
