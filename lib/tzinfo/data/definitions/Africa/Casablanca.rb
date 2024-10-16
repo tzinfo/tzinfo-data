@@ -14,7 +14,7 @@ module TZInfo
             tz.offset :o0, -1820, 0, :LMT
             tz.offset :o1, 0, 0, :'WET'
             tz.offset :o2, 0, 3600, :'CET'
-            tz.offset :o3, 3600, 0, :'CET'
+            tz.offset :o3, 3600, 0, :'WEST'
             tz.offset :o4, 3600, -3600, :'WET'
             
             tz.transition 1913, 10, :o1, -1773012580, 10454687371, 4320
