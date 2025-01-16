@@ -44,6 +44,7 @@ module TZInfo
           c.timezone 'Pacific/Auckland', -553, 15, 5243, 30, 'New Zealand time'
           c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d\'Urville'
           c.timezone 'Asia/Riyadh', 739, 30, 2803, 60, 'Syowa'
+          c.timezone 'Asia/Singapore', 77, 60, 2077, 20, 'peninsular Malaysia, Concordia'
         end
         country 'AR', 'Argentina' do |c|
           c.timezone 'America/Argentina/Buenos_Aires', -173, 5, -1169, 20, 'Buenos Aires (BA, CF)'
@@ -78,6 +79,7 @@ module TZInfo
           c.timezone 'Australia/Darwin', -187, 15, 785, 6, 'Northern Territory'
           c.timezone 'Australia/Perth', -639, 20, 2317, 20, 'Western Australia (most areas)'
           c.timezone 'Australia/Eucla', -1903, 60, 1933, 15, 'Western Australia (Eucla)'
+          c.timezone 'Asia/Tokyo', 32089, 900, 503081, 3600, 'Eyre Bird Observatory'
         end
         country 'AW', 'Aruba' do |c|
           c.timezone 'America/Puerto_Rico', 11081, 600, -118991, 1800, 'AST - QC (Lower North Shore)'
@@ -430,7 +432,7 @@ module TZInfo
           c.timezone 'Asia/Amman', 639, 20, 539, 15
         end
         country 'JP', 'Japan' do |c|
-          c.timezone 'Asia/Tokyo', 32089, 900, 503081, 3600
+          c.timezone 'Asia/Tokyo', 32089, 900, 503081, 3600, 'Eyre Bird Observatory'
         end
         country 'KE', 'Kenya' do |c|
           c.timezone 'Africa/Nairobi', -77, 60, 2209, 60
@@ -584,7 +586,7 @@ module TZInfo
         end
         country 'MY', 'Malaysia' do |c|
           c.timezone 'Asia/Kuching', 31, 20, 331, 3, 'Sabah, Sarawak'
-          c.timezone 'Asia/Singapore', 77, 60, 2077, 20, 'peninsular Malaysia'
+          c.timezone 'Asia/Singapore', 77, 60, 2077, 20, 'peninsular Malaysia, Concordia'
         end
         country 'MZ', 'Mozambique' do |c|
           c.timezone 'Africa/Maputo', -779, 30, 391, 12, 'Central Africa Time'
@@ -645,7 +647,7 @@ module TZInfo
           c.timezone 'Pacific/Bougainville', -373, 60, 4667, 30, 'Bougainville'
         end
         country 'PH', 'Philippines' do |c|
-          c.timezone 'Asia/Manila', 175, 12, 121, 1
+          c.timezone 'Asia/Manila', 1094, 75, 108871, 900
         end
         country 'PK', 'Pakistan' do |c|
           c.timezone 'Asia/Karachi', 373, 15, 1341, 20
@@ -737,7 +739,7 @@ module TZInfo
           c.timezone 'Europe/Berlin', 105, 2, 401, 30, 'most of Germany'
         end
         country 'SG', 'Singapore' do |c|
-          c.timezone 'Asia/Singapore', 77, 60, 2077, 20, 'peninsular Malaysia'
+          c.timezone 'Asia/Singapore', 77, 60, 2077, 20, 'peninsular Malaysia, Concordia'
         end
         country 'SH', 'St Helena' do |c|
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
