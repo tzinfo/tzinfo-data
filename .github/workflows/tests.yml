@@ -7,12 +7,12 @@ jobs:
     name: ${{ matrix.ruby }} with TZInfo ${{ matrix.tzinfo }}${{ matrix.name_suffix }}
     strategy:
       matrix:
-        ruby: ['1.9.3', '3.3', jruby-9.0, jruby-9.4]
+        ruby: ['1.9.3', '3.4', jruby-9.0, jruby-9.4]
         tzinfo: [v1, v2]
         name_suffix: ['']
         experimental: [false]
         include:
-          - ruby: '3.3'
+          - ruby: '3.4'
             tzinfo: head
             name_suffix: ' (experimental)'
             experimental: true
