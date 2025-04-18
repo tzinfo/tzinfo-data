@@ -15,4 +15,9 @@ end
 group :test do
   gem 'rake'
   gem 'minitest', '~> 5.0'
+
+  # Use a later version of jruby-openssl on JRuby 9.0 to allow downloads from https://data.iana.org.
+  if RUBY_ENGINE == 'jruby' && JRUBY_VERSION < '9.1'
+    gem 'jruby-openssl', '~> 0.11'
+  end
 end

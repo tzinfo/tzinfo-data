@@ -52,21 +52,6 @@ jobs:
       - run: ruby --version
       - run: gem --version
       - run: bundle --version
-      - if: ${{ startsWith(matrix.ruby, 'jruby-9.0') }}
-        name: Update jruby-openssl
-        run: |
-          curl --output /tmp/jruby-openssl-0.11.0-java.gem --retry 5 https://rubygems.org/downloads/jruby-openssl-0.11.0-java.gem
-          hash=`sha256sum /tmp/jruby-openssl-0.11.0-java.gem | cut -d' ' -f1`
-          echo "SHA-256 hash: $hash"
-          if [[ "$hash" -eq a5ea2b925d49522ffbf191a591930c826d4e8c3e1550eaae8448ca6b0ad3169c ]]
-          then
-            gem install /tmp/jruby-openssl-0.11.0-java.gem --no-document
-            rm /tmp/jruby-openssl-0.11.0-java.gem
-          else
-            echo 'SHA-256 hash did not match.' 1>&2
-            rm /tmp/jruby-openssl-0.11.0-java.gem
-            exit 1
-          fi
       - id: determine_tzdata_version
         name: Determine tzdata version
         run: echo "tzdata_version=`ruby -r bundler/setup -r tzinfo/data -e 'puts TZInfo::Data::Version::TZDATA'`" >> $GITHUB_OUTPUT
