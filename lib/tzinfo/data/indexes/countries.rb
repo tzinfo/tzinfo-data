@@ -42,7 +42,7 @@ module TZInfo
           c.timezone 'Antarctica/Troll', -259241, 3600, 507, 200, 'Troll'
           c.timezone 'Antarctica/Vostok', -392, 5, 1069, 10, 'Vostok'
           c.timezone 'Pacific/Auckland', -553, 15, 5243, 30, 'New Zealand time'
-          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d\'Urville'
+          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d’Urville'
           c.timezone 'Asia/Riyadh', 739, 30, 2803, 60, 'Syowa'
           c.timezone 'Asia/Singapore', 77, 60, 2077, 20, 'peninsular Malaysia, Concordia'
         end
@@ -207,7 +207,7 @@ module TZInfo
         country 'CH', 'Switzerland' do |c|
           c.timezone 'Europe/Zurich', 2843, 60, 128, 15, 'Büsingen'
         end
-        country 'CI', 'Côte d\'Ivoire' do |c|
+        country 'CI', 'Côte d’Ivoire' do |c|
           c.timezone 'Africa/Abidjan', 319, 60, -121, 30
         end
         country 'CK', 'Cook Islands' do |c|
@@ -305,7 +305,7 @@ module TZInfo
         end
         country 'FM', 'Micronesia' do |c|
           c.timezone 'Pacific/Kosrae', 319, 60, 9779, 60, 'Kosrae'
-          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d\'Urville'
+          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d’Urville'
           c.timezone 'Pacific/Guadalcanal', -143, 15, 801, 5, 'Pohnpei'
         end
         country 'FO', 'Faroe Islands' do |c|
@@ -473,7 +473,7 @@ module TZInfo
           c.timezone 'Asia/Qostanay', 266, 5, 3817, 60, 'Qostanay/Kostanay/Kustanay'
           c.timezone 'Asia/Aqtobe', 3017, 60, 343, 6, 'Aqtöbe/Aktobe'
           c.timezone 'Asia/Aqtau', 2671, 60, 754, 15, 'Mangghystaū/Mankistau'
-          c.timezone 'Asia/Atyrau', 2827, 60, 779, 15, 'Atyraū/Atirau/Gur\'yev'
+          c.timezone 'Asia/Atyrau', 2827, 60, 779, 15, 'Atyraū/Atirau/Gur’yev'
           c.timezone 'Asia/Oral', 3073, 60, 1027, 20, 'West Kazakhstan'
         end
         country 'LA', 'Laos' do |c|
@@ -644,7 +644,7 @@ module TZInfo
           c.timezone 'Pacific/Gambier', -347, 15, -2699, 20, 'Gambier Islands'
         end
         country 'PG', 'Papua New Guinea' do |c|
-          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d\'Urville'
+          c.timezone 'Pacific/Port_Moresby', -19, 2, 883, 6, 'Papua New Guinea (most areas), Chuuk, Yap, Dumont d’Urville'
           c.timezone 'Pacific/Bougainville', -373, 60, 4667, 30, 'Bougainville'
         end
         country 'PH', 'Philippines' do |c|
