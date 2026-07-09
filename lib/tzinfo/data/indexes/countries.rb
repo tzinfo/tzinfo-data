@@ -179,7 +179,7 @@ module TZInfo
           c.timezone 'America/Rankin_Inlet', 3769, 60, -331499, 3600, 'Central - NU (central)'
           c.timezone 'America/Regina', 252, 5, -2093, 20, 'CST - SK (most areas)'
           c.timezone 'America/Swift_Current', 3017, 60, -647, 6, 'CST - SK (midwest)'
-          c.timezone 'America/Edmonton', 1071, 20, -1702, 15, 'Mountain - AB, BC(E), NT(E), SK(W)'
+          c.timezone 'America/Edmonton', 1071, 20, -1702, 15, 'CST - AB, BC(E), NT(E), SK(W)'
           c.timezone 'America/Cambridge_Bay', 24881, 360, -37819, 360, 'Mountain - NU (west)'
           c.timezone 'America/Inuvik', 246059, 3600, -8023, 60, 'Mountain - NT (west)'
           c.timezone 'America/Vancouver', 739, 15, -7387, 60, 'MST - BC (most areas)'
